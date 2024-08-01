@@ -19,6 +19,7 @@
 	# environment.
 	home.packages = with pkgs; [
 		alacritty
+		bat
 		brightnessctl
 		btop
 		burp
@@ -45,6 +46,7 @@
 		openvpn
 		pamixer
 		playerctl
+		direnv
 		python3
 		ripgrep
 		rustc
@@ -111,6 +113,13 @@
 
 	programs.zoxide = {
 		enable = true;
+	};
+
+	programs.direnv = {
+		enable = true;
+		nix-direnv = {
+			enable = true;
+		};
 	};
 
   programs.zsh = {
@@ -196,8 +205,12 @@
 		[ -f "$HOME/.zvars"  ] && source "$HOME/.zvars";
 		
 		export PATH="''$HOME/.nix-profile/bin:''$PATH"
-		. /home/raphael/.nix-profile/etc/profile.d/nix.sh
-		
+		[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]  && source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+		if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+		  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+		fi
+		[ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ] && source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+
 		export ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.cache/}/zinit/zinit.git"
 		export MANPAGER="/bin/sh -c 'col -bx | bat -l man --style=plain --paging=always'"
 		export MANROFFOPT="-c"
@@ -271,9 +284,16 @@
 		zstyle ':fzf-tab:complete:cd:*' fzf-preview '${pkgs.eza}/bin/eza -a --icons --color $realpath'
 		zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview '${pkgs.eza}/bin/eza -a --icons --color $realpath'
 
+		eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
 		eval "$(${pkgs.starship}/bin/starship init zsh)"
 	'';
- 
+
+  programs.git = {
+    enable = true;
+    userName  = "Raphael";
+    userEmail = "rparodi@student.42.fr";
+  };
+
   # Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
 }
