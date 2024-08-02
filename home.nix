@@ -5,7 +5,6 @@
   # manage.
 	home.username = "raphael";
 	home.homeDirectory = "/home/raphael";
-
 	# This value determines the Home Manager release that your configuration is
 	# compatible with. This helps avoid breakage when a new Home Manager release
 	# introduces backwards incompatible changes.
@@ -287,6 +286,11 @@
 		eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
 		eval "$(${pkgs.starship}/bin/starship init zsh)"
 	'';
+
+	#home.sessionVariables = {
+	#XDG_DATA_DIRS = "${pkgs.vesktop}/share:$XDG_DATA_DIRS";
+	#};
+	targets.genericLinux.enable = true;
 
   programs.git = {
     enable = true;
