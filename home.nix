@@ -23,7 +23,10 @@
 		btop
 		burp
 		cargo
+		catppuccin-cursors.mochaDark
+		cider
 		clang
+		direnv
 		docker
 		element-desktop
 		eza
@@ -32,6 +35,8 @@
 		git
 		grim
 		htop
+		kdePackages.qtsvg
+		kdePackages.qtwayland
 		lazygit
 		lldb
 		llvm
@@ -40,14 +45,17 @@
 		neofetch
 		neovim
 		nerdfonts
+		networkmanager
 		nmap
 		norminette
 		openvpn
 		pamixer
+		pavucontrol
+		pipewire
 		playerctl
-		direnv
 		python3
 		ripgrep
+		rofi
 		rustc
 		seclists
 		slurp
@@ -57,8 +65,10 @@
 		valgrind
 		vesktop
 		vlc
+		wireplumber
 		wireshark
 		wl-clipboard
+		wlogout
 		zed-editor
 		zoxide
 		zsh
@@ -103,9 +113,9 @@
 	fonts = {
 		fontconfig = {
 			defaultFonts = {
-				serif = ["Hack Nerd Font Mono"];
-				sansSerif = ["Hack Nerd Font Mono"];
-				monospace = ["Hack Nerd Font Mono"];
+				serif = ["JetBrainsMono Nerd Font"];
+				sansSerif = ["JetBrainsMono Nerd Font"];
+				monospace = ["JetBrainsMono Nerd Font"];
 			};
 		};
 	};
@@ -121,11 +131,89 @@
 		};
 	};
 
-  programs.zsh = {
-	enable = true;
-	autosuggestion = {
+	programs.tmux = {
 		enable = true;
+		plugins = with pkgs; [
+			tmuxPlugins.vim-tmux-navigator
+			tmuxPlugins.catppuccin
+		];
+		 extraConfig = ''
+			# Set default terminal
+			set -g default-terminal "screen-256color"
+
+			# Change prefix key to Ctrl-a
+			set -g prefix C-a
+			unbind C-b
+			bind C-a send-prefix
+
+			# Split window bindings
+			unbind %
+			bind \\ split-window -h
+			unbind '"'
+			bind | split-window -v
+
+			# Reload tmux configuration
+			unbind r
+			bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+			setw -g mode-keys vi
+			bind-key h select-pane -L
+			bind-key j select-pane -D
+			bind-key k select-pane -U
+			bind-key l select-pane -R
+
+			# Pane resizing shortcuts
+			bind -n C-S-Up resize-pane -U 5
+			bind -n C-S-Down resize-pane -D 5
+			bind -n C-S-Left resize-pane -L 5
+			bind -n C-S-Right resize-pane -R 5
+
+			# Pane navigation shortcuts
+			bind -n C-Up select-pane -U
+			bind -n C-Down select-pane -D
+			bind -n C-Left select-pane -L
+			bind -n C-Right select-pane -R
+
+			# Toggle pane zoom
+			bind -r m resize-pane -Z
+
+			# Enable mouse mode
+			set -g mouse on
+
+			# Copy mode key bindings for vim-like behavior
+			bind-key -T copy-mode-vi v send-keys -X begin-selection
+			bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+			# Plugin configuration
+			set -g status-position top
+			set -g @catppuccin_flavour 'mocha'
+
+			set -g @catppuccin_window_right_separator "█"
+			set -g @catppuccin_window_number_position "right"
+			set -g @catppuccin_window_middle_separator " █"
+
+			set -g @catppuccin_window_default_fill "number"
+			set -g @catppuccin_window_current_fill "number"
+			set -g @catppuccin_window_current_text "#{pane_current_path}"
+
+			set -g @catppuccin_status_modules_right "application session date_time"
+			set -g @catppuccin_status_left_separator  "██"
+			set -g @catppuccin_status_right_separator "█ "
+			set -g @catppuccin_status_fill "all"
+
+			set -g @catppuccin_status_connect_separator "yes"
+
+			run '~/.tmux/plugins/tpm/tpm'
+
+			bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection clipboard -in"
+		'';
 	};
+
+	programs.zsh = {
+		enable = true;
+		autosuggestion = {
+			enable = true;
+		};
 	shellAliases = {
 		"cls" = "clear";
 		"vim" = "nvim";
@@ -142,6 +230,7 @@
 		"l" = "ls -l";
 		"la" = "ls -la";
 		"vg" = "valgrind --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --track-origins=yes --show-reachable=yes";
+		"ssh" = "TERM=xterm-256color ssh";
 	};
 	enableCompletion = true;
 	autocd = true;
@@ -203,7 +292,7 @@
 	 	[ -f "$HOME/.zshenv" ] && source "$HOME/.zshenv";
 		[ -f "$HOME/.zvars"  ] && source "$HOME/.zvars";
 		
-		export PATH="''$HOME/.nix-profile/bin:''$PATH"
+		export PATH="''$HOME/.nix-profile/bin:''$HOME/.local/bin:''$PATH"
 		[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]  && source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 		if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 		  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
@@ -292,11 +381,11 @@
 	#};
 	targets.genericLinux.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName  = "Raphael";
-    userEmail = "rparodi@student.42.fr";
-  };
+	programs.git = {
+		enable = true;
+		userName  = "Raphael";
+		userEmail = "rparodi@student.42.fr";
+	};
 
   # Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
