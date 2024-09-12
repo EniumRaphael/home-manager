@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    home.nix                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/12 11:35:56 by rparodi           #+#    #+#              #
+#    Updated: 2024/09/12 11:38:02 by rparodi          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 { config, pkgs, ... }:
 
 {
@@ -49,6 +61,7 @@
 		slurp
 		starship
 		tmux
+		tree
 		valgrind
 		vesktop
 		zoxide
@@ -183,8 +196,6 @@
 			set -g @catppuccin_status_fill "all"
 
 			set -g @catppuccin_status_connect_separator "yes"
-
-			run '~/.tmux/plugins/tpm/tpm'
 
 			bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection clipboard -in"
 		'';
