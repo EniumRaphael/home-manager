@@ -23,20 +23,14 @@
 		btop
 		burp
 		cargo
-		catppuccin-cursors.mochaDark
-		cider
 		clang
 		direnv
 		docker
-		element-desktop
 		eza
-		freerdp
 		fzf
 		git
 		grim
 		htop
-		kdePackages.qtsvg
-		kdePackages.qtwayland
 		lazygit
 		lldb
 		llvm
@@ -45,31 +39,18 @@
 		neofetch
 		neovim
 		nerdfonts
-		networkmanager
 		nmap
 		norminette
 		openvpn
-		pamixer
-		pavucontrol
-		pipewire
-		playerctl
 		python3
 		ripgrep
-		rofi
 		rustc
 		seclists
 		slurp
 		starship
-		telegram-desktop
 		tmux
 		valgrind
 		vesktop
-		vlc
-		wireplumber
-		wireshark
-		wl-clipboard
-		wlogout
-		zed-editor
 		zoxide
 		zsh
 	];
