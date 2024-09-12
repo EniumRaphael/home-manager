@@ -5,7 +5,7 @@
 	home.homeDirectory = "/home/raphael";
 	home.stateVersion = "23.11";
 
-	targets.genericLinux.enable = true;
+#	targets.genericLinux.enable = true;
 
   # Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;

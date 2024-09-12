@@ -12,8 +12,9 @@ in
 
 	home.packages = with pkgs; [
 		direnv
-		zsh
+		fzf
 		zoxide
+		zsh
 	];
 	programs.zsh = {
 		enable = true;
