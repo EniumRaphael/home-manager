@@ -17,15 +17,18 @@ in
 	];
 
 	home.activation.myScript = lib.mkAfter ''
-		echo "Checking neovim installation..."
 		if [ ! -d ~/.local/share/nvim/lazy/lazy.nvim ]; then
-			${pkgs.git}/bin/git clone https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/lazy/lazy.nvim
 			echo "neovim: Adding lazy package manager..."
+			${pkgs.git}/bin/git clone https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/lazy/lazy.nvim 1> /dev/null
 		fi
 
 		if [ ! -d "$HOME/.config/nvim" ]; then
-			${pkgs.git}/bin/git clone https://github.com/EniumRaphael/neovimconf.git ~/.config/nvim
 			echo "neovim: Adding configuration for neovim..."
+			${pkgs.git}/bin/git clone https://github.com/EniumRaphael/neovimconf.git ~/.config/nvim 1> /dev/null
+		else
+			echo "neovim: pulling the update for neovim..."
+			cd $HOME/.config/nvim
+			${pkgs.git}/bin/git pull 1> /dev/null
 		fi
 	'';
 

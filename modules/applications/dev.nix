@@ -2,9 +2,8 @@
 
 {
 	home.packages = with pkgs; [
-		burp
-		freerdp
-		metasploit
-		wireshark
+		alacritty
+		zed-editor
 	];
 }
+

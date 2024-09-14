@@ -12,7 +12,8 @@
 		norminette
 		python3
 		rustc
-#		valgrind
+		gnumake
+		valgrind
 	];
 }
 
