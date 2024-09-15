@@ -4,8 +4,9 @@
 	home.packages = with pkgs; [
 		cider
 		element-desktop
+		grim
 		revolt-desktop
-		telegram-desktop
+		slurp
 		vesktop
 		vlc
 	];
