@@ -24,7 +24,7 @@ in
 
 		if [ ! -d "$HOME/.config/nvim" ]; then
 			echo "neovim: Adding configuration for neovim..."
-			${pkgs.git}/bin/git clone https://github.com/EniumRaphael/neovimconf.git ~/.config/nvim 1> /dev/null
+			${pkgs.git}/bin/git clone git@github.com:EniumRaphael/neovimconf.git ~/.config/nvim 1> /dev/null
 		else
 			echo "neovim: pulling the update for neovim..."
 			cd $HOME/.config/nvim
