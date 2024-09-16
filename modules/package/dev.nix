@@ -6,13 +6,14 @@
 		cargo
 		clang
 		docker
+		gnumake
 		lazygit
 		lldb
 		llvm
 		norminette
 		python3
 		rustc
-		gnumake
+		tokei
 		valgrind
 	];
 }

@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-	home.username = "raphael";
-	home.homeDirectory = "/home/raphael";
+	home.username = "rparodi";
+	home.homeDirectory = "/home/rparodi";
 	home.stateVersion = "23.11";
 
 	targets.genericLinux.enable = true;
