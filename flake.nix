@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of rparodi";
+  description = "Home Manager configuration of raphael";
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
@@ -15,7 +15,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      homeConfigurations."rparodi" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."raphael" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,
