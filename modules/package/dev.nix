@@ -5,7 +5,10 @@
 		bat
 		cargo
 		clang
+		clang-tools
 		docker
+		exercism
+		glibc
 		gnumake
 		lazygit
 		lldb
@@ -14,6 +17,7 @@
 		python3
 		rustc
 		tokei
+		tree-sitter
 		valgrind
 	];
 }

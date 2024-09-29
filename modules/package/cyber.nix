@@ -2,7 +2,8 @@
 
 {
 	home.packages = with pkgs; [
-		hydra
+		thc-hydra
+		inetutils
 		john
 		nmap
 		seclists

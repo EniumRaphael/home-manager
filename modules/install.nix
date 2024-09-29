@@ -16,7 +16,7 @@ in
 		nerdfonts
 	];
 
-	home.activation.myScript = lib.mkAfter ''
+		home.activation.myScript = lib.mkAfter ''
 		if [ ! -d ~/.local/share/nvim/lazy/lazy.nvim ]; then
 			echo "neovim: Adding lazy package manager..."
 			${pkgs.git}/bin/git clone https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/lazy/lazy.nvim 1> /dev/null
