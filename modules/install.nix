@@ -12,8 +12,8 @@ in
 
 	home.packages = with pkgs; [
 		git
-		neovim
 		nerdfonts
+		neovim
 	];
 
 		home.activation.myScript = lib.mkAfter ''

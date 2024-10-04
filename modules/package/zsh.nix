@@ -11,8 +11,10 @@ in
 	];
 
 	home.packages = with pkgs; [
+		cowsay
 		direnv
 		fzf
+		lolcat
 		zoxide
 		zsh
 	];
