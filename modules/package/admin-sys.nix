@@ -4,9 +4,10 @@
 	home.packages = with pkgs; [
 		btop
 		eza
+		fastfetch
 		htop
 		ncdu
-		neofetch
+		onefetch
 		openvpn
 		ripgrep
 		tree
