@@ -2,8 +2,7 @@
 
 {
 	home.packages = with pkgs; [
-		alacritty
-		wezterm
+		kitty
 		zed-editor
 	];
 }
