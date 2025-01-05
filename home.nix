@@ -53,7 +53,6 @@ in
 	nixpkgs.config.allowUnfree = true;
 
 	imports = [
-		ags
 		cava
 		rofi
 		hyprpaper
