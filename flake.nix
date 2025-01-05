@@ -1,9 +1,7 @@
 {
-	description = "Home Manager configurationmof raphael";
+	description = "Full nixos configuration of home-manager";
 
 	inputs = {
-		# Specify the source of Home Manager and Nixpkgs.
-		ags.url = "github:Aylur/ags";
 		catppuccin.url = "github:catppuccin/nix";
 		hyprland.url = "github:hyprwm/Hyprland";
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

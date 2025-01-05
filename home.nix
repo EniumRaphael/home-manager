@@ -1,9 +1,6 @@
 { inputs, config, pkgs, nixvim, ... }:
 
 let
-	ags = import ./modules/ags.nix {
-		inherit inputs config pkgs;
-	};
 	cava = import ./modules/cava.nix {
 		inherit inputs config pkgs;
 	};
