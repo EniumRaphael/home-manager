@@ -1,10 +1,22 @@
 { inputs, config, pkgs, nixvim, ... }:
 
 let
+	c-cpp = import ./modules/dev/c-cpp.nix {
+		inherit inputs config pkgs;
+	};
+	rust = import ./modules/dev/rust.nix {
+		inherit inputs config pkgs;
+	};
+	dev = import ./modules/dev/global.nix {
+		inherit inputs config pkgs;
+	};
 	cava = import ./modules/cava.nix {
 		inherit inputs config pkgs;
 	};
 	waybar = import ./modules/waybar.nix {
+		inherit inputs config pkgs;
+	};
+	hyprlock = import ./modules/hyprpaper.nix {
 		inherit inputs config pkgs;
 	};
 	hyprpaper = import ./modules/hyprpaper.nix {
@@ -24,43 +36,50 @@ let
 	};
 in
 {
-	home.username = "raphael";
-	home.homeDirectory = "/home/raphael";
-	home.stateVersion = "24.05";
-	home.packages = with pkgs; [
-		bat
-		grim
-		gvfs
-		hyprcursor
-		nerd-fonts.fira-code
-		nerd-fonts.jetbrains-mono
-		nixvim
-		obsidian
-		pavucontrol
-		swaybg
-		slurp
-		swaylock
-		swaylock-fancy
-		vesktop
-		vlc
-		xfce.thunar
-		xfce.thunar-archive-plugin
-		xfce.thunar-volman
-		xfce.tumbler
-		xfce.xfconf
-	];
+	home = {
+		username = "raphael";
+		homeDirectory = "/home/raphael";
+		stateVersion = "24.05";
+		packages = with pkgs; [
+			cider
+			ghostty
+			bat
+			grim
+			lunar-client
+			gvfs
+			hyprcursor
+			nerd-fonts.fira-code
+			nerd-fonts.jetbrains-mono
+			nixvim
+			obsidian
+			openvpn
+			pavucontrol
+			slurp
+			vesktop
+			vlc
+			xfce.thunar
+			xfce.thunar-archive-plugin
+			xfce.thunar-volman
+			xfce.tumbler
+			xfce.xfconf
+		];
+	};
 
 	nixpkgs.config.allowUnfree = true;
-
+	
 	imports = [
+		c-cpp
 		cava
-		rofi
-		hyprpaper
+		dev
 		hyprland
+		hyprpaper
 		kitty
+		rofi
+		rust
 		waybar
 		zsh
 	];
+
 
 	xdg.userDirs = {
 		enable = true;
