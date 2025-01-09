@@ -1,14 +1,8 @@
-{ inputs, config, pkgs, nixvim, ... }:
+{ inputs, config, pkgs, lib, nixvim, ... }:
 
 let
-	c-cpp = import ./modules/dev/c-cpp.nix {
-		inherit inputs config pkgs;
-	};
-	rust = import ./modules/dev/rust.nix {
-		inherit inputs config pkgs;
-	};
 	dev = import ./modules/dev/global.nix {
-		inherit inputs config pkgs;
+		inherit inputs config pkgs lib;
 	};
 	cava = import ./modules/cava.nix {
 		inherit inputs config pkgs;
@@ -68,18 +62,23 @@ in
 	nixpkgs.config.allowUnfree = true;
 	
 	imports = [
-		c-cpp
 		cava
 		dev
 		hyprland
 		hyprpaper
 		kitty
 		rofi
-		rust
 		waybar
 		zsh
 	];
 
+	dev = {
+		enable = true;
+		language = {
+			c-cpp = true;
+			rust = true;
+		};
+	};
 
 	xdg.userDirs = {
 		enable = true;
@@ -90,6 +89,7 @@ in
 		firefox.enable = true;
 		lazygit.enable = true;
 	};
+
 	services = {
 	};
 

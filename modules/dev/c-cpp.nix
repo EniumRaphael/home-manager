@@ -1,15 +1,18 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
+let
+	cfg = config.dev.language.c-cpp;
+in
 {
-	home = {
-		packages = with pkgs; [
+	config = lib.mkIf cfg {
+		home.packages = with pkgs; [
 			clang
 			gcc.libc
 			glibc.dev
 			gnumake
 			stdenv.cc.libc
 		];
-		sessionVariables = {
+		home.sessionVariables = {
 			CC = "clang";
 			CPLUS_INCLUDE_PATH = "${pkgs.stdenv.cc.libc}/include/c++/v1:${pkgs.llvmPackages.libcxx}/include/c++/v1";
 			C_INCLUDE_PATH = "${pkgs.glibc.dev}/include";

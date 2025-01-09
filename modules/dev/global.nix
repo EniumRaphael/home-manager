@@ -1,17 +1,55 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
-{
-	home = {
-		packages = with pkgs; [
-			direnv
-			fastmod
-			jq
-			linux-manual
-			lldb
-			man-pages
-			man-pages-posix
-			valgrind
-		];
+let
+	c-cpp = import ./c-cpp.nix {
+		inherit inputs config pkgs lib;
 	};
-	programs.man.enable = true;
+	rust = import ./rust.nix {
+		inherit inputs config pkgs lib;
+	};
+	cfg = config.dev;
+in
+{
+	imports = [
+		c-cpp
+		rust
+	];
+
+	options.dev = {
+		enable = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+			description = "Enable the environment to home for global features.";
+		};
+
+		language = {
+			c-cpp = lib.mkOption {
+				type = lib.types.bool;
+				default = false;
+				description = "Enable C/C++ development tools.";
+			};
+
+			rust = lib.mkOption {
+				type = lib.types.bool;
+				default = false;
+				description = "Enable Rust development tools.";
+			};
+		};
+	};
+
+	config = lib.mkIf cfg.enable {
+		home = {
+			packages = with pkgs; [
+				direnv
+				fastmod
+				jq
+				linux-manual
+				lldb
+				man-pages
+				man-pages-posix
+				valgrind
+			];
+		};
+		programs.man.enable = true;
+	};
 }
