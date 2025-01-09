@@ -50,6 +50,9 @@ in
 				valgrind
 			];
 		};
-		programs.man.enable = true;
+		programs = {
+			lazygit.enable = true;
+			man.enable = true;
+		};
 	};
 }
