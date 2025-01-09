@@ -5,6 +5,7 @@ let
 in
 {
 	config = lib.mkIf cfg {
+		catppuccin.rofi.enable = true;
 		programs.rofi = {
 			enable = true;
 			extraConfig = {

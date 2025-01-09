@@ -84,20 +84,6 @@ in
 		accent = "mauve";
 		kitty.enable = true;
 		bat.enable = true;
-
-		# Package (WM)
-		rofi.enable = true;
-
-		waybar = {
-			enable = true;
-			mode = "createLink";
-		};
-
-			# Thunar
-			gtk = {
-				enable = true;
-				icon.enable = true;
-			};
 	};
 
 

@@ -13,5 +13,11 @@ in
 			xfce.tumbler
 			xfce.xfconf
 		];
+		catppuccin = {
+			gtk = {
+				enable = true;
+				icon.enable = true;
+			};
+		};
 	};
 }

@@ -5,6 +5,12 @@ let
 in
 {
 	config = lib.mkIf cfg {
+		catppuccin = {
+			waybar = {
+				enable = true;
+				mode = "createLink";
+			};
+		};
 		programs.waybar = {
 			enable = true;
 			settings.mainBar = {
