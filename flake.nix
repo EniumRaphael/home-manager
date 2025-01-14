@@ -3,9 +3,10 @@
 
 	inputs = {
 		catppuccin.url = "github:catppuccin/nix";
+		zen-browser.url = "github:MarceColl/zen-browser-flake";
 		hyprland.url = "github:hyprwm/Hyprland";
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-		nixvim.url = "github:EniumRaphael/nixvim";
+		# nixvim.url = "github:EniumRaphael/nixvim";
 		home-manager = {
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -17,7 +18,8 @@
 			home-manager,
 			hyprland,
 			nixpkgs,
-			nixvim,
+		#	nixvim,
+			zen-browser,
 			...
 		}:
 		let
@@ -36,7 +38,8 @@
 				extraSpecialArgs = {
 					inherit system;
 					inherit inputs;
-					nixvim = nixvim.packages.${system}.default;
+		#			nixvim = nixvim.packages.${system}.default;
+					zen-browser = zen-browser.packages."${system}".default;
 				};
 			};
 		};

@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, nixvim, ... }:
+{ inputs, config, pkgs, lib, nixvim, zen-browser, ... }:
 
 let
 	dev = import ./modules/dev/global.nix {
@@ -6,7 +6,7 @@ let
 	};
 
 	window-manager = import ./modules/window-manager/global.nix {
-		inherit inputs config pkgs lib;
+		inherit inputs config pkgs lib zen-browser;
 	};
 
 	# Package
@@ -39,7 +39,7 @@ in
 
 			# Package
 			bat
-			nixvim
+			neovim
 			openvpn
 
 			# Fonts

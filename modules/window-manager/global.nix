@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, zen-browser, ... }:
 
 let
 	hyprland = import ./hyprland.nix {
@@ -82,9 +82,8 @@ in
 				grim
 				pavucontrol
 				slurp
+				zen-browser
 			];
-
-		programs.firefox.enable = true;
 
 		catppuccin.accent = "mauve";
 
