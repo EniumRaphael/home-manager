@@ -39,7 +39,7 @@ in
 
 			# Package
 			bat
-			neovim
+			nixvim
 			openvpn
 
 			# Fonts
