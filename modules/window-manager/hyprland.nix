@@ -38,7 +38,6 @@ in
 				];
 				bind = [
 					"$mod, RETURN, exec, kitty"
-					"$mod, w, exec, zen"
 					"$mod, e, exec, thunar"
 					"$mod, b, exec, pkill Hyprland"
 					"$mod, SPACE, exec, rofi -show drun"

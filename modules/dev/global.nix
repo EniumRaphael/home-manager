@@ -40,6 +40,7 @@ in
 	config = lib.mkIf cfg.enable {
 		home = {
 			packages = with pkgs; [
+				bat
 				direnv
 				fastmod
 				jq
@@ -47,9 +48,11 @@ in
 				lldb
 				man-pages
 				man-pages-posix
+				nixvim
 				valgrind
 			];
 		};
+		catppuccin.bat.enable = true;
 		programs = {
 			lazygit.enable = true;
 			man.enable = true;

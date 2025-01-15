@@ -4,20 +4,12 @@ let
 	dev = import ./modules/dev/global.nix {
 		inherit inputs config pkgs lib;
 	};
-
-	window-manager = import ./modules/window-manager/global.nix {
+	package = import ./modules/packages/global.nix {
 		inherit inputs config pkgs lib zen-browser;
 	};
-
-	# Package
-	cava = import ./modules/packages/cava.nix {
-		inherit inputs config pkgs;
+	window-manager = import ./modules/window-manager/global.nix {
+		inherit inputs config pkgs lib;
 	};
-	kitty = import ./modules/packages/kitty.nix {
-		inherit inputs config pkgs;
-	};
-
-	# Shell
 	zsh = import ./modules/shell/zsh.nix {
 		inherit inputs config pkgs;
 	};
@@ -27,37 +19,23 @@ in
 		username = "raphael";
 		homeDirectory = "/home/raphael";
 		stateVersion = "24.05";
-		packages = with pkgs; [
-
-			# Application
-			cider
-			element-web
-			lunar-client
-			obsidian
-			vesktop
-			vlc
-
-			# Package
-			bat
-			nixvim
-			openvpn
-
-			# Fonts
-			nerd-fonts.fira-code
-			nerd-fonts.jetbrains-mono
-		];
+		sessionVariables.EDITOR = "neovim";
 	};
 
 	nixpkgs.config.allowUnfree = true;
 	
 	imports = [
 		dev
+		package
 		window-manager
 		zsh
-
-		cava
-		kitty
 	];
+
+	application = {
+		enable = true;
+		kitty = true;
+		cava = true;
+	};
 
 	dev = {
 		enable = true;
@@ -76,23 +54,7 @@ in
 		thunar = true;
 	};
 
-	services = {
-	};
-
-	catppuccin = {
-		# Pacakge
-		accent = "mauve";
-		kitty.enable = true;
-		bat.enable = true;
-	};
-
-
-	home.file = {
-	};
-
-	home.sessionVariables = {
-		EDITOR = "neovim";
-	};
+	catppuccin.accent = "mauve";
 
 	fonts.fontconfig.enable = true;
 	programs.home-manager.enable = true;
