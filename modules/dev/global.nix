@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, nixvim, ... }:
 
 let
 	c-cpp = import ./c-cpp.nix {

@@ -1,8 +1,8 @@
-{ inputs, config, pkgs, lib, ... }:
+{ system, inputs, config, pkgs, lib, zen-browser, ... }:
 
 let
 	arch = import ./arch.nix {
-		inherit inputs config pkgs lib;
+		inherit system inputs config pkgs lib zen-browser;
 	};
 	cava = import ./cava.nix {
 		inherit inputs config pkgs lib;

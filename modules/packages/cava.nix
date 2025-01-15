@@ -1,10 +1,10 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 let
 	cfg = config.application.kitty;
 in
 {
-	config = lib.mkIf cfg.enable {
+	config = lib.mkIf cfg {
 		programs.cava = {
 			enable = true;
 			settings = {

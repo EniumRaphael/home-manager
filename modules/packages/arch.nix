@@ -1,7 +1,7 @@
-{ inputs, config, pkgs, lib, nixvim, zen-browser, ... }:
+{ system, inputs, config, pkgs, lib, zen-browser, ... }:
 
 let
-  cfg = config.system.architecture == "x86_64";
+  cfg = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
 in
 {
 	config = lib.mkIf cfg {
