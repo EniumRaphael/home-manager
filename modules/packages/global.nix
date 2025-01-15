@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 let
 	arch = import ./arch.nix {
@@ -47,5 +47,5 @@ in
 			vesktop
 			vlc
 		];
-	}
+	};
 }
