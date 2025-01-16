@@ -38,6 +38,7 @@ in
 				];
 				bind = [
 					"$mod, RETURN, exec, kitty"
+					"$mod, w, exec, sh -c 'zen || firefox'"
 					"$mod, e, exec, thunar"
 					"$mod, b, exec, pkill Hyprland"
 					"$mod, SPACE, exec, rofi -show drun"

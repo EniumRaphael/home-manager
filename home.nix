@@ -19,10 +19,16 @@ in
 		username = "raphael";
 		homeDirectory = "/home/raphael";
 		stateVersion = "24.05";
-		sessionVariables.EDITOR = "neovim";
+	sessionVariables.EDITOR = "neovim";
 	};
 
 	nixpkgs.config.allowUnfree = true;
+
+#	home.packages = with pkgs; [
+#		cider
+#		lunar-client
+#		zen-browser
+#	];
 	
 	imports = [
 		dev

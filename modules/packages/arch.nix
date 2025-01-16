@@ -1,30 +1,20 @@
 { system, inputs, config, pkgs, lib, zen-browser, ... }:
 
 let
-  cfg = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
+	cfg = pkgs.stdenv.hostPlatform.is64bit;
 in
 {
-	config = lib.mkIf cfg {
-		home.packages = with pkgs; [
-			cider
-			lunar-client
-			zen-browser
-		];
-		wayland.windowManager.hyprland = {
-			settings = {
-				bind = [
-					"$mod, w, exec, zen"
-				];
-			};
-		};
-	} // lib.mkIf (!cfg) {
-		programs.firefox.enable = true;
-		wayland.windowManager.hyprland = {
-			settings = {
-				bind = [
-					"$mod, w, exec, firefox"
-				];
-			};
-		};
-	};
+	config = lib.mkMerge [
+		(lib.mkIf (cfg && config.application.enable) {
+			home.packages = with pkgs; [
+				cider
+				lunar-client
+				zen-browser
+			];
+		})
+
+		(lib.mkIf (!cfg && config.application.enable) {
+			programs.firefox.enable = true;
+		})
+	];
 }
