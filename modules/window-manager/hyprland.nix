@@ -35,6 +35,7 @@ in
 				exec-once = [
 					"hyprctl setcursor \"Catppuccin-Mocha-Dark\" 24"
 					"waybar"
+					"sleep 3 && vesktop && sleep 3 && element-desktop"
 				];
 				bind = [
 					"$mod, RETURN, exec, kitty"
@@ -117,6 +118,7 @@ in
 					"opacity 0.9 0.8, class:^(VSCode|code-url-handler)$"
 					"opacity 0.9 0.8, class:^(jetbrains-.+)$"
 					"opacity 0.94 0.86, class:^([Cc]ider)$"
+					"opacity 0.94 0.86, class:^([Ss]lack)$"
 					"opacity 0.94 0.86, class:^([Rr]evolt-desktop)$"
 					"opacity 0.94 0.86, class:^([Dd]iscord|[Vv]esktop)$"
 					"opacity 0.9 0.8, class:^([Ee]lement)$"
@@ -134,7 +136,8 @@ in
 					"pin,title:^(Picture-in-Picture)$"
 					"keepaspectratio, title:^(Picture-in-Picture)$"
 	
-					"workspace 8, class:^([Rr]evolt-desktop)$"
+					"workspace 7, class:^([Ss]lack)$"
+					"workspace 8, class:^([Ee]lement)$"
 					"workspace 9, class:^([Dd]iscord|[Ww]ebCord|[Vv]esktop)$"
 					"workspace 10, class:^([Cc]ider)$"
 				];

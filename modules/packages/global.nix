@@ -40,6 +40,7 @@ in
 	config = lib.mkIf cfg.enable {
 		home.packages = with pkgs; [
 			element-desktop
+			slack
 			nerd-fonts.fira-code
 			nerd-fonts.jetbrains-mono
 			obsidian
