@@ -56,8 +56,9 @@ in
 		hyprland = true;
 		hyprpaper = true;
 		rofi = true;
-		waybar = true;
+		steam = true;
 		thunar = true;
+		waybar = true;
 	};
 
 	catppuccin.accent = "mauve";

@@ -10,6 +10,9 @@ let
 	kitty = import ./kitty.nix {
 		inherit inputs config pkgs lib;
 	};
+	steam = import ./steam.nix {
+		inherit inputs config pkgs lib;
+	};
 	cfg = config.application;
 in
 {
@@ -17,6 +20,7 @@ in
 		arch
 		cava
 		kitty
+		steam
 	];
 
 	options.application = {
@@ -25,15 +29,20 @@ in
 			default = false;
 			description = "Enable the default applications";
 		};
+		cava = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+			description = "Enable the cava audio visualiser";
+		};
 		kitty = lib.mkOption {
 			type = lib.types.bool;
 			default = false;
 			description = "Enable the kitty terminal emulator";
 		};
-		cava = lib.mkOption {
+		steam = lib.mkOption {
 			type = lib.types.bool;
 			default = false;
-			description = "Enable the cava audio visualiser";
+			description = "Enable the steam and game on linux";
 		};
 	};
 

@@ -33,9 +33,10 @@ in
 					allow_tearing = false;
 				};
 				exec-once = [
+					"element-desktop"
 					"hyprctl setcursor \"Catppuccin-Mocha-Dark\" 24"
+					"vesktop"
 					"waybar"
-					"sleep 3 && vesktop && sleep 3 && element-desktop"
 				];
 				bind = [
 					"$mod, RETURN, exec, kitty"
