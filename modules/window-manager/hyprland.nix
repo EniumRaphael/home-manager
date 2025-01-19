@@ -119,7 +119,7 @@ in
 					"opacity 0.94 0.86, class:^([Cc]ider)$"
 					"opacity 0.94 0.86, class:^([Rr]evolt-desktop)$"
 					"opacity 0.94 0.86, class:^([Dd]iscord|[Vv]esktop)$"
-					"opacity 0.9 0.8, class:^(org.telegram.desktop|io.github.tdesktop_x64.TDesktop)$"
+					"opacity 0.9 0.8, class:^([Ee]lement)$"
 					"opacity 0.9 0.8, class:^(im.riot.Riot)$"
 					"opacity 0.94 0.86, class:^(gnome-disks|evince|wihotspot(-gui)?|org.gnome.baobab)$"
 					"opacity 0.9 0.8, class:^(file-roller|org.gnome.FileRoller)$"

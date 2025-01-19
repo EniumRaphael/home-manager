@@ -39,11 +39,12 @@ in
 
 	config = lib.mkIf cfg.enable {
 		home.packages = with pkgs; [
-			element-web
+			element-desktop
 			nerd-fonts.fira-code
 			nerd-fonts.jetbrains-mono
 			obsidian
 			openvpn
+			ungoogled-chromium
 			vesktop
 			vlc
 		];
