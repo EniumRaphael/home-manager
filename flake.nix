@@ -23,7 +23,7 @@
 			...
 		}:
 		let
-			system = "aarch64-linux";
+			system = "x86_64-linux";
 			pkgs = nixpkgs.legacyPackages.${system};
 		in {
 			homeConfigurations."raphael" = home-manager.lib.homeManagerConfiguration {
