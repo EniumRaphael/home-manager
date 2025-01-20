@@ -23,7 +23,7 @@
 			...
 		}:
 		let
-			system = "x86_64-linux";
+			system = "aarch64-linux";
 			pkgs = nixpkgs.legacyPackages.${system};
 		in {
 			homeConfigurations."raphael" = home-manager.lib.homeManagerConfiguration {
@@ -39,7 +39,7 @@
 					inherit system;
 					inherit inputs;
 					nixvim = nixvim.packages.${system}.default;
-					zen-browser = zen-browser.packages."${system}".default;
+					zen-browser = zen-browser.packages.x86_64-linux.default;
 				};
 			};
 		};
