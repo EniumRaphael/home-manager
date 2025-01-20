@@ -32,6 +32,7 @@ in
 				];
 				modules-right = [
 					"pulseaudio"
+					"battery"
 					"custom/power"
 				];
 				"custom/spacer" = {
@@ -103,6 +104,42 @@ in
 					"actions" = {
 						"on-click-right" = "mode";
 					};
+				};
+				"battery" = {
+					"format" = "{capacity}% {icon}";
+					"format-icons" = {
+						"charging" = [
+							"󰢜"
+							"󰂆"
+							"󰂇"
+							"󰂈"
+							"󰢝"
+							"󰂉"
+							"󰢞"
+							"󰂊"
+							"󰂋"
+							"󰂅"
+						];
+						"default" = [
+							"󰁺"
+							"󰁻"
+							"󰁼"
+							"󰁽"
+							"󰁾"
+							"󰁿"
+							"󰂀"
+							"󰂁"
+							"󰂂"
+							"󰁹"
+						];
+					};
+					"format-full" = "Charged ";
+					"interval" = 5;
+					"states" = {
+						"warning" = 20;
+						"critical" = 10;
+					};
+					"tooltip" = false;
 				};
 			};
 			style = ''
