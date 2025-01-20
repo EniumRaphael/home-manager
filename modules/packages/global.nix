@@ -10,9 +10,6 @@ let
 	kitty = import ./kitty.nix {
 		inherit inputs config pkgs lib;
 	};
-	steam = import ./steam.nix {
-		inherit inputs config pkgs lib;
-	};
 	cfg = config.application;
 in
 {
@@ -20,7 +17,6 @@ in
 		arch
 		cava
 		kitty
-		steam
 	];
 
 	options.application = {
@@ -38,11 +34,6 @@ in
 			type = lib.types.bool;
 			default = false;
 			description = "Enable the kitty terminal emulator";
-		};
-		steam = lib.mkOption {
-			type = lib.types.bool;
-			default = false;
-			description = "Enable the steam and game on linux";
 		};
 	};
 

@@ -23,12 +23,6 @@ in
 	};
 
 	nixpkgs.config.allowUnfree = true;
-
-#	home.packages = with pkgs; [
-#		cider
-#		lunar-client
-#		zen-browser
-#	];
 	
 	imports = [
 		dev
@@ -56,7 +50,6 @@ in
 		hyprland = true;
 		hyprpaper = true;
 		rofi = true;
-		steam = true;
 		thunar = true;
 		waybar = true;
 	};
