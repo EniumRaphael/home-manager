@@ -39,7 +39,7 @@ in
 					"waybar"
 				];
 				bind = [
-					"$mod, RETURN, exec, kitty"
+					"$mod, RETURN, exec, sh -c 'kitty || /usr/bin/kitty'"
 					"$mod, w, exec, sh -c 'zen || firefox'"
 					"$mod, e, exec, thunar"
 					"$mod, b, exec, pkill Hyprland"
@@ -55,6 +55,8 @@ in
 					"$mod, l, movefocus, r"
 					"$mod, j, movefocus, u"
 					"$mod, k, movefocus, d"
+					"$mod, Right, workspace, e+1"
+					"$mod, Left, workspace, e-1"
 					"$mod, mouse_down, workspace, e+1"
 					"$mod, mouse_up, workspace, e-1"
 					"$mod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
