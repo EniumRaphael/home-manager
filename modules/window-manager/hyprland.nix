@@ -33,7 +33,6 @@ in
 					allow_tearing = false;
 				};
 				exec-once = [
-					"element-desktop"
 					"hyprctl setcursor \"Catppuccin-Mocha-Dark\" 24"
 					"vesktop"
 					"waybar"

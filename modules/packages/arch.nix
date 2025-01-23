@@ -12,6 +12,14 @@ in
 				slack
 				zen-browser
 			];
+			programs.obs-studio = {
+				enable = true;
+				plugins = with pkgs.obs-studio-plugins; [
+					wlrobs
+					obs-backgroundremoval
+					obs-pipewire-audio-capture
+				];
+			};
 		})
 
 		(lib.mkIf (!cfg && config.application.enable) {
