@@ -2,7 +2,11 @@
 
 let
 	cfg = config.window-manager.hyprpaper;
-in
+	image = pkgs.fetchurl {
+		url = "https://github.com/zhichaoh/catppuccin-wallpapers/blob/main/misc/cat_bunnies.png?raw=true";
+		sha256 = "167ndqbq4mmm486rszvablyykpckaz68djhagskwc5nf187263ia";
+	};
+	in
 {
 	config = lib.mkIf cfg {
 		services.hyprpaper = {
@@ -12,13 +16,20 @@ in
 				splash = false;
 				splash_offset = 2.0;
 			
-				preload =
-					[ "~/Pictures/CLM/banner.png" ];
+				preload = [
+					"~/Pictures/wallpaper.png"
+				];
 			
 				wallpaper = [
-					",~/Pictures/CLM/banner.png"
+					",~/Pictures/wallpaper.png"
 				];
 			};
+		};
+		home = {
+#			packages = with pkgs; [
+#				fetchurl
+#			];
+			file."Pictures/wallpaper.png".source = image;
 		};
 	};
 }
