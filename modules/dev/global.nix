@@ -46,6 +46,7 @@ in
 				jq
 				linux-manual
 				lldb
+				llvm
 				man-pages
 				man-pages-posix
 				nixvim

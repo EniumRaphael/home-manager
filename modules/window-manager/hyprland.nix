@@ -33,9 +33,9 @@ in
 					allow_tearing = false;
 				};
 				exec-once = [
+					"waybar"
 					"hyprctl setcursor \"Catppuccin-Mocha-Dark\" 24"
 					"vesktop"
-					"waybar"
 				];
 				bind = [
 					"$mod, RETURN, exec, sh -c 'kitty || /usr/bin/kitty'"

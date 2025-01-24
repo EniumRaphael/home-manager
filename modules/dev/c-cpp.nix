@@ -11,12 +11,18 @@ in
 				gcc.libc
 				glibc.dev
 				gnumake
+				libcxx
 				stdenv.cc.libc
 			];
 			sessionVariables = {
 				CC = "clang";
-				CPLUS_INCLUDE_PATH = "${pkgs.stdenv.cc.libc}/include/c++/v1:${pkgs.llvmPackages.libcxx}/include/c++/v1";
 				C_INCLUDE_PATH = "${pkgs.glibc.dev}/include";
+
+				CXX = "c++";
+				CXXFLAGS="--stdlib=libc++ -I${pkgs.libcxx.dev}/include";
+				CPLUS_INCLUDE_PATH = "${pkgs.stdenv.cc.libc}/include/c++/v1:${pkgs.llvmPackages.libcxx}/include/c++/v1";
+
+				LDFLAGS="-L${pkgs.libcxx}/lib";
 				LIBRARY_PATH = "${pkgs.llvmPackages.libcxx}/lib";
 			};
 		};
