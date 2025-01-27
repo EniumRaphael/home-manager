@@ -44,6 +44,7 @@ in
 				direnv
 				fastmod
 				jq
+				lazydocker
 				linux-manual
 				lldb
 				llvm
