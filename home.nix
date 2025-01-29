@@ -58,6 +58,22 @@ in
 
 	catppuccin.accent = "mauve";
 
-	fonts.fontconfig.enable = true;
+	fonts.fontconfig = {
+		enable = true;
+		defaultFonts = {
+			serif = [
+				"FiraCode Nerd Font"
+			];
+			sansSerif = [
+				"FiraCode Nerd Font"
+			];
+			monospace = [
+				"FiraCode Nerd Font"
+			];
+			emoji = [
+				"FiraCode Nerd Font"
+			];
+		};
+	};
 	programs.home-manager.enable = true;
 }
