@@ -5,6 +5,9 @@ let
 in
 {
 	config = lib.mkIf cfg {
+		home.packages = with pkgs; [
+			nerd-fonts.fira-code
+		];
 		programs.kitty = {
 			enable = true;
 			settings = {

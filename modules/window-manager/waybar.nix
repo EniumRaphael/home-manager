@@ -5,6 +5,9 @@ let
 in
 {
 	config = lib.mkIf cfg {
+		home.packages = with pkgs; [
+			nerd-fonts.fira-code
+		];
 		catppuccin = {
 			waybar = {
 				enable = true;
@@ -147,7 +150,7 @@ in
 					border: none;
 					border-radius: 0;
 					min-height: 0;
-					font-family: JetBrainsMono Nerd Font;
+					font-family: FiraCode Nerd Font;
 					font-size: 13px;
 				}
 	
@@ -266,7 +269,7 @@ in
 				}
 	
 				#clock {
-					font-family: JetBrainsMono Nerd Font;
+					font-family: FiraCode Nerd Font;
 					background-color: #cba6f7;
 				}
 	
