@@ -79,10 +79,10 @@ in
 		};
 	} // lib.mkIf cfg.enable {
 		home.packages = with pkgs; [
-				grim
-				pavucontrol
-				slurp
-			];
+			grim
+			pavucontrol
+			slurp
+		];
 
 		catppuccin.accent = "mauve";
 

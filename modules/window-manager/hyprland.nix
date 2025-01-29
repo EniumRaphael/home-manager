@@ -152,6 +152,7 @@ in
 					"opacity 0.9 0.7, class:^([Ff]erdium)$"
 					"opacity 0.95 0.75, title:^(Picture-in-Picture)$"
 	
+					"pin,title:^([Rr]ofi)$"
 					"pin,title:^(Picture-in-Picture)$"
 					"keepaspectratio, title:^(Picture-in-Picture)$"
 	

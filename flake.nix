@@ -3,7 +3,7 @@
 
 	inputs = {
 		catppuccin.url = "github:catppuccin/nix";
-		zen-browser.url = "github:MarceColl/zen-browser-flake";
+		zen-browser.url = "github:EniumRaphael/zen-flake";
 		hyprland.url = "github:hyprwm/Hyprland";
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 		nixvim.url = "github:EniumRaphael/nixvim";
@@ -39,7 +39,7 @@
 					inherit system;
 					inherit inputs;
 					nixvim = nixvim.packages.${system}.default;
-					zen-browser = zen-browser.packages.x86_64-linux.default;
+					zen-browser = zen-browser.packages.${system}.zen-browser;
 				};
 			};
 		};
