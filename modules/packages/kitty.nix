@@ -13,7 +13,7 @@ in
 			font = {
 				name = "FiraCode Nerd Font";
 				package = pkgs.nerd-fonts.fira-code;
-				size = 13;
+				size = 12;
 			};
 			settings = {
 				disable_ligatures = "never";
