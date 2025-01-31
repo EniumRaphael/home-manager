@@ -8,17 +8,16 @@
 		clang-tools
 		docker
 		exercism
-		glibc
 		gnumake
 		lazygit
 		lldb
 		llvm
+		nixvim
 		norminette
 		python3
 		rustc
 		tokei
 		tree-sitter
-		valgrind
 	];
 }
 

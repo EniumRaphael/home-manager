@@ -2,10 +2,9 @@
 
 {
 	home.username = "raphael";
-	home.homeDirectory = "/home/raphael";
+	home.homeDirectory = "/Users/raphael";
 	home.stateVersion = "23.11";
 
-	targets.genericLinux.enable = true;
 	programs.home-manager.enable = true;
 
 	fonts = {
