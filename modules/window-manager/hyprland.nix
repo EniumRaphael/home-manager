@@ -53,6 +53,7 @@ in
 					"waybar"
 					"hyprctl setcursor \"Catppuccin-Mocha-Dark\" 24"
 					"vesktop"
+					"pw-metadata -n settings 0 clock.force-quantum 1024"
 				];
 				bind = [
 					"$mod, RETURN, exec, sh -c 'kitty || /usr/bin/kitty'"

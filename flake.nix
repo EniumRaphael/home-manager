@@ -3,14 +3,14 @@
 
 	inputs = {
 		catppuccin.url = "github:catppuccin/nix";
-		zen-browser.url = "github:EniumRaphael/zen-flake";
-		hyprland.url = "github:hyprwm/Hyprland";
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-		nixvim.url = "github:EniumRaphael/nixvim";
 		home-manager = {
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		hyprland.url = "github:hyprwm/Hyprland";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+		nixvim.url = "github:EniumRaphael/nixvim";
+		zen-browser.url = "github:EniumRaphael/zen-flake";
 	};
 
 	outputs = inputs @ {
