@@ -119,8 +119,7 @@ in
 	
 					"opacity 0.9 0.6, class:^([Rr]ofi)$"
 					"opacity 0.9 0.7, class:^(Brave-browser(-beta|-dev)?)$"
-					"opacity 0.9 0.7, class:^([Ff]irefox|org.mozilla.firefox|[Ff]irefox-esr)$"
-					"opacity 0.9 0.7, class:^(zen-alpha)$"
+					"opacity 0.9 0.7, class:^([Zz]en|[Ff]irefox|org.mozilla.firefox|[Ff]irefox-esr)$"
 					"opacity 0.9 0.6, class:^([Tt]horium-browser)$"
 					"opacity 0.9 0.8, class:^([Mm]icrosoft-edge(-stable|-beta|-dev|-unstable)?)$"
 					"opacity 0.9 0.8, class:^(google-chrome(-beta|-dev|-unstable)?)$"
