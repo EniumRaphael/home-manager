@@ -19,6 +19,7 @@ in
 				disable_ligatures = "never";
 				confirm_os_window_close = 0;
 				enable_audio_bell = false;
+				hide_window_decorations = true;
 			};
 		};	
 		catppuccin.kitty.enable = true;
