@@ -45,9 +45,7 @@ in
 			nerd-fonts.jetbrains-mono
 			obsidian
 			openvpn
-			ungoogled-chromium
 			vesktop
-			vlc
 		];
 	};
 }

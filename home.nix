@@ -17,10 +17,10 @@ in
 {
 	home = {
 		username = "raphael";
-		homeDirectory = "/home/raphael";
+		homeDirectory = "/Users/raphael";
 		stateVersion = "24.05";
 		sessionVariables = {
-			EDITOR = "neovim";
+			EDITOR = "nvim";
 		};
 	};
 
@@ -47,14 +47,14 @@ in
 		};
 	};
 
-	window-manager = {
-		enable = true;
-		hyprland = true;
-		hyprpaper = true;
-		rofi = true;
-		thunar = true;
-		waybar = true;
-	};
+	# window-manager = {
+	# 	enable = true;
+	# 	hyprland = true;
+	# 	hyprpaper = true;
+	# 	rofi = true;
+	# 	thunar = true;
+	# 	waybar = true;
+	# };
 
 	catppuccin.accent = "mauve";
 

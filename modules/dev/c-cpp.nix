@@ -8,15 +8,12 @@ in
 		home = {
 			packages = with pkgs; [
 				clang
-				gcc.libc
-				glibc.dev
 				gnumake
 				libcxx
 				stdenv.cc.libc
 			];
 			sessionVariables = {
 				CC = "clang";
-				C_INCLUDE_PATH = "${pkgs.glibc.dev}/include";
 
 				CXX = "c++";
 				CXXFLAGS="--stdlib=libc++ -I${pkgs.libcxx.dev}/include";
