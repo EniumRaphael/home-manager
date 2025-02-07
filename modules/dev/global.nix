@@ -50,6 +50,7 @@ in
 				man-pages
 				man-pages-posix
 				nixvim
+				ripgrep
 			];
 		};
 		catppuccin.bat.enable = true;
