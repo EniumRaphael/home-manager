@@ -46,7 +46,6 @@ in
 				jq
 				lazydocker
 				linux-manual
-				lldb
 				llvm
 				man-pages
 				man-pages-posix
