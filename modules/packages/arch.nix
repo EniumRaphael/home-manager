@@ -8,7 +8,7 @@ in
 		(lib.mkIf (!cfg && config.application.enable) {
 			home.packages = with pkgs; [
 				cider
-				lunar-client
+				prismlauncher
 				slack
 				zen-browser
 			];
