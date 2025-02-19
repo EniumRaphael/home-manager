@@ -46,12 +46,17 @@ in
 				gotop
 				jq
 				lazydocker
-				linux-manual
 				llvm
 				man-pages
 				man-pages-posix
 				nixvim
-			] ++ (if pkgs.stdenv.isLinux then [ valgrind ] else []);
+			] ++ (
+				if pkgs.stdenv.isLinux then [
+					valgrind
+				]
+				else
+					[]
+			);
 		};
 		catppuccin.bat.enable = true;
 		programs = {
