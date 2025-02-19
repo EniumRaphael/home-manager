@@ -21,26 +21,39 @@
 			nixvim,
 			zen-browser,
 			...
-		}:
-		let
-			system = "x86_64-linux";
-			pkgs = nixpkgs.legacyPackages.${system};
-		in {
-			homeConfigurations."raphael" = home-manager.lib.homeManagerConfiguration {
+	}:
+	{
+		homeConfigurations = {
+			"hm-fix" = let
+				system = "x86_64-linux";
+				pkgs = nixpkgs.legacyPackages.${system};
+			in home-manager.lib.homeManagerConfiguration {
+				inherit pkgs;
+				modules = [
+					catppuccin.homeManagerModules.catppuccin
+					./host/fix.nix
+				];
+				extraSpecialArgs = {
+					inherit system inputs;
+					nixvim = nixvim.packages.${system}.default;
+					zen-browser = zen-browser.packages.${system}.zen-browser;
+				};
+			};
+			"hm-asahi" = let
+				system = "aarch64-linux";
+				pkgs = nixpkgs.legacyPackages.${system};
+			in home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				modules = [
 					catppuccin.homeManagerModules.catppuccin
 					./home.nix
 				];
-
-				# Optionally use extraSpecialArgs
-				# to pass through arguments to home.nix
 				extraSpecialArgs = {
-					inherit system;
-					inherit inputs;
+					inherit system inputs;
 					nixvim = nixvim.packages.${system}.default;
 					zen-browser = zen-browser.packages.${system}.zen-browser;
 				};
 			};
 		};
+	};
 }
