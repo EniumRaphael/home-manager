@@ -43,6 +43,7 @@ in
 				bat
 				direnv
 				fastmod
+				gotop
 				jq
 				lazydocker
 				linux-manual

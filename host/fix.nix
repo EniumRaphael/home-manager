@@ -35,8 +35,22 @@ in
 
 	application = {
 		enable = true;
-		kitty = true;
+		cider = true;
+		prismlauncher = true;
+		zed = true;
+		zen = true;
+		obs = true;
+		slack = true;
+		element = true;
+		fonts = true;
+		obsidian = true;
+		openvpn = true;
+		ungoogled = true;
+		vesktop = true;
+		vlc = true;
+		firefox = true;
 		cava = true;
+		kitty = true;
 	};
 
 	dev = {
