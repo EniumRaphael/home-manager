@@ -51,8 +51,7 @@ in
 				man-pages
 				man-pages-posix
 				nixvim
-				valgrind
-			];
+			] ++ (if pkgs.stdenv.isLinux then [ valgrind ] else []);
 		};
 		catppuccin.bat.enable = true;
 		programs = {
