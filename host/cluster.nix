@@ -46,7 +46,7 @@ in
 		vlc = false;
 		firefox = false;
 		cava = false;
-		kitty = false;
+		kitty = true;
 	};
 
 	dev = {

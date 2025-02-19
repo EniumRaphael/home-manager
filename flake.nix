@@ -39,6 +39,21 @@
 					zen-browser = zen-browser.packages.${system}.zen-browser;
 				};
 			};
+			"hm-cluster" = let
+				system = "x86_64-linux";
+				pkgs = nixpkgs.legacyPackages.${system};
+			in home-manager.lib.homeManagerConfiguration {
+				inherit pkgs;
+				modules = [
+					catppuccin.homeManagerModules.catppuccin
+					./host/cluster.nix
+				];
+				extraSpecialArgs = {
+					inherit system inputs;
+					nixvim = nixvim.packages.${system}.default;
+					zen-browser = zen-browser.packages.${system}.zen-browser;
+				};
+			};
 			"hm-asahi" = let
 				system = "aarch64-linux";
 				pkgs = nixpkgs.legacyPackages.${system};
