@@ -51,6 +51,7 @@ in
 		enable = true;
 		hyprland = true;
 		hyprpaper = true;
+		mako = true;
 		rofi = true;
 		thunar = true;
 		waybar = true;
