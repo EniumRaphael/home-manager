@@ -61,7 +61,7 @@
 				inherit pkgs;
 				modules = [
 					catppuccin.homeManagerModules.catppuccin
-					./home.nix
+					./host/asahi.nix
 				];
 				extraSpecialArgs = {
 					inherit system inputs;
