@@ -104,42 +104,22 @@ in
 	};
 
 	config = lib.mkIf cfg.enable {
-		if (cfg.cider) then {
-			home.packages = with pkgs; [
-				cider
-			];
-		};
-		if (cfg.prismlauncher) then {
-			home.packages = with pkgs; [
-				prismlauncher
-			];
-		};
-		if (cfg.element) then {
-			home.packages = with pkgs; [
-				element-desktop
-			];
-		};
-		if (cfg.fonts) then {
-			home.packages = with pkgs.nerd-fonts; [
-				fira-code
-				jetbrains-mono
-			];
-		};
-		if (cfg.obsidian) then {
-			home.packages = with pkgs; [
-				obsidian
-			];
-		};
-		if (cfg.openvpn) then {
-			home.packages = with pkgs; [
-				openvpn
-			];
-		};
-		if (cfg.firefox) then {
-			programs.firefox.enable = true;
-		};
-		if (cfg.obs) then {
-			programs.obs-studio = {
+		home.packages = with pkgs; 
+			(if cfg.cider then [ cider ] else [])
+			++ (if cfg.prismlauncher then [ prismlauncher ] else [])
+			++ (if cfg.element then [ element-desktop ] else [])
+			++ (if cfg.fonts then with pkgs.nerd-fonts; [ fira-code jetbrains-mono ] else [])
+			++ (if cfg.obsidian then [ obsidian ] else [])
+			++ (if cfg.openvpn then [ openvpn ] else [])
+			++ (if cfg.slack then [ slack ] else [])
+			++ (if cfg.ungoogled then [ ungoogled-chromium ] else [])
+			++ (if cfg.vesktop then [ vesktop ] else [])
+			++ (if cfg.vlc then [ vlc ] else [])
+			++ (if cfg.zed then [ zed-editor ] else [])
+			++ (if cfg.zen then [ zen-browser ] else []);
+		programs = {
+			firefox.enable = cfg.firefox;
+			obs-studio = lib.mkIf cfg.obs {
 				enable = true;
 				plugins = with pkgs.obs-studio-plugins; [
 					wlrobs
@@ -147,36 +127,6 @@ in
 					obs-pipewire-audio-capture
 				];
 			};
-		};
-		if (cfg.slack) then {
-			home.packages = with pkgs; [
-				slack
-			];
-		};
-		if (cfg.ungoogled) then {
-			home.packages = with pkgs; [
-				ungoogled-chromium
-			];
-		};
-		if (cfg.vesktop) then {
-			home.packages = with pkgs; [
-				vesktop
-			];
-		};
-		if (cfg.vlc) then {
-			home.packages = with pkgs; [
-				vlc
-			];
-		};
-		if (cfg.zed) then {
-			home.packages = with pkgs; [
-				zed-editor
-			];
-		};
-		if (cfg.zen) then {
-			home.packages = with pkgs; [
-				zen-browser
-			];
 		};
 	};
 }
