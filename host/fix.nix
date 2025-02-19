@@ -1,16 +1,16 @@
 { system, inputs, config, pkgs, lib, nixvim, zen-browser, ... }:
 
 let
-	dev = import ./modules/dev/global.nix {
+	dev = import ../modules/dev/global.nix {
 		inherit inputs config pkgs lib nixvim;
 	};
-	package = import ./modules/packages/global.nix {
+	package = import ../modules/packages/global.nix {
 		inherit system inputs config pkgs lib zen-browser;
 	};
-	window-manager = import ./modules/window-manager/global.nix {
+	window-manager = import ../modules/window-manager/global.nix {
 		inherit inputs config pkgs lib;
 	};
-	zsh = import ./modules/shell/zsh.nix {
+	zsh = import ../modules/shell/zsh.nix {
 		inherit inputs config pkgs;
 	};
 in
