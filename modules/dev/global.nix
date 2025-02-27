@@ -47,6 +47,7 @@ in
 				jq
 				lazydocker
 				llvm
+				lldb
 				man-pages
 				man-pages-posix
 				nixvim
