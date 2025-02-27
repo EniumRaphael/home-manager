@@ -6,6 +6,7 @@ in
 {
 	config = lib.mkIf cfg {
 		home.packages = with pkgs; [
+			libnotify
 			nerd-fonts.fira-code
 		];
 		catppuccin.mako.enable = true;
