@@ -40,6 +40,7 @@ in
 		fonts = false;
 		imv = false;
 		kitty = true;
+		lunar = true;
 		obs = false;
 		obsidian = false;
 		openvpn = false;

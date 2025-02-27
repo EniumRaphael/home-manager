@@ -101,6 +101,11 @@ in
 			default = false;
 			description = "Enable the cava audio visualiser";
 		};
+		lunar = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+			description = "Enable the lunar client";
+		};
 		kitty = lib.mkOption {
 			type = lib.types.bool;
 			default = false;
@@ -121,6 +126,7 @@ in
 			++ (if cfg.vesktop then [ vesktop ] else [])
 			++ (if cfg.vlc then [ vlc ] else [])
 			++ (if cfg.evince then [ evince ] else [])
+			++ (if cfg.lunar then [ lunar-client ] else [])
 			++ (if cfg.imv then [ imv ] else [])
 			++ (if cfg.zed then [ zed-editor ] else []);
 		programs = {
