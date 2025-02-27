@@ -57,7 +57,7 @@ in
 				];
 				bind = [
 					"$mod, RETURN, exec, sh -c 'kitty || /usr/bin/kitty'"
-					"$mod, w, exec, sh -c 'zen || firefox'"
+					"$mod, w, exec, sh -c 'firefox'"
 					"$mod, e, exec, thunar"
 					"$mod, b, exec, pkill Hyprland"
 					"$mod, SPACE, exec, rofi -show drun"

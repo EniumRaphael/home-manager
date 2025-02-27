@@ -1,11 +1,11 @@
-{ system, inputs, config, pkgs, lib, nixvim, zen-browser, ... }:
+{ system, inputs, config, pkgs, lib, nixvim, ... }:
 
 let
 	dev = import ../modules/dev/global.nix {
 		inherit inputs config pkgs lib nixvim;
 	};
 	package = import ../modules/packages/global.nix {
-		inherit system inputs config pkgs lib zen-browser;
+		inherit system inputs config pkgs lib;
 	};
 	window-manager = import ../modules/window-manager/global.nix {
 		inherit inputs config pkgs lib;
@@ -38,7 +38,6 @@ in
 		cider = true;
 		prismlauncher = true;
 		zed = true;
-		zen = true;
 		obs = true;
 		slack = true;
 		element = true;

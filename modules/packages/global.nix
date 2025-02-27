@@ -1,4 +1,4 @@
-{ system, inputs, config, pkgs, lib, zen-browser, ... }:
+{ system, inputs, config, pkgs, lib, ... }:
 
 let
 	cava = import ./cava.nix {
@@ -35,11 +35,6 @@ in
 			type = lib.types.bool;
 			default = false;
 			description = "Enable the Zed Editor";
-		};
-		zen = lib.mkOption {
-			type = lib.types.bool;
-			default = false;
-			description = "Enable the Zen Browser";
 		};
 		obs = lib.mkOption {
 			type = lib.types.bool;

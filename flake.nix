@@ -10,7 +10,6 @@
 		hyprland.url = "github:hyprwm/Hyprland";
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 		nixvim.url = "github:EniumRaphael/nixvim";
-		zen-browser.url = "github:EniumRaphael/zen-flake";
 	};
 
 	outputs = inputs @ {
@@ -19,7 +18,6 @@
 			hyprland,
 			nixpkgs,
 			nixvim,
-			zen-browser,
 			...
 	}:
 	{
@@ -36,7 +34,6 @@
 				extraSpecialArgs = {
 					inherit system inputs;
 					nixvim = nixvim.packages.${system}.default;
-					zen-browser = zen-browser.packages.${system}.zen-browser;
 				};
 			};
 			"hm-cluster" = let
@@ -51,7 +48,6 @@
 				extraSpecialArgs = {
 					inherit system inputs;
 					nixvim = nixvim.packages.${system}.default;
-					zen-browser = zen-browser.packages.${system}.zen-browser;
 				};
 			};
 			"hm-asahi" = let
@@ -66,7 +62,6 @@
 				extraSpecialArgs = {
 					inherit system inputs;
 					nixvim = nixvim.packages.${system}.default;
-					zen-browser = zen-browser.packages.${system}.zen-browser;
 				};
 			};
 		};
