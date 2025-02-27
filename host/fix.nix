@@ -44,7 +44,6 @@ in
 		fonts = true;
 		imv = true;
 		kitty = true;
-		lunar = true;
 		obs = true;
 		obsidian = true;
 		openvpn = true;
