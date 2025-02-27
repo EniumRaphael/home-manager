@@ -20,7 +20,8 @@ in
 		homeDirectory = "/home/raphael";
 		stateVersion = "24.05";
 		sessionVariables = {
-			EDITOR = "neovim";
+			ZED_ALLOW_EMULATED_GPU=1;
+			EDITOR = "nvim";
 		};
 	};
 

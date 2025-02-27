@@ -81,6 +81,16 @@ in
 			default = false;
 			description = "Enable the VLC";
 		};
+		evince = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+			description = "Enable the evince";
+		};
+		imv = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+			description = "Enable the IMV";
+		};
 		firefox = lib.mkOption {
 			type = lib.types.bool;
 			default = false;
@@ -110,8 +120,25 @@ in
 			++ (if cfg.ungoogled then [ ungoogled-chromium ] else [])
 			++ (if cfg.vesktop then [ vesktop ] else [])
 			++ (if cfg.vlc then [ vlc ] else [])
-			++ (if cfg.zed then [ zed-editor ] else [])
-			++ (if cfg.zen then [ zen-browser ] else []);
+			++ (if cfg.evince then [ evince ] else [])
+			++ (if cfg.imv then [ imv ] else [])
+			++ (if cfg.zed then [ zed-editor ] else []);
+		xdg.mimeApps = {
+			enable = true;
+			defaultApplications = {
+				"inode/directory" = [ "thunar.desktop" ];
+				"audio/*" = [ "vlc.desktop" ];
+				"video/*" = [ "vlc.desktop" ];
+				"image/jpeg" = [ "imv.desktop" ];
+				"image/png" = [ "imv.desktop" ];
+				"image/gif" = [ "imv.desktop" ];
+				"image/webp" = [ "imv.desktop" ];
+				"text/plain" = [ "dev.zed.Zed.desktop" ];
+				"application/pdf" = [ "org.gnome.Evince.desktop" ];
+				"x-scheme-handler/http" = [ "firefox.desktop" ];
+				"x-scheme-handler/https" = [ "firefox.desktop" ];
+			};
+		};
 		programs = {
 			firefox.enable = cfg.firefox;
 			obs-studio = lib.mkIf cfg.obs {

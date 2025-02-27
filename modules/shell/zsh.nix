@@ -76,7 +76,6 @@ in
 		export ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.cache/}/zinit/zinit.git"
 		export MANPAGER="/bin/sh -c 'col -bx | bat -l man --style=plain --paging=always'"
 		export MANROFFOPT="-c"
-		export EDITOR=nvim
 
 		[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 		[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
