@@ -35,22 +35,24 @@ in
 	];
 
 	application = {
-		enable = true;
+		cava = true;
 		cider = true;
-		prismlauncher = true;
-		zed = true;
-		obs = true;
-		slack = true;
 		element = true;
+		enable = true;
+		evince = true;
+		firefox = true;
 		fonts = true;
+		imv = true;
+		kitty = true;
+		obs = true;
 		obsidian = true;
 		openvpn = true;
+		prismlauncher = true;
+		slack = true;
 		ungoogled = true;
 		vesktop = true;
 		vlc = true;
-		firefox = true;
-		cava = true;
-		kitty = true;
+		zed = true;
 	};
 
 	dev = {

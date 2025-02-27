@@ -31,22 +31,24 @@ in
 	];
 
 	application = {
-		enable = false;
+		cava = false;
 		cider = false;
-		prismlauncher = false;
-		zed = false;
-		obs = false;
-		slack = false;
 		element = false;
+		enable = false;
+		evince = false;
+		firefox = false;
 		fonts = false;
+		imv = false;
+		kitty = true;
+		obs = false;
 		obsidian = false;
 		openvpn = false;
+		prismlauncher = false;
+		slack = false;
 		ungoogled = false;
 		vesktop = false;
 		vlc = false;
-		firefox = false;
-		cava = false;
-		kitty = true;
+		zed = false;
 	};
 
 	dev = {
