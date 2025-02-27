@@ -15,6 +15,22 @@ in
 				accent = "dark";
 			};
 		};
+		xdg.mimeApps = {
+			enable = true;
+			defaultApplications = {
+				"inode/directory" = [ "thunar.desktop" ];
+				"audio/*" = [ "vlc.desktop" ];
+				"video/*" = [ "vlc.desktop" ];
+				"image/jpeg" = [ "imv.desktop" ];
+				"image/png" = [ "imv.desktop" ];
+				"image/gif" = [ "imv.desktop" ];
+				"image/webp" = [ "imv.desktop" ];
+				"text/plain" = [ "dev.zed.Zed.desktop" ];
+				"application/pdf" = [ "org.gnome.Evince.desktop" ];
+				"x-scheme-handler/http" = [ "firefox.desktop" ];
+				"x-scheme-handler/https" = [ "firefox.desktop" ];
+			};
+		};
 		wayland.windowManager.hyprland = {
 			enable = true;
 			xwayland.enable = true;

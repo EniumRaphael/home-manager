@@ -123,22 +123,6 @@ in
 			++ (if cfg.evince then [ evince ] else [])
 			++ (if cfg.imv then [ imv ] else [])
 			++ (if cfg.zed then [ zed-editor ] else []);
-		xdg.mimeApps = {
-			enable = true;
-			defaultApplications = {
-				"inode/directory" = [ "thunar.desktop" ];
-				"audio/*" = [ "vlc.desktop" ];
-				"video/*" = [ "vlc.desktop" ];
-				"image/jpeg" = [ "imv.desktop" ];
-				"image/png" = [ "imv.desktop" ];
-				"image/gif" = [ "imv.desktop" ];
-				"image/webp" = [ "imv.desktop" ];
-				"text/plain" = [ "dev.zed.Zed.desktop" ];
-				"application/pdf" = [ "org.gnome.Evince.desktop" ];
-				"x-scheme-handler/http" = [ "firefox.desktop" ];
-				"x-scheme-handler/https" = [ "firefox.desktop" ];
-			};
-		};
 		programs = {
 			firefox.enable = cfg.firefox;
 			obs-studio = lib.mkIf cfg.obs {
