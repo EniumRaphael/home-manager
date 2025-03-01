@@ -111,7 +111,7 @@ in
 	config = lib.mkIf cfg.enable {
 		home.packages = with pkgs; 
 			(if cfg.cider then [ cider ] else [])
-			++ (if cfg.prismlauncher then [ prismlauncher ] else [])
+			++ (if cfg.prismlauncher then [ prismlauncher openjdk ] else [])
 			++ (if cfg.element then [ element-desktop ] else [])
 			++ (if cfg.fonts then with pkgs.nerd-fonts; [ fira-code jetbrains-mono ] else [])
 			++ (if cfg.obsidian then [ obsidian ] else [])
