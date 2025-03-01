@@ -7,6 +7,8 @@ in
 	config = lib.mkIf cfg {
 		home.packages = with pkgs; [
 			hyprcursor
+			brightnessctl
+			pamixer
 		];
 		catppuccin = {
 			hyprland.enable = true;
