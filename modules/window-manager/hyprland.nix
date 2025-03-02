@@ -29,8 +29,8 @@ in
 				"image/webp" = [ "imv.desktop" ];
 				"text/plain" = [ "dev.zed.Zed.desktop" ];
 				"application/pdf" = [ "org.gnome.Evince.desktop" ];
-				"x-scheme-handler/http" = [ "firefox.desktop" ];
-				"x-scheme-handler/https" = [ "firefox.desktop" ];
+				"x-scheme-handler/http" = [ "zen.desktop" ];
+				"x-scheme-handler/https" = [ "zen.desktop" ];
 			};
 		};
 		wayland.windowManager.hyprland = {
@@ -75,7 +75,7 @@ in
 				];
 				bind = [
 					"$mod, RETURN, exec, sh -c 'kitty || /usr/bin/kitty'"
-					"$mod, w, exec, sh -c 'firefox'"
+					"$mod, w, exec, zen"
 					"$mod, e, exec, thunar"
 					"$mod, b, exec, pkill Hyprland"
 					"$mod, SPACE, exec, rofi -show drun"
