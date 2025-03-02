@@ -7,7 +7,7 @@
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		zen-browser.url = "github:EniumRaphael/zen-flake";
+		zen-browser.url = "github:0xc000022070/zen-browser-flake";
 		hyprland.url = "github:hyprwm/Hyprland";
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 		nixvim.url = "github:EniumRaphael/nixvim";
@@ -36,7 +36,7 @@
 				extraSpecialArgs = {
 					inherit system inputs;
 					nixvim = nixvim.packages.${system}.default;
-					zen-browser = zen-browser.packages.${system}.zen-browser;
+					zen-browser = zen-browser.packages.${system}.default;
 				};
 			};
 			"hm-cluster" = let
