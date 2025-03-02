@@ -1,4 +1,4 @@
-{ system, inputs, config, pkgs, lib, nixvim, ... }:
+{ system, inputs, config, pkgs, lib, nixvim, zen-browser, ... }:
 
 let
 	dev = import ../modules/dev/global.nix {
@@ -36,7 +36,6 @@ in
 		element = false;
 		enable = false;
 		evince = false;
-		firefox = false;
 		fonts = false;
 		imv = false;
 		kitty = true;
@@ -49,6 +48,7 @@ in
 		vesktop = false;
 		vlc = false;
 		zed = false;
+		zen = true;
 	};
 
 	dev = {

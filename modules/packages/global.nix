@@ -1,4 +1,4 @@
-{ system, inputs, config, pkgs, lib, ... }:
+{ system, inputs, config, pkgs, lib, zen-browser, ... }:
 
 let
 	cava = import ./cava.nix {
@@ -91,10 +91,10 @@ in
 			default = false;
 			description = "Enable the IMV";
 		};
-		firefox = lib.mkOption {
+		zen = lib.mkOption {
 			type = lib.types.bool;
 			default = false;
-			description = "Enable the Firefox web browser";
+			description = "Enable the zen web browser";
 		};
 		cava = lib.mkOption {
 			type = lib.types.bool;
@@ -122,9 +122,9 @@ in
 			++ (if cfg.vlc then [ vlc ] else [])
 			++ (if cfg.evince then [ evince ] else [])
 			++ (if cfg.imv then [ imv ] else [])
-			++ (if cfg.zed then [ zed-editor ] else []);
+			++ (if cfg.zed then [ zed-editor ] else [])
+			++ (if cfg.zen then [ zen-browser ] else []);
 		programs = {
-			firefox.enable = cfg.firefox;
 			obs-studio = lib.mkIf cfg.obs {
 				enable = true;
 				plugins = with pkgs.obs-studio-plugins; [
