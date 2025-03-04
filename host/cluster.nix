@@ -5,7 +5,7 @@ let
 		inherit inputs config pkgs lib nixvim;
 	};
 	package = import ../modules/packages/global.nix {
-		inherit system inputs config pkgs lib;
+		inherit system inputs config pkgs lib zen-browser;
 	};
 	zsh = import ../modules/shell/zsh.nix {
 		inherit inputs config pkgs;

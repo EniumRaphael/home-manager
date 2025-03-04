@@ -51,6 +51,7 @@
 				extraSpecialArgs = {
 					inherit system inputs;
 					nixvim = nixvim.packages.${system}.default;
+					zen-browser = zen-browser.packages.${system}.default;
 				};
 			};
 			"hm-asahi" = let
