@@ -66,7 +66,7 @@
 				extraSpecialArgs = {
 					inherit system inputs;
 					nixvim = nixvim.packages.${system}.default;
-					zen-browser = zen-browser.packages.${system}.zen-browser;
+					zen-browser = zen-browser.packages.${system}.default;
 				};
 			};
 		};
