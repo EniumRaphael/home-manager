@@ -8,25 +8,19 @@
 	catppuccin.tmux = {
 		enable = true;
 		extraConfig = ''
+			set -g status-position top
 			set -g @catppuccin_flavour 'mocha'
 
-			set -g @catppuccin_window_status_style "slanted"
-			set -g @catppuccin_window_number_position "right"
-
-			set -g @catppuccin_window_default_fill "number"
-			set -g @catppuccin_window_current_fill "number"
-			set -g @catppuccin_window_current_text "#{pane_current_command}"
-
-			set -g @catppuccin_status_modules_right "application session date_time"
 			set -g @catppuccin_status_fill "all"
 
 			set -g @catppuccin_status_connect_separator "yes"
+
 		'';
 	};
 	programs.tmux = {
 		enable = true;
 		terminal = "screen-256color";
-		shortcut = "a";
+		shortcut = "s";
 		clock24 = true;
 		keyMode = "vi";
 		customPaneNavigationAndResize = true;
@@ -34,7 +28,7 @@
 		mouse = true;
 		resizeAmount = 5;
 		plugins = with pkgs.tmuxPlugins; [
-			# catppuccin
+			catppuccin
 			vim-tmux-navigator
 		];
 		extraConfig = ''
