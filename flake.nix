@@ -54,6 +54,21 @@
 					zen-browser = zen-browser.packages.${system}.default;
 				};
 			};
+			"hm-mac" = let
+				system = "aarch64-darwin";
+				pkgs = nixpkgs.legacyPackages.${system};
+			in home-manager.lib.homeManagerConfiguration {
+				inherit pkgs;
+				modules = [
+					catppuccin.homeManagerModules.catppuccin
+					./host/mac.nix
+				];
+				extraSpecialArgs = {
+					inherit system inputs;
+					nixvim = nixvim.packages.${system}.default;
+					zen-browser = null;
+				};
+			};
 			"hm-asahi" = let
 				system = "aarch64-linux";
 				pkgs = nixpkgs.legacyPackages.${system};

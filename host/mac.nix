@@ -17,10 +17,9 @@ in
 {
 	home = {
 		username = "raphael";
-		homeDirectory = "/home/raphael";
+		homeDirectory = "/Users/raphael";
 		stateVersion = "24.05";
 		sessionVariables = {
-			ZED_ALLOW_EMULATED_GPU=1;
 			EDITOR = "nvim";
 		};
 	};
@@ -36,23 +35,23 @@ in
 
 	application = {
 		cava = true;
-		cider = true;
+		cider = false;
 		element = true;
 		enable = true;
 		evince = true;
 		fonts = true;
-		imv = true;
+		imv = false;
 		kitty = true;
-		obs = true;
-		obsidian = true;
+		obs = false;
+		obsidian = false;
 		openvpn = true;
 		prismlauncher = true;
 		slack = true;
-		ungoogled = true;
+		ungoogled = false;
 		vesktop = true;
-		vlc = true;
+		vlc = false;
 		zed = true;
-		zen = true;
+		zen = false;
 	};
 
 	dev = {
@@ -64,19 +63,13 @@ in
 	};
 
 	window-manager = {
-		enable = true;
-		hyprland = true;
-		hyprpaper = true;
-		mako = true;
-		rofi = true;
-		thunar = true;
-		waybar = true;
+		enable = false;
 	};
 
 	catppuccin.accent = "mauve";
 
 	fonts.fontconfig = {
-		enable = stdenv.isLinux;
+		enable = true;
 		defaultFonts = {
 			serif = [
 				"FiraCode Nerd Font"

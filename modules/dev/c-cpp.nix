@@ -9,14 +9,16 @@ in
 			packages = with pkgs; [
 				clang
 				gcc.libc
-				glibc.dev
 				gnumake
 				libcxx
 				stdenv.cc.libc
-			];
+			] ++ ( if stdenv.isLinux then [
+					valgrind
+					glibc.dev
+				] else []);
 			sessionVariables = {
 				CC = "clang";
-				C_INCLUDE_PATH = "${pkgs.glibc.dev}/include";
+				C_INCLUDE_PATH = "${pkgs.gcc.libc}/include";
 
 				CXX = "c++";
 				CXXFLAGS="--stdlib=libc++ -I${pkgs.libcxx.dev}/include";
