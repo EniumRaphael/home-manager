@@ -46,11 +46,12 @@ in
 				gotop
 				jq
 				lazydocker
-				llvm
 				lldb
+				llvm
 				man-pages
 				man-pages-posix
 				nixvim
+				ripgrep
 			] ++ (
 				if pkgs.stdenv.isLinux then [
 					valgrind
