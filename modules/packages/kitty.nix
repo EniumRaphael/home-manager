@@ -2,6 +2,7 @@
 
 let
 	cfg = config.application.kitty;
+	font_size = if pkgs.stdenv.isDarwin then 14 else 12;
 in
 {
 	config = lib.mkIf cfg {
@@ -10,15 +11,16 @@ in
 		];
 		programs.kitty = {
 			enable = true;
-			font = {
+				font = {
 				name = "FiraCode Nerd Font";
 				package = pkgs.nerd-fonts.fira-code;
-				size = 12;
+				size = font_size;
 			};
 			settings = {
 				disable_ligatures = "never";
 				confirm_os_window_close = 0;
 				enable_audio_bell = false;
+				hide_window_decorations = true;
 			};
 		};	
 		catppuccin.kitty.enable = true;
