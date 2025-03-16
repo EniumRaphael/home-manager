@@ -168,7 +168,7 @@ in
 					"opacity 0.9 0.8, class:^(xdg-desktop-portal-gtk)$"
 					"opacity 0.9 0.7, class:^([Ww]hatsapp-for-linux)$"
 					"opacity 0.9 0.7, class:^([Ff]erdium)$"
-					"opacity 0.95 0.75, title:^(Picture-in-Picture)$"
+					"opacity 0.95 0.95, title:^(Picture-in-Picture)$"
 	
 					"pin,title:^([Rr]ofi)$"
 					"pin,title:^(Picture-in-Picture)$"

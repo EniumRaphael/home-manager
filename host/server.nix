@@ -20,7 +20,6 @@ in
 		homeDirectory = "/home/raphael";
 		stateVersion = "24.05";
 		sessionVariables = {
-			ZED_ALLOW_EMULATED_GPU=1;
 			EDITOR = "nvim";
 		};
 	};
@@ -35,24 +34,24 @@ in
 	];
 
 	application = {
-		cava = true;
-		cider = true;
-		element = true;
 		enable = true;
-		evince = true;
-		fonts = true;
-		imv = true;
-		kitty = true;
-		obs = true;
-		obsidian = true;
+		cava = false;
+		cider = false;
+		element = false;
+		evince = false;
+		fonts = false;
+		imv = false;
+		kitty = false;
+		obs = false;
+		obsidian = false;
 		openvpn = true;
-		prismlauncher = true;
-		slack = true;
-		ungoogled = true;
-		vesktop = true;
-		vlc = true;
-		zed = true;
-		zen = true;
+		prismlauncher = false;
+		slack = false;
+		ungoogled = false;
+		vesktop = false;
+		vlc = false;
+		zed = false;
+		zen = false;
 	};
 
 	dev = {
@@ -64,13 +63,13 @@ in
 	};
 
 	window-manager = {
-		enable = true;
-		hyprland = true;
-		hyprpaper = true;
-		mako = true;
-		rofi = true;
-		thunar = true;
-		waybar = true;
+		enable = false;
+		hyprland = false;
+		hyprpaper = false;
+		mako = false;
+		rofi = false;
+		thunar = false;
+		waybar = false;
 	};
 
 	catppuccin.accent = "mauve";
