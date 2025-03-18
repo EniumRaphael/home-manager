@@ -11,12 +11,14 @@ in
 				gcc.libc
 				gnumake
 				libcxx
+				libclang
 				stdenv.cc.libc
 			] ++ ( if stdenv.isLinux then [
 					valgrind
 					glibc.dev
 				] else []);
 			sessionVariables = {
+				MallocNanoZone = 0;
 				CC = "clang";
 				C_INCLUDE_PATH = "${pkgs.gcc.libc}/include";
 
