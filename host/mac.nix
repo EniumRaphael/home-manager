@@ -50,6 +50,7 @@ in
 		ungoogled = false;
 		vesktop = true;
 		vlc = false;
+		wireshark = true;
 		zed = true;
 		zen = false;
 	};
