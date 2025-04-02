@@ -2,28 +2,22 @@
 
 let
 	cfg = config.dev.language.c-cpp;
+	llvm = pkgs.llvmPackages_16;
 in
 {
 	config = lib.mkIf cfg {
 		home = {
 			packages = with pkgs; [
-				clang
-				gnumake
-				libclang
-				libcxx
+				llvm.clang-tools
 				glibc.dev
-				stdenv.cc.libc
-				gcc.libc
+				gnumake
+				valgrind
+				readline
 			] ++ ( if stdenv.isLinux then [
 					valgrind
 				] else []);
 			sessionVariables = {
 				MallocNanoZone = 0;
-				CC = "clang";
-				CFLAGS = "--stdlib=libc -Wall -Werror -Wextra -std=c89";
-
-				CXX = "c++";
-				CXXFLAGS = "-Wall -Werror -Wextra -std=c++98 --stdlib=libc++ -I${pkgs.libcxx.dev}/include";
 			};
 		};
 	};
