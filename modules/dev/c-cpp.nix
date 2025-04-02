@@ -20,14 +20,10 @@ in
 			sessionVariables = {
 				MallocNanoZone = 0;
 				CC = "clang";
-				C_INCLUDE_PATH = "${pkgs.gcc.libc}/include";
+				CFLAGS = "-Wall -Werror -Wextra -std=c89";
 
 				CXX = "c++";
 				CXXFLAGS="--stdlib=libc++ -I${pkgs.libcxx.dev}/include";
-				CPLUS_INCLUDE_PATH = "${pkgs.stdenv.cc.libc}/include/c++/v1:${pkgs.llvmPackages.libcxx}/include/c++/v1";
-
-				LDFLAGS="-L${pkgs.libcxx}/lib";
-				LIBRARY_PATH = "${pkgs.llvmPackages.libcxx}/lib";
 			};
 		};
 	};

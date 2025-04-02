@@ -30,7 +30,7 @@
 			in home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				modules = [
-					catppuccin.homeManagerModules.catppuccin
+					catppuccin.homeModules.catppuccin
 					./host/server.nix
 				];
 				extraSpecialArgs = {
@@ -45,7 +45,7 @@
 			in home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				modules = [
-					catppuccin.homeManagerModules.catppuccin
+					catppuccin.homeModules.catppuccin
 					./host/fix.nix
 				];
 				extraSpecialArgs = {
@@ -60,7 +60,7 @@
 			in home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				modules = [
-					catppuccin.homeManagerModules.catppuccin
+					catppuccin.homeModules.catppuccin
 					./host/cluster.nix
 				];
 				extraSpecialArgs = {
@@ -75,7 +75,7 @@
 			in home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				modules = [
-					catppuccin.homeManagerModules.catppuccin
+					catppuccin.homeModules.catppuccin
 					./host/mac.nix
 				];
 				extraSpecialArgs = {
@@ -90,7 +90,7 @@
 			in home-manager.lib.homeManagerConfiguration {
 				inherit pkgs;
 				modules = [
-					catppuccin.homeManagerModules.catppuccin
+					catppuccin.homeModules.catppuccin
 					./host/asahi.nix
 				];
 				extraSpecialArgs = {
