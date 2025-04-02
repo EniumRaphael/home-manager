@@ -8,22 +8,22 @@ in
 		home = {
 			packages = with pkgs; [
 				clang
-				gcc.libc
 				gnumake
-				libcxx
 				libclang
+				libcxx
+				glibc.dev
 				stdenv.cc.libc
+				gcc.libc
 			] ++ ( if stdenv.isLinux then [
 					valgrind
-					glibc.dev
 				] else []);
 			sessionVariables = {
 				MallocNanoZone = 0;
 				CC = "clang";
-				CFLAGS = "-Wall -Werror -Wextra -std=c89";
+				CFLAGS = "--stdlib=libc -Wall -Werror -Wextra -std=c89";
 
 				CXX = "c++";
-				CXXFLAGS="--stdlib=libc++ -I${pkgs.libcxx.dev}/include";
+				CXXFLAGS = "-Wall -Werror -Wextra -std=c++98 --stdlib=libc++ -I${pkgs.libcxx.dev}/include";
 			};
 		};
 	};
