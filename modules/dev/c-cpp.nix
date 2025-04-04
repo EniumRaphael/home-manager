@@ -9,11 +9,10 @@ in
 		home = {
 			packages = with pkgs; [
 				llvm.clang-tools
-				glibc.dev
 				gnumake
-				valgrind
 				readline
-			] ++ ( if stdenv.isLinux then [
+			] ++ ( if pkgs.stdenv.isLinux then [
+					glibc.dev
 					valgrind
 				] else []);
 			sessionVariables = {
