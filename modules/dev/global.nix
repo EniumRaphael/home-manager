@@ -42,6 +42,7 @@ in
 			packages = with pkgs; [
 				bat
 				direnv
+				doxygen
 				fastmod
 				gotop
 				jq
