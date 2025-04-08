@@ -10,7 +10,6 @@ in
 			packages = with pkgs; [
 				llvm.clang-tools
 				gnumake
-				readline
 			] ++ ( if pkgs.stdenv.isLinux then [
 					glibc.dev
 					valgrind
