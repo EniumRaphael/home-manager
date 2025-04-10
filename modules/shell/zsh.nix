@@ -66,7 +66,7 @@ in
 	 	[ -f "$HOME/.zshenv" ] && source "$HOME/.zshenv";
 		[ -f "$HOME/.zvars"  ] && source "$HOME/.zvars";
 		
-		export PATH="''$HOME/.nix-profile/bin:''$HOME/.local/bin:''$PATH"
+		export PATH="''$HOME/.nix-profile/bin:''$HOME/.local/bin:/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver:''$PATH"
 		[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]  && source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 		if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 		  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
