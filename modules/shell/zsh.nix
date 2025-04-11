@@ -13,9 +13,10 @@ in
 	home.packages = with pkgs; [
 		cowsay
 		direnv
+		eza
 		fzf
 		lolcat
-		eza
+		wget
 		zoxide
 	];
 	programs.zsh = {
