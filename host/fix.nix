@@ -1,6 +1,9 @@
 { system, inputs, config, pkgs, lib, nixvim, zen-browser, ... }:
 
 let
+	cyber = import ../modules/cyber/global.nix {
+		inherit inputs config pkgs lib nixvim;
+	};
 	dev = import ../modules/dev/global.nix {
 		inherit inputs config pkgs lib nixvim;
 	};
@@ -28,6 +31,7 @@ in
 	nixpkgs.config.allowUnfree = true;
 	
 	imports = [
+		cyber
 		dev
 		package
 		window-manager
@@ -53,6 +57,11 @@ in
 		vlc = true;
 		zed = true;
 		zen = true;
+	};
+
+	cyber = {
+		tui = true;
+		gui = true;
 	};
 
 	dev = {
