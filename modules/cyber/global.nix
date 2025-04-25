@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, nixvim, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 let
 	tui = import ./tui.nix {

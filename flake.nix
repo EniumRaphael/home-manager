@@ -99,6 +99,21 @@
 					zen-browser = zen-browser.packages.${system}.default;
 				};
 			};
+			"hm-rasberry" = let
+				system = "aarch64-linux";
+				pkgs = nixpkgs.legacyPackages.${system};
+			in home-manager.lib.homeManagerConfiguration {
+				inherit pkgs;
+				modules = [
+					catppuccin.homeModules.catppuccin
+					./host/rasberry.nix
+				];
+				extraSpecialArgs = {
+					inherit system inputs;
+					nixvim = inputs.nixvim.packages.${system}.default;
+					zen-browser = inputs.zen-browser.packages.${system}.default;
+				};
+			};
 		};
 	};
 }
