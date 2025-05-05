@@ -14,6 +14,7 @@ in
 		cowsay
 		direnv
 		eza
+		fastfetch
 		fzf
 		lolcat
 		wget
