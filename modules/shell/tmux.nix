@@ -24,7 +24,7 @@
 		clock24 = true;
 		keyMode = "vi";
 		customPaneNavigationAndResize = true;
-		baseIndex = 1;
+		baseIndex = 0;
 		mouse = true;
 		resizeAmount = 5;
 		plugins = with pkgs.tmuxPlugins; [
