@@ -59,6 +59,11 @@ in
 		};
 	};
 
+	programs.bat = {
+		enable = true;
+		config.theme = "Catppuccin Mocha";
+	};
+
 	programs.git = {
 		enable = true;
 		userName  = "Raphael";
