@@ -10,11 +10,8 @@
 		extraConfig = ''
 			set -g status-position top
 			set -g @catppuccin_flavour 'mocha'
-
 			set -g @catppuccin_status_fill "all"
-
 			set -g @catppuccin_status_connect_separator "yes"
-
 		'';
 	};
 	programs.tmux = {
