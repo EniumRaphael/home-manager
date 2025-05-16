@@ -71,14 +71,31 @@ in
 	};
 
 	home.file.".zshrc".text = ''
-	 	[ -f "$HOME/.zshenv" ] && source "$HOME/.zshenv";
+		fzf_tab_preview() {
+			local path=$1
+			if [[ -d $path ]]; then
+				eza --icons=always --color=always "$path"
+			else
+				bat -p --color=always "$path"
+			fi
+		}
+
+		[ -f "$HOME/.zshenv" ] && source "$HOME/.zshenv";
 		[ -f "$HOME/.zvars"  ] && source "$HOME/.zvars";
-		
+
 		export PATH="''$HOME/.nix-profile/bin:''$HOME/.local/bin:/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver:''$PATH"
+
+		if [ -f "$HOME/.config/bat/themes/Catppuccin\ Mocha.tmTheme" ]; then
+			mkdir -p "$HOME/.config/bat/themes"
+			wget -P "$HOME/.config/bat/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+		fi
+
 		[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]  && source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+
 		if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 		  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 		fi
+
 		[ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ] && source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
 		export ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.cache/}/zinit/zinit.git"
@@ -147,11 +164,15 @@ in
 		  wait \
 		zsh-users/zsh-completions
 
-		zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 		zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+		zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 		zstyle ':completion:*' menu no
-		zstyle ':fzf-tab:complete:cd:*' fzf-preview '${pkgs.eza}/bin/eza -a --icons --color $realpath'
+		zstyle ':fzf-tab:*' use-fzf-default-opts yes
+		zstyle ':fzf-tab:complete:*' fzf-preview 'if [[ -d $realpath ]]; then ${pkgs.eza}/bin/eza -1 --icons=always --color=always "$realpath"; else ${pkgs.bat}/bin/bat -p --color=always "$realpath"; fi'
 		zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview '${pkgs.eza}/bin/eza -a --icons --color $realpath'
+		zstyle ':fzf-tab:complete:cd:*' fzf-preview '${pkgs.eza}/bin/eza -a --icons --color $realpath'
+		zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+
 
 		eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
 		eval "$(${pkgs.starship}/bin/starship init zsh)"
