@@ -11,7 +11,7 @@ let
 		inherit system inputs config pkgs lib zen-browser;
 	};
 	zsh = import ../modules/shell/zsh.nix {
-		inherit inputs config pkgs;
+		inherit inputs config pkgs lib;
 	};
 in
 {

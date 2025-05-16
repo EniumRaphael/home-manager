@@ -14,7 +14,7 @@ let
 		inherit inputs config pkgs lib;
 	};
 	zsh = import ../modules/shell/zsh.nix {
-		inherit inputs config pkgs;
+		inherit inputs config pkgs lib;
 	};
 in
 {
