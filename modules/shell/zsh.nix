@@ -43,6 +43,19 @@ in
 			"vg" = "valgrind --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --track-origins=yes --show-reachable=yes";
 			"ssh" = "TERM=xterm-256color ssh";
 		};
+		history = {
+			append = true;
+			expireDuplicatesFirst = false;
+			extended = false;
+			findNoDups = true;
+			ignoreAllDups = true;
+			ignoreDups = true;
+			ignoreSpace = true;
+			path = "$HOME/.zsh_history";
+			save = 5000;
+			share = true;
+			size = 5000;
+		};
 		enableCompletion = true;
 		autocd = true;
 	};
@@ -115,6 +128,7 @@ in
 		[ ! -f "$HOME/.zfunc/_rustup" ] && { rustup completions zsh rustup |> "$HOME/.zfunc/_rustup" }
 		[ ! -f "$HOME/.zfunc/_cargo" ] && { rustup completions zsh cargo |> "$HOME/.zfunc/_cargo" }
 
+		source ${pkgs.fzf}/share/fzf/key-bindings.zsh
 
 		zinit ice wait lucid; zinit light Aloxaf/fzf-tab
 		zinit ice wait lucid; zinit light nix-community/nix-zsh-completions
@@ -127,6 +141,7 @@ in
 
 		bindkey '^[[A' history-search-backward
 		bindkey '^[[B' history-search-forward
+		bindkey '^R' fzf-history-widget
 
 		bindkey '^[[1;5C' forward-word
 		bindkey '^[[1;5D' backward-word
@@ -143,26 +158,14 @@ in
 
 		bindkey -r '^['
 
-		HISTSIZE=5000
-		SAVEHIST=$HISTSIZE
-
-		HISTFILE="$HOME/.zsh_history"
-		mkdir -p "$(dirname "$HISTFILE")"
-		HISTDUP=erase
-		setopt SHARE_HISTORY
-		setopt HIST_FCNTL_LOCK
-		setopt HIST_IGNORE_SPACE
-		setopt HIST_IGNORE_DUPS
-		setopt HIST_IGNORE_ALL_DUPS
-		unsetopt HIST_EXPIRE_DUPS_FIRST
-		unsetopt EXTENDED_HISTORY
-
 		zi for \
 		  atload"zicompinit; zicdreplay" \
 		  blockf \
 		  lucid \
 		  wait \
 		zsh-users/zsh-completions
+
+		export FZF_CTRL_R_OPTS="--layout reverse --bind='ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'   --header='Ctrl-Y pour copier'"
 
 		zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
 		zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
