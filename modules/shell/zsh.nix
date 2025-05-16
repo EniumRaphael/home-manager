@@ -1,8 +1,12 @@
 { config, pkgs, lib, ... }:
 
 let
-	starship = import ./starship.nix { inherit config pkgs; };
-	tmux = import ./tmux.nix { inherit config pkgs; };
+	starship = import ./starship.nix {
+		inherit config pkgs;
+	};
+	tmux = import ./tmux.nix {
+		inherit config pkgs;
+	};
 in
 {
 	imports = [
