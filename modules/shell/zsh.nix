@@ -66,6 +66,10 @@ in
 
 		zsh = {
 			enable = true;
+			completionInit = ''
+				autoload -U compinit
+				compinit
+			'';
 			autosuggestion = {
 				enable = true;
 			};
@@ -132,7 +136,7 @@ in
 				[ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ] && source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 				[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ] && source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 				[ -f /etc/zshenv ] && source /etc/zshenv
-				[ -d ${pkgs.fzf} ] && source ${pkgs.fzf}/share/fzf/key-bindings.zsh
+				[ -d ${pkgs.fzf} ] && source ${pkgs.fzf}/share/fzf/completion.zsh && source ${pkgs.fzf}/share/fzf/key-bindings.zsh
 			'';
 			initContent = lib.mkMerge [
 				(lib.mkAfter ''
@@ -150,13 +154,14 @@ in
 					fi
 				'')
 				(lib.mkAfter ''
+					zplug load
 					zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
 					zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 					zstyle ':completion:*' menu no
 					zstyle ':fzf-tab:*' use-fzf-default-opts yes
-					zstyle ':fzf-tab:complete:*' fzf-preview 'if [[ -d $realpath ]]; then ${pkgs.eza}/bin/eza -1 --icons=always --color=always "$realpath"; else ${pkgs.bat}/bin/bat -p --color=always "$realpath"; fi'
-					zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview '${pkgs.eza}/bin/eza -a --icons --color $realpath'
-					zstyle ':fzf-tab:complete:cd:*' fzf-preview '${pkgs.eza}/bin/eza -a --icons --color $realpath'
+					zstyle ':fzf-tab:complete:*' fzf-preview 'if [[ -d $realpath ]]; then ${pkgs.eza}/bin/eza -1 --icons=always --color=always "$realpath" ; else ${pkgs.bat}/bin/bat -p --color=always "$realpath"; fi'
+					zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview '${pkgs.eza}/bin/eza -1 --icons=always --color=always "$realpath"'
+					zstyle ':fzf-tab:complete:cd:*' fzf-preview '${pkgs.eza}/bin/eza -1 --icons=always --color=always "$realpath"'
 					zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 					bindkey '^R' fzf-history-widget
