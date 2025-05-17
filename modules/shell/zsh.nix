@@ -18,13 +18,16 @@ in
 		cowsay
 		direnv
 		eza
-		fzf
 		lolcat
 		wget
 		zoxide
 	];
 
 	programs = {
+		fzf = {
+			enable = true;
+			enableZshIntegration = true;
+		};
 		fastfetch = {
 			enable = true;
 		};
