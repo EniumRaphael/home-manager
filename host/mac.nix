@@ -38,7 +38,7 @@ in
 		cider = false;
 		element = true;
 		enable = true;
-		evince = true;
+		evince = false;
 		fonts = true;
 		imv = false;
 		kitty = true;
