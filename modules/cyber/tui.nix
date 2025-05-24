@@ -16,7 +16,6 @@ in
 				ipinfo
 				john
 				imagemagick
-				maigret
 				netcat
 				nmap
 				pwncat
