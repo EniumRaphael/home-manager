@@ -40,6 +40,7 @@ in
 	config = lib.mkIf cfg.enable {
 		home = {
 			packages = with pkgs; [
+				fd
 				direnv
 				doxygen
 				fastmod
