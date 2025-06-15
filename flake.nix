@@ -61,7 +61,7 @@
 				inherit pkgs;
 				modules = [
 					catppuccin.homeModules.catppuccin
-					./host/cluster.nix
+					./host/root.nix
 				];
 				extraSpecialArgs = {
 					inherit system inputs;
