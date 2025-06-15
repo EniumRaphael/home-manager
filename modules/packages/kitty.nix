@@ -11,7 +11,7 @@ in
 		];
 		programs.kitty = {
 			enable = true;
-				font = {
+			font = {
 				name = "FiraCode Nerd Font";
 				package = pkgs.nerd-fonts.fira-code;
 				size = font_size;
@@ -21,7 +21,7 @@ in
 				confirm_os_window_close = 0;
 				enable_audio_bell = false;
 				hide_window_decorations = true;
-				term= "xterm-256color";
+				term = "xterm-256color";
 			};
 		};	
 		catppuccin.kitty.enable = true;

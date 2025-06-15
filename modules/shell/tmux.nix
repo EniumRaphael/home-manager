@@ -17,7 +17,7 @@
 	programs.tmux = {
 		enable = true;
 		terminal = "screen-256color";
-		shortcut = "s";
+		shortcut = "q";
 		clock24 = true;
 		keyMode = "vi";
 		customPaneNavigationAndResize = true;
