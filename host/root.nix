@@ -52,6 +52,7 @@ in
 		prismlauncher = false;
 		slack = false;
 		ungoogled = false;
+		teamspeak = false;
 		vesktop = false;
 		vlc = false;
 		zed = false;

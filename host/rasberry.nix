@@ -54,6 +54,7 @@ in
 		slack = false;
 		ungoogled = false;
 		vesktop = true;
+		teamspeak = true;
 		vlc = false;
 		zed = false;
 		zen = true;

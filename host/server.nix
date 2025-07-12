@@ -51,6 +51,7 @@ in
 		openvpn = true;
 		prismlauncher = false;
 		slack = false;
+		teamspeak = false;
 		ungoogled = false;
 		vesktop = false;
 		vlc = false;

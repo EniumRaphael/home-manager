@@ -26,6 +26,11 @@ in
 			default = false;
 			description = "Enable the Cider Music";
 		};
+		teamspeak = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+			description = "enable the teamspealk client";
+		};
 		prismlauncher = lib.mkOption {
 			type = lib.types.bool;
 			default = false;
@@ -124,6 +129,7 @@ in
 			++ (if cfg.slack then [ slack ] else [])
 			++ (if cfg.ungoogled then [ ungoogled-chromium ] else [])
 			++ (if cfg.vesktop then [ vesktop ] else [])
+			++ (if cfg.teamspeak then [ teamspeak_client ] else [])
 			++ (if cfg.vlc then [ vlc ] else [])
 			++ (if cfg.evince then [ evince ] else [])
 			++ (if cfg.imv then [ imv ] else [])

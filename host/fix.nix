@@ -55,6 +55,7 @@ in
 		ungoogled = true;
 		vesktop = true;
 		vlc = true;
+		teamspeak = true;
 		zed = true;
 		zen = true;
 	};
