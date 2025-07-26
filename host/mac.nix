@@ -48,7 +48,7 @@ in
 		prismlauncher = true;
 		slack = true;
 		ungoogled = false;
-		teamspeak = true;
+		teamspeak = false;
 		vesktop = true;
 		vlc = false;
 		wireshark = true;

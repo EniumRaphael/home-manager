@@ -1,0 +1,11 @@
+\:q
+: 1753543997:0;git restore .
+: 1753543999:0;gs
+: 1753544002:1;rm -rf ./.venv
+: 1753544003:0;ll
+: 1753544004:0;clear
+: 1753544013:3;tmux
+: 1753544052:0;home-manager switch --flake ~/.config/home-manager#hm-mac
+: 1753544075:0;vim
+: 1753544087:0;home-manager switch --flake ~/.config/home-manager#hm-mac
+: 1753544110:0;ga
