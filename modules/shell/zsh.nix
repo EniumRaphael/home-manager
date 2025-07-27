@@ -31,11 +31,9 @@ in
 		fastfetch = {
 			enable = true;
 		};
-
 		zoxide = {
 			enable = true;
 		};
-		
 		direnv = {
 			enable = true;
 			silent = true;
@@ -43,12 +41,10 @@ in
 				enable = true;
 			};
 		};
-
 		bat = {
 			enable = true;
 			config.theme = "Catppuccin Mocha";
 		};
-
 		git = {
 			enable = true;
 			userName  = "Raphael";
@@ -63,7 +59,6 @@ in
 				".env"
 			];
 		};
-
 		zsh = {
 			enable = true;
 			completionInit = ''
@@ -81,7 +76,7 @@ in
 				ignoreAllDups = true;
 				ignoreDups = true;
 				ignoreSpace = true;
-				path = "$HOME/.zsh_history";
+				path = ".zsh_history";
 				save = 5000;
 				share = true;
 				size = 5000;
