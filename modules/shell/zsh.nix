@@ -18,6 +18,7 @@ in
 		cowsay
 		direnv
 		eza
+		gpg
 		lolcat
 		wget
 		zoxide
