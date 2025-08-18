@@ -24,8 +24,16 @@ in
 		wget
 		zoxide
 	];
-	file.".ssh/allowed_signers".text = ''
-		raphael@enium.eu ${builtins.readFile "${config.home.homeDirectory}/.ssh/id_ed25519.pub"}
+	activation.generateAllowedSigners =
+		lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+		set -eu
+		mkdir -p "$HOME/.ssh"
+		if [ -f "$HOME/.ssh/id_ed25519.pub" ]; then
+			echo "raphael@enium.eu $(cat "$HOME/.ssh/id_ed25519.pub")" > "$HOME/.ssh/allowed_signers"
+			chmod 600 "$HOME/.ssh/allowed_signers"
+		else
+			echo "⚠️ | $HOME/.ssh/id_ed25519.pub introuvable, impossible de générer allowed_signers" >&2
+		fi
 	'';
 	};
 
