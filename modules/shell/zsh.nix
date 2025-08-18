@@ -18,7 +18,7 @@ in
 		cowsay
 		direnv
 		eza
-		gpg
+		gnupg
 		lolcat
 		wget
 		zoxide
@@ -48,7 +48,7 @@ in
 		};
 		git = {
 			enable = true;
-			userName  = "Raphael";
+			userName = "Raphael";
 			userEmail = "rparodi@student.42.fr";
 			ignores = [
 				".DS_Store"
@@ -59,6 +59,11 @@ in
 				"node_modules/"
 				".env"
 			];
+			extraConfig = {
+				commit.gpgsign = true;
+				gpg.format = "ssh";
+				user.signingkey = "~/.ssh/id_ed25519.pub";
+			};
 		};
 		zsh = {
 			enable = true;
