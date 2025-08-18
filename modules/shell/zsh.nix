@@ -14,7 +14,8 @@ in
 		tmux
 	];
 
-	home.packages = with pkgs; [
+	home = {
+		packages = with pkgs; [
 		cowsay
 		direnv
 		eza
@@ -23,6 +24,10 @@ in
 		wget
 		zoxide
 	];
+	file.".ssh/allowed_signers".text = ''
+		raphael@enium.eu ${builtins.readFile "${config.home.homeDirectory}/.ssh/id_ed25519.pub"}
+	'';
+	};
 
 	programs = {
 		fzf = {
