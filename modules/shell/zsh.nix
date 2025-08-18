@@ -24,17 +24,8 @@ in
 		wget
 		zoxide
 	];
-	activation.generateAllowedSigners =
-		lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-		set -eu
-		mkdir -p "$HOME/.ssh"
-		if [ -f "$HOME/.ssh/id_ed25519.pub" ]; then
-			echo "raphael@enium.eu $(cat "$HOME/.ssh/id_ed25519.pub")" > "$HOME/.ssh/allowed_signers"
-			chmod 600 "$HOME/.ssh/allowed_signers"
-		else
-			echo "⚠️ | $HOME/.ssh/id_ed25519.pub introuvable, impossible de générer allowed_signers" >&2
-		fi
-	'';
+	file.".ssh/allowed_signers".text =
+		"* ${builtins.readFile ~/.ssh/id_ed25519.pub}";
 	};
 
 	programs = {
@@ -75,6 +66,7 @@ in
 			extraConfig = {
 				commit.gpgsign = true;
 				gpg.format = "ssh";
+				gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
 				user.signingkey = "~/.ssh/id_ed25519.pub";
 			};
 		};
