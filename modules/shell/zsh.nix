@@ -24,8 +24,8 @@ in
 		wget
 		zoxide
 	];
-	file.".ssh/allowed_signers".text =
-		"* ${builtins.readFile ~/.ssh/id_ed25519.pub}";
+	# file.".ssh/allowed_signers".text =
+	# 	"* ${builtins.readFile ~/.ssh/id_ed25519.pub}";
 	};
 
 	programs = {
@@ -164,11 +164,6 @@ in
 					zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
 					zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 					zstyle ':completion:*' menu no
-					zstyle ':fzf-tab:*' use-fzf-default-opts yes
-					zstyle ':fzf-tab:complete:*' fzf-preview 'if [[ -d $realpath ]]; then ${pkgs.eza}/bin/eza -1 --icons=always --color=always "$realpath" ; else ${pkgs.bat}/bin/bat -p --color=always "$realpath"; fi'
-					zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview '${pkgs.eza}/bin/eza -1 --icons=always --color=always "$realpath"'
-					zstyle ':fzf-tab:complete:cd:*' fzf-preview '${pkgs.eza}/bin/eza -1 --icons=always --color=always "$realpath"'
-					zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 					bindkey '^R' fzf-history-widget
 					bindkey '^[[1;5C' forward-word
