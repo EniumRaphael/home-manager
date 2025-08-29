@@ -1,92 +1,73 @@
 { system, inputs, config, pkgs, lib, nixvim, zen-browser, ... }:
 
 let
-	cyber = import ../modules/cyber/global.nix {
-		inherit inputs config pkgs lib nixvim;
-	};
-	dev = import ../modules/dev/global.nix {
-		inherit inputs config pkgs lib nixvim;
-	};
-	package = import ../modules/packages/global.nix {
-		inherit system inputs config pkgs lib zen-browser;
-	};
-	zsh = import ../modules/shell/zsh.nix {
-		inherit inputs config pkgs lib;
-	};
-in
-{
-	home = {
-		username = "raphael";
-		homeDirectory = "/Users/raphael";
-		stateVersion = "24.05";
-		sessionVariables = {
-			EDITOR = "nvim";
-		};
-	};
+  cyber = import ../modules/cyber/global.nix {
+    inherit inputs config pkgs lib nixvim;
+  };
+  dev =
+    import ../modules/dev/global.nix { inherit inputs config pkgs lib nixvim; };
+  package = import ../modules/packages/global.nix {
+    inherit system inputs config pkgs lib zen-browser;
+  };
+  zsh = import ../modules/shell/zsh.nix { inherit inputs config pkgs lib; };
+in {
+  home = {
+    username = "raphael";
+    homeDirectory = "/Users/raphael";
+    stateVersion = "24.05";
+    sessionVariables = { EDITOR = "nvim"; };
+  };
 
-	nixpkgs.config.allowUnfree = true;
-	
-	imports = [
-		cyber
-		dev
-		package
-		zsh
-	];
+  nixpkgs.config.allowUnfree = true;
 
-	application = {
-		cava = true;
-		cider = false;
-		element = true;
-		enable = true;
-		evince = false;
-		fonts = true;
-		imv = false;
-		kitty = true;
-		obs = false;
-		obsidian = false;
-		openvpn = true;
-		prismlauncher = true;
-		slack = true;
-		ungoogled = false;
-		teamspeak = false;
-		vesktop = true;
-		vlc = false;
-		wireshark = true;
-		zed = true;
-		zen = false;
-	};
+  imports = [ cyber dev package zsh ];
 
-	dev = {
-		enable = true;
-		language = {
-			c-cpp = true;
-			rust = true;
-		};
-	};
+  application = {
+    cava = true;
+    cider = false;
+    element = true;
+    enable = true;
+    evince = false;
+    fonts = true;
+    imv = false;
+    kitty = true;
+    obs = false;
+    obsidian = false;
+    openvpn = true;
+    prismlauncher = true;
+    slack = true;
+    ungoogled = false;
+    teamspeak = false;
+    vesktop = true;
+    vlc = false;
+    wireshark = true;
+    zed = true;
+    zen = false;
+  };
 
-	cyber = {
-		tui = true;
-		gui = true;
-	};
+  dev = {
+    enable = true;
+    language = {
+      c-cpp = true;
+      rust = true;
+    };
+  };
 
-	catppuccin.accent = "mauve";
+  cyber = {
+    tui = true;
+    gui = true;
+  };
 
-	fonts.fontconfig = {
-		enable = true;
-		defaultFonts = {
-			serif = [
-				"FiraCode Nerd Font"
-			];
-			sansSerif = [
-				"FiraCode Nerd Font"
-			];
-			monospace = [
-				"FiraCode Nerd Font"
-			];
-			emoji = [
-				"FiraCode Nerd Font"
-			];
-		};
-	};
-	programs.home-manager.enable = true;
+  catppuccin.accent = "mauve";
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      serif = [ "FiraCode Nerd Font" ];
+      sansSerif = [ "FiraCode Nerd Font" ];
+      monospace = [ "FiraCode Nerd Font" ];
+      emoji = [ "FiraCode Nerd Font" ];
+    };
+  };
+  programs.home-manager.enable = true;
 }

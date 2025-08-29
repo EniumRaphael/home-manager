@@ -1,91 +1,74 @@
 { system, inputs, config, pkgs, lib, nixvim, zen-browser, ... }:
 
 let
-	cyber = import ../modules/cyber/global.nix {
-		inherit inputs config pkgs lib nixvim;
-	};
-	dev = import ../modules/dev/global.nix {
-		inherit inputs config pkgs lib nixvim;
-	};
-	package = import ../modules/packages/global.nix {
-		inherit system inputs config pkgs lib zen-browser;
-	};
-	zsh = import ../modules/shell/zsh.nix {
-		inherit inputs config pkgs lib;
-	};
-in
-{
-	home = {
-		username = "rparodi";
-		homeDirectory = "/home/rparodi";
-		stateVersion = "24.05";
-		sessionVariables = {
-			ZED_ALLOW_EMULATED_GPU=1;
-			EDITOR = "nvim";
-		};
-	};
+  cyber = import ../modules/cyber/global.nix {
+    inherit inputs config pkgs lib nixvim;
+  };
+  dev =
+    import ../modules/dev/global.nix { inherit inputs config pkgs lib nixvim; };
+  package = import ../modules/packages/global.nix {
+    inherit system inputs config pkgs lib zen-browser;
+  };
+  zsh = import ../modules/shell/zsh.nix { inherit inputs config pkgs lib; };
+in {
+  home = {
+    username = "rparodi";
+    homeDirectory = "/home/rparodi";
+    stateVersion = "24.05";
+    sessionVariables = {
+      ZED_ALLOW_EMULATED_GPU = 1;
+      EDITOR = "nvim";
+    };
+  };
 
-	nixpkgs.config.allowUnfree = true;
-	
-	imports = [
-		cyber
-		dev
-		package
-		zsh
-	];
+  nixpkgs.config.allowUnfree = true;
 
-	application = {
-		cava = false;
-		cider = false;
-		element = false;
-		enable = false;
-		evince = false;
-		fonts = false;
-		imv = false;
-		kitty = true;
-		obs = false;
-		obsidian = false;
-		openvpn = false;
-		prismlauncher = false;
-		slack = false;
-		ungoogled = false;
-		vesktop = false;
-		teamspeak = false;
-		vlc = false;
-		zed = false;
-		zen = true;
-	};
+  imports = [ cyber dev package zsh ];
 
-	dev = {
-		enable = true;
-		language = {
-			c-cpp = false;
-			rust = false;
-		};
-	};
+  application = {
+    cava = false;
+    cider = false;
+    element = false;
+    enable = false;
+    evince = false;
+    fonts = false;
+    imv = false;
+    kitty = true;
+    obs = false;
+    obsidian = false;
+    openvpn = false;
+    prismlauncher = false;
+    slack = false;
+    ungoogled = false;
+    vesktop = false;
+    teamspeak = false;
+    vlc = false;
+    zed = false;
+    zen = true;
+  };
 
-	cyber = {
-		tui = false;
-		gui = false;
-	};
+  dev = {
+    enable = true;
+    language = {
+      c-cpp = false;
+      rust = false;
+    };
+  };
 
-	catppuccin.accent = "mauve";
+  cyber = {
+    tui = false;
+    gui = false;
+  };
 
-	fonts.fontconfig = {
-		enable = true;
-		defaultFonts = {
-			serif = [
-				"FiraCode Nerd Font"
-			];
-			sansSerif = [
-				"FiraCode Nerd Font"
-			];
-			monospace = [
-				"FiraCode Nerd Font"
-			];
-			emoji = [
-				"FiraCode Nerd Font"
-			];
-		};
-	};
+  catppuccin.accent = "mauve";
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      serif = [ "FiraCode Nerd Font" ];
+      sansSerif = [ "FiraCode Nerd Font" ];
+      monospace = [ "FiraCode Nerd Font" ];
+      emoji = [ "FiraCode Nerd Font" ];
+    };
+  };
 }

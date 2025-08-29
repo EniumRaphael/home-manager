@@ -1,100 +1,80 @@
 { system, inputs, config, pkgs, lib, nixvim, zen-browser, ... }:
 
 let
-	cyber = import ../modules/cyber/global.nix {
-		inherit inputs config pkgs lib nixvim;
-	};
-	dev = import ../modules/dev/global.nix {
-		inherit inputs config pkgs lib nixvim;
-	};
-	package = import ../modules/packages/global.nix {
-		inherit system inputs config pkgs lib zen-browser;
-	};
-	window-manager = import ../modules/window-manager/global.nix {
-		inherit inputs config pkgs lib;
-	};
-	zsh = import ../modules/shell/zsh.nix {
-		inherit inputs config pkgs lib;
-	};
-in
-{
-	home = {
-		username = "root";
-		homeDirectory = "/root";
-		stateVersion = "24.05";
-		sessionVariables = {
-			EDITOR = "nvim";
-		};
-	};
+  cyber = import ../modules/cyber/global.nix {
+    inherit inputs config pkgs lib nixvim;
+  };
+  dev =
+    import ../modules/dev/global.nix { inherit inputs config pkgs lib nixvim; };
+  package = import ../modules/packages/global.nix {
+    inherit system inputs config pkgs lib zen-browser;
+  };
+  window-manager = import ../modules/window-manager/global.nix {
+    inherit inputs config pkgs lib;
+  };
+  zsh = import ../modules/shell/zsh.nix { inherit inputs config pkgs lib; };
+in {
+  home = {
+    username = "root";
+    homeDirectory = "/root";
+    stateVersion = "24.05";
+    sessionVariables = { EDITOR = "nvim"; };
+  };
 
-	nixpkgs.config.allowUnfree = true;
-	
-	imports = [
-		cyber
-		dev
-		package
-		window-manager
-		zsh
-	];
+  nixpkgs.config.allowUnfree = true;
 
-	application = {
-		enable = true;
-		cava = false;
-		cider = false;
-		element = false;
-		evince = false;
-		fonts = false;
-		imv = false;
-		kitty = false;
-		obs = false;
-		obsidian = false;
-		openvpn = true;
-		prismlauncher = false;
-		slack = false;
-		ungoogled = false;
-		teamspeak = false;
-		vesktop = false;
-		vlc = false;
-		zed = false;
-		zen = false;
-	};
+  imports = [ cyber dev package window-manager zsh ];
 
-	dev = {
-		enable = true;
-		language = {
-			c-cpp = true;
-			rust = true;
-		};
-	};
+  application = {
+    enable = true;
+    cava = false;
+    cider = false;
+    element = false;
+    evince = false;
+    fonts = false;
+    imv = false;
+    kitty = false;
+    obs = false;
+    obsidian = false;
+    openvpn = true;
+    prismlauncher = false;
+    slack = false;
+    ungoogled = false;
+    teamspeak = false;
+    vesktop = false;
+    vlc = false;
+    zed = false;
+    zen = false;
+  };
 
-	window-manager = {
-		enable = false;
-		hyprland = false;
-		hyprpaper = false;
-		mako = false;
-		rofi = false;
-		thunar = false;
-		waybar = false;
-	};
+  dev = {
+    enable = true;
+    language = {
+      c-cpp = true;
+      rust = true;
+    };
+  };
 
-	catppuccin.accent = "mauve";
+  window-manager = {
+    enable = false;
+    hyprland = false;
+    hyprpaper = false;
+    mako = false;
+    rofi = false;
+    thunar = false;
+    waybar = false;
+  };
 
-	fonts.fontconfig = {
-		enable = pkgs.stdenv.isLinux;
-		defaultFonts = {
-			serif = [
-				"FiraCode Nerd Font"
-			];
-			sansSerif = [
-				"FiraCode Nerd Font"
-			];
-			monospace = [
-				"FiraCode Nerd Font"
-			];
-			emoji = [
-				"FiraCode Nerd Font"
-			];
-		};
-	};
-	programs.home-manager.enable = true;
+  catppuccin.accent = "mauve";
+
+  fonts.fontconfig = {
+    enable = pkgs.stdenv.isLinux;
+    defaultFonts = {
+      serif = [ "FiraCode Nerd Font" ];
+      sansSerif = [ "FiraCode Nerd Font" ];
+      monospace = [ "FiraCode Nerd Font" ];
+      emoji = [ "FiraCode Nerd Font" ];
+    };
+  };
+  programs.home-manager.enable = true;
 }
