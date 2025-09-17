@@ -56,7 +56,7 @@ in {
         ignoreAllDups = true;
         ignoreDups = true;
         ignoreSpace = true;
-        path = ".zsh_history";
+        path = "${config.home.homeDirectory}/.zsh_history";
         save = 5000;
         share = true;
         size = 5000;
