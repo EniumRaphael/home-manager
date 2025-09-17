@@ -1,17 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ tmux ];
-
-  catppuccin.tmux = {
-    enable = true;
-    extraConfig = ''
-      set -g status-position top
-      set -g @catppuccin_flavour 'mocha'
-      set -g @catppuccin_status_fill "all"
-      set -g @catppuccin_status_connect_separator "yes"
-    '';
-  };
   programs.tmux = {
     enable = true;
     terminal = "screen-256color";
@@ -22,29 +11,57 @@
     baseIndex = 0;
     mouse = true;
     resizeAmount = 5;
-    plugins = with pkgs.tmuxPlugins; [ catppuccin vim-tmux-navigator ];
+    plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = catppuccin;
+        extraConfig = '' 
+          set -g @catppuccin_window_status_style "rounded"
+          set -g @catppuccin_window_tabs_enabled on
+          set -g @catppuccin_date_time "%H:%M"
+          set -g status-right-length 100
+          set -g status-left-length 100
+          set -g status-left ""
+          set -g status-right "#{E:@catppuccin_status_application}"
+          set -ag status-right "#{E:@catppuccin_status_session}"
+          set -ag status-right "#{E:@catppuccin_status_uptime}"
+        '';
+      }
+      {
+        plugin = vim-tmux-navigator;
+        extraConfig = ''
+          vim_pattern='(\S+/)?g?\.?(view|l?n?vim?x?|fzf)(diff)?(-wrapped)?'
+          is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+              | grep -iqE '^[^TXZ ]+ +''${vim_pattern}$'"
+          bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
+          bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
+          bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
+          bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
+          tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
+          if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
+              "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
+          if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
+              "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+          
+          bind-key -T copy-mode-vi 'C-h' select-pane -L
+          bind-key -T copy-mode-vi 'C-j' select-pane -D
+          bind-key -T copy-mode-vi 'C-k' select-pane -U
+          bind-key -T copy-mode-vi 'C-l' select-pane -R
+          bind-key -T copy-mode-vi 'C-\' select-pane -l
+        '';
+      }
+      tmux-fzf
+    ];
     extraConfig = ''
       unbind %
       bind \\ split-window -h
       unbind '"'
       bind | split-window -v
 
+      # Toggle pane zoom
+      bind -r m resize-pane -Z
+
+      # Catppuccin Theme
       set -g status-position top
-
-       # Pane resizing shortcuts
-       bind -n C-M-Up resize-pane -U 5
-       bind -n C-M-Down resize-pane -D 5
-       bind -n C-M-Left resize-pane -L 5
-       bind -n C-M-Right resize-pane -R 5
-
-       # Pane navigation shortcuts
-       bind -n C-k select-pane -U
-       bind -n C-j select-pane -D
-       bind -n C-h select-pane -L
-       bind -n C-l select-pane -R
-
-       # Toggle pane zoom
-       bind -r m resize-pane -Z
     '';
   };
 }
