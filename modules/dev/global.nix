@@ -46,6 +46,7 @@ in {
           man-pages-posix
           nixvim
           ripgrep
+          nixfmt
         ] ++ (if pkgs.stdenv.isLinux then [ valgrind ] else [ ]);
     };
     catppuccin.bat.enable = true;
