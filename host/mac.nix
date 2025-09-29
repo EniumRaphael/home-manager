@@ -41,7 +41,7 @@ in {
     vesktop = true;
     vlc = false;
     wireshark = true;
-    zed = true;
+    zed = false;
     zen = false;
   };
 
