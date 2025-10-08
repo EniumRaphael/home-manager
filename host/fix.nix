@@ -73,7 +73,11 @@ in {
     waybar = true;
   };
 
-  catppuccin.accent = "mauve";
+  catppuccin = {
+    enable = true;
+    accent = "mauve";
+    flavor = "mocha";
+  };
 
   fonts.fontconfig = {
     enable = pkgs.stdenv.isLinux;

@@ -26,6 +26,7 @@ in {
     accent = "mauve";
     flavor = "mocha";
   };
+
   nixpkgs.config.allowUnfree = true;
 
   imports = [ cyber dev package window-manager zsh ];
@@ -69,8 +70,6 @@ in {
     thunar = false;
     waybar = false;
   };
-
-  catppuccin.accent = "mauve";
 
   fonts.fontconfig = {
     enable = pkgs.stdenv.isLinux;

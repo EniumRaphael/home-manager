@@ -60,7 +60,11 @@ in {
     gui = false;
   };
 
-  catppuccin.accent = "mauve";
+  catppuccin = {
+    enable = true;
+    accent = "mauve";
+    flavor = "mocha";
+  };
 
   fonts.fontconfig = {
     enable = true;
