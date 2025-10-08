@@ -21,6 +21,11 @@ in {
     sessionVariables = { EDITOR = "nvim"; };
   };
 
+  catppuccin = {
+    enable = true;
+    accent = "mauve";
+    flavor = "mocha";
+  };
   nixpkgs.config.allowUnfree = true;
 
   imports = [ cyber dev package window-manager zsh ];
