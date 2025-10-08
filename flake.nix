@@ -13,93 +13,85 @@
     nixvim.url = "github:EniumRaphael/nixvim";
   };
 
-  outputs = inputs@{ catppuccin, home-manager, hyprland, nixpkgs, nixvim
-    , zen-browser, ... }: {
+  outputs =
+    inputs@{
+      catppuccin,
+      home-manager,
+      hyprland,
+      nixpkgs,
+      nixvim,
+      zen-browser,
+      ...
+    }:
+    let
+      mkHomeConfig =
+        {
+          name,
+          system,
+          modulePath,
+        }:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            catppuccin.homeModules.catppuccin
+            modulePath
+          ];
+          extraSpecialArgs = {
+            inherit system inputs;
+            nixvim = nixvim.packages.${system}.default;
+            zen-browser = if system == "aarch64-darwin" then null else zen-browser.packages.${system}.default;
+          };
+        };
+    in
+    {
       homeConfigurations = {
-        "hm-server" = let
+        "hm-server" = mkHomeConfig {
+          name = "hm-server";
           system = "x86_64-linux";
-          pkgs = nixpkgs.legacyPackages.${system};
-        in home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ catppuccin.homeModules.catppuccin ./host/server.nix ];
-          extraSpecialArgs = {
-            inherit system inputs;
-            nixvim = nixvim.packages.${system}.default;
-            zen-browser = zen-browser.packages.${system}.default;
-          };
+          modulePath = ./host/server.nix;
         };
-        "hm-fix" = let
+        "hm-fix" = mkHomeConfig {
+          name = "hm-fix";
           system = "x86_64-linux";
-          pkgs = nixpkgs.legacyPackages.${system};
-        in home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ catppuccin.homeModules.catppuccin ./host/fix.nix ];
-          extraSpecialArgs = {
-            inherit system inputs;
-            nixvim = nixvim.packages.${system}.default;
-            zen-browser = zen-browser.packages.${system}.default;
-          };
+          modulePath = ./host/fix.nix;
         };
-        "hm-root" = let
+        "hm-root" = mkHomeConfig {
+          name = "hm-root";
           system = "x86_64-linux";
-          pkgs = nixpkgs.legacyPackages.${system};
-        in home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ catppuccin.homeModules.catppuccin ./host/root.nix ];
-          extraSpecialArgs = {
-            inherit system inputs;
-            nixvim = nixvim.packages.${system}.default;
-            zen-browser = zen-browser.packages.${system}.default;
-          };
+          modulePath = ./host/root.nix;
         };
-        "hm-cluster" = let
+        "hm-cluster" = mkHomeConfig {
+          name = "hm-cluster";
           system = "x86_64-linux";
-          pkgs = nixpkgs.legacyPackages.${system};
-        in home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ catppuccin.homeModules.catppuccin ./host/cluster.nix ];
-          extraSpecialArgs = {
-            inherit system inputs;
-            nixvim = nixvim.packages.${system}.default;
-            zen-browser = zen-browser.packages.${system}.default;
-          };
+          modulePath = ./host/cluster.nix;
         };
-        "hm-mac" = let
+        "hm-mac" = mkHomeConfig {
+          name = "hm-mac";
           system = "aarch64-darwin";
-          pkgs = nixpkgs.legacyPackages.${system};
-        in home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ catppuccin.homeModules.catppuccin ./host/mac.nix ];
-          extraSpecialArgs = {
-            inherit system inputs;
-            nixvim = nixvim.packages.${system}.default;
-            zen-browser = null;
-          };
+          modulePath = ./host/mac.nix;
         };
-        "hm-asahi" = let
+        "hm-asahi" = mkHomeConfig {
+          name = "hm-asahi";
           system = "aarch64-linux";
-          pkgs = nixpkgs.legacyPackages.${system};
-        in home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ catppuccin.homeModules.catppuccin ./host/asahi.nix ];
-          extraSpecialArgs = {
-            inherit system inputs;
-            nixvim = nixvim.packages.${system}.default;
-            zen-browser = zen-browser.packages.${system}.default;
-          };
+          modulePath = ./host/asahi.nix;
         };
-        "hm-rasberry" = let
+        "hm-rasberry" = mkHomeConfig {
+          name = "hm-rasberry";
           system = "aarch64-linux";
-          pkgs = nixpkgs.legacyPackages.${system};
-        in home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ catppuccin.homeModules.catppuccin ./host/rasberry.nix ];
-          extraSpecialArgs = {
-            inherit system inputs;
-            nixvim = inputs.nixvim.packages.${system}.default;
-            zen-browser = inputs.zen-browser.packages.${system}.default;
-          };
+          modulePath = ./host/rasberry.nix;
         };
+      };
+      homeModules = {
+        server = ./host/server.nix;
+        fix = ./host/fix.nix;
+        root = ./host/root.nix;
+        cluster = ./host/cluster.nix;
+        mac = ./host/mac.nix;
+        asahi = ./host/asahi.nix;
+        rasberry = ./host/rasberry.nix;
       };
     };
 }
