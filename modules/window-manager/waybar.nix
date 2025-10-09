@@ -4,12 +4,6 @@ let cfg = config.window-manager.waybar;
 in {
   config = lib.mkIf cfg {
     home.packages = with pkgs; [ nerd-fonts.fira-code ];
-    catppuccin = {
-      waybar = {
-        enable = true;
-        mode = "createLink";
-      };
-    };
     programs.waybar = {
       enable = true;
       settings.mainBar = {
