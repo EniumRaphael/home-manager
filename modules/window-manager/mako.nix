@@ -1,9 +1,20 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let cfg = config.window-manager.mako;
-in {
+let
+  cfg = config.window-manager.mako;
+in
+{
   config = lib.mkIf cfg {
-    home.packages = with pkgs; [ libnotify nerd-fonts.fira-code ];
+    home.packages = with pkgs; [
+      libnotify
+      nerd-fonts.fira-code
+    ];
     catppuccin.mako.enable = true;
     services.mako = {
       enable = true;

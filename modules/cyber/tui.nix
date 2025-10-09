@@ -1,10 +1,19 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let cfg = config.cyber.tui;
-in {
+let
+  cfg = config.cyber.tui;
+in
+{
   config = lib.mkIf cfg {
     home = {
-      packages = with pkgs;
+      packages =
+        with pkgs;
         [
           dirb
           ffuf
@@ -19,7 +28,16 @@ in {
           nmap
           pwncat
           rustscan
-        ] ++ (if pkgs.stdenv.isLinux then [ hydra traceroute ] else [ ]);
+        ]
+        ++ (
+          if pkgs.stdenv.isLinux then
+            [
+              hydra
+              traceroute
+            ]
+          else
+            [ ]
+        );
     };
   };
 }

@@ -1,16 +1,72 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
-  hyprland = import ./hyprland.nix { inherit inputs config pkgs lib; };
-  hyprpaper = import ./hyprpaper.nix { inherit inputs config pkgs lib; };
-  mako = import ./mako.nix { inherit inputs config pkgs lib; };
-  rofi = import ./rofi.nix { inherit inputs config pkgs lib; };
-  thunar = import ./thunar.nix { inherit inputs config pkgs lib; };
-  waybar = import ./waybar.nix { inherit inputs config pkgs lib; };
+  hyprland = import ./hyprland.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
+  hyprpaper = import ./hyprpaper.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
+  mako = import ./mako.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
+  rofi = import ./rofi.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
+  thunar = import ./thunar.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
+  waybar = import ./waybar.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
 
   cfg = config.window-manager;
-in {
-  imports = [ hyprland hyprpaper mako rofi thunar waybar ];
+in
+{
+  imports = [
+    hyprland
+    hyprpaper
+    mako
+    rofi
+    thunar
+    waybar
+  ];
 
   options.window-manager = {
     enable = lib.mkOption {
@@ -50,23 +106,29 @@ in {
     };
   };
 
-  config = lib.mkIf (!config.window-manager.enable) {
-    window-manager = {
-      hyprland = false;
-      hyprpaper = false;
-      mako = false;
-      rofi = false;
-      waybar = false;
-      thunar = false;
-    };
-  } // lib.mkIf cfg.enable {
-    home.packages = with pkgs; [ grim pavucontrol slurp ];
+  config =
+    lib.mkIf (!config.window-manager.enable) {
+      window-manager = {
+        hyprland = false;
+        hyprpaper = false;
+        mako = false;
+        rofi = false;
+        waybar = false;
+        thunar = false;
+      };
+    }
+    // lib.mkIf cfg.enable {
+      home.packages = with pkgs; [
+        grim
+        pavucontrol
+        slurp
+      ];
 
-    catppuccin.accent = "mauve";
+      catppuccin.accent = "mauve";
 
-    xdg.userDirs = {
-      enable = true;
-      createDirectories = true;
+      xdg.userDirs = {
+        enable = true;
+        createDirectories = true;
+      };
     };
-  };
 }

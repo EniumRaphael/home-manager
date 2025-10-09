@@ -1,9 +1,21 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let cfg = config.window-manager.hyprland;
-in {
+let
+  cfg = config.window-manager.hyprland;
+in
+{
   config = lib.mkIf cfg {
-    home.packages = with pkgs; [ hyprcursor brightnessctl pamixer ];
+    home.packages = with pkgs; [
+      hyprcursor
+      brightnessctl
+      pamixer
+    ];
     catppuccin = {
       hyprland.enable = true;
       cursors = {
@@ -32,7 +44,9 @@ in {
       xwayland.enable = true;
       settings = {
         "$mod" = "SUPER";
-        decoration = { rounding = 8; };
+        decoration = {
+          rounding = 8;
+        };
         general = {
           gaps_in = 5;
           gaps_out = 20;
@@ -113,8 +127,10 @@ in {
           "$mod SHIFT, 9, movetoworkspace, 9"
           "$mod SHIFT, 0, movetoworkspace, 10"
         ];
-        bindm =
-          [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
+        bindm = [
+          "$mod, mouse:272, movewindow"
+          "$mod, mouse:273, resizewindow"
+        ];
         binde = [
           ",XF86AudioLowerVolume, exec, pamixer -d 5"
           ",XF86AudioRaiseVolume, exec, pamixer -i 5"

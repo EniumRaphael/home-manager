@@ -1,13 +1,30 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   starship = import ./starship.nix { inherit config pkgs; };
   tmux = import ./tmux.nix { inherit config pkgs; };
-in {
-  imports = [ starship tmux ];
+in
+{
+  imports = [
+    starship
+    tmux
+  ];
 
   home = {
-    packages = with pkgs; [ cowsay direnv eza gnupg lolcat wget zoxide ];
+    packages = with pkgs; [
+      cowsay
+      direnv
+      eza
+      gnupg
+      lolcat
+      wget
+      zoxide
+    ];
     # file.".ssh/allowed_signers".text =
     #   "* ${builtins.readFile ~/.ssh/id_ed25519.pub}";
   };
@@ -17,12 +34,18 @@ in {
       enable = true;
       enableZshIntegration = true;
     };
-    fastfetch = { enable = true; };
-    zoxide = { enable = true; };
+    fastfetch = {
+      enable = true;
+    };
+    zoxide = {
+      enable = true;
+    };
     direnv = {
       enable = true;
       silent = true;
-      nix-direnv = { enable = true; };
+      nix-direnv = {
+        enable = true;
+      };
     };
     bat = {
       enable = true;
@@ -32,8 +55,15 @@ in {
       enable = true;
       userName = "Raphael";
       userEmail = "rparodi@student.42.fr";
-      ignores =
-        [ ".DS_Store" "*.swp" "*.swo" "*.swm" "*.swu" "node_modules/" ".env" ];
+      ignores = [
+        ".DS_Store"
+        "*.swp"
+        "*.swo"
+        "*.swm"
+        "*.swu"
+        "node_modules/"
+        ".env"
+      ];
       extraConfig = {
         commit.gpgsign = true;
         gpg.format = "ssh";
@@ -47,7 +77,9 @@ in {
         autoload -U compinit
         compinit
       '';
-      autosuggestion = { enable = true; };
+      autosuggestion = {
+        enable = true;
+      };
       history = {
         append = true;
         expireDuplicatesFirst = false;
@@ -63,7 +95,9 @@ in {
       };
       enableCompletion = true;
       autocd = true;
-      historySubstringSearch = { enable = true; };
+      historySubstringSearch = {
+        enable = true;
+      };
       shellAliases = {
         "cls" = "clear";
         "vim" = "nvim";
@@ -141,13 +175,10 @@ in {
         eval "$(${pkgs.starship}/bin/starship init zsh)"
       '';
       sessionVariables = {
-        PATH =
-          "$HOME/.nix-profile/bin:$HOME/.local/bin:/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver:$PATH";
-        MANPAGER =
-          "/bin/sh -c 'col -bx | bat -l man --style=plain --paging=always'";
+        PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver:$PATH";
+        MANPAGER = "/bin/sh -c 'col -bx | bat -l man --style=plain --paging=always'";
         MANROFFOPT = "-c";
-        FZF_CTRL_R_OPTS =
-          "--layout reverse --bind='ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort' --header='Ctrl-Y pour copier'";
+        FZF_CTRL_R_OPTS = "--layout reverse --bind='ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort' --header='Ctrl-Y pour copier'";
       };
     };
   };

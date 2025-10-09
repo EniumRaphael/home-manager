@@ -1,9 +1,16 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.application.kitty;
   font_size = if pkgs.stdenv.isDarwin then 14 else 12;
-in {
+in
+{
   config = lib.mkIf cfg {
     home.packages = with pkgs; [ nerd-fonts.fira-code ];
     programs.kitty = {

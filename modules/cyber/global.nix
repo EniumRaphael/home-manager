@@ -1,11 +1,35 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
-  tui = import ./tui.nix { inherit inputs config pkgs lib; };
-  gui = import ./gui.nix { inherit inputs config pkgs lib; };
+  tui = import ./tui.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
+  gui = import ./gui.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
   cfg = config.cyber;
-in {
-  imports = [ gui tui ];
+in
+{
+  imports = [
+    gui
+    tui
+  ];
 
   options.cyber = {
     enable = lib.mkOption {

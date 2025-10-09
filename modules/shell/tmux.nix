@@ -14,7 +14,7 @@
     plugins = with pkgs.tmuxPlugins; [
       {
         plugin = catppuccin;
-        extraConfig = '' 
+        extraConfig = ''
           set -g @catppuccin_window_status_style "rounded"
           set -g @catppuccin_window_tabs_enabled on
           set -g @catppuccin_date_time "%H:%M"
@@ -41,7 +41,7 @@
               "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
           if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
               "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
-          
+
           bind-key -T copy-mode-vi 'C-h' select-pane -L
           bind-key -T copy-mode-vi 'C-j' select-pane -D
           bind-key -T copy-mode-vi 'C-k' select-pane -U

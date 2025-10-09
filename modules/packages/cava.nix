@@ -1,7 +1,15 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let cfg = config.application.kitty;
-in {
+let
+  cfg = config.application.kitty;
+in
+{
   config = lib.mkIf cfg {
     programs.cava = {
       enable = true;

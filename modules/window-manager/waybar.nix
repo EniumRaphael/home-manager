@@ -1,7 +1,15 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let cfg = config.window-manager.waybar;
-in {
+let
+  cfg = config.window-manager.waybar;
+in
+{
   config = lib.mkIf cfg {
     home.packages = with pkgs; [ nerd-fonts.fira-code ];
     programs.waybar = {
@@ -10,11 +18,27 @@ in {
         layer = "top";
         position = "top";
         height = 34;
-        output = [ "eDP-1" "HDMI-A-1" ];
-        modules-left = [ "custom/logo" "hyprland/workspaces" ];
-        modules-center = [ "clock" "custom/spacer" "cava" ];
-        modules-right = [ "pulseaudio" "battery" "custom/power" ];
-        "custom/spacer" = { "format" = " | "; };
+        output = [
+          "eDP-1"
+          "HDMI-A-1"
+        ];
+        modules-left = [
+          "custom/logo"
+          "hyprland/workspaces"
+        ];
+        modules-center = [
+          "clock"
+          "custom/spacer"
+          "cava"
+        ];
+        modules-right = [
+          "pulseaudio"
+          "battery"
+          "custom/power"
+        ];
+        "custom/spacer" = {
+          "format" = " | ";
+        };
         "custom/power" = {
           "format" = "󰤆";
           "tooltip" = false;
@@ -42,7 +66,11 @@ in {
           "format-muted" = "󰝟";
           "format-icons" = {
             "headphone" = "";
-            "default" = [ "󰖀" "󰕾" "" ];
+            "default" = [
+              "󰖀"
+              "󰕾"
+              ""
+            ];
           };
           "on-click" = "pavucontrol";
           "on-click-right" = "pamixer -t";
@@ -64,14 +92,47 @@ in {
           "waves" = true;
           "noise_reduction" = 0.42;
           "input_delay" = 2;
-          "format-icons" = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
-          "actions" = { "on-click-right" = "mode"; };
+          "format-icons" = [
+            "▁"
+            "▂"
+            "▃"
+            "▄"
+            "▅"
+            "▆"
+            "▇"
+            "█"
+          ];
+          "actions" = {
+            "on-click-right" = "mode";
+          };
         };
         "battery" = {
           "format" = "{capacity}% {icon}";
           "format-icons" = {
-            "charging" = [ "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅" ];
-            "default" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+            "charging" = [
+              "󰢜"
+              "󰂆"
+              "󰂇"
+              "󰂈"
+              "󰢝"
+              "󰂉"
+              "󰢞"
+              "󰂊"
+              "󰂋"
+              "󰂅"
+            ];
+            "default" = [
+              "󰁺"
+              "󰁻"
+              "󰁼"
+              "󰁽"
+              "󰁾"
+              "󰁿"
+              "󰂀"
+              "󰂁"
+              "󰂂"
+              "󰁹"
+            ];
           };
           "format-full" = "Charged ";
           "interval" = 5;

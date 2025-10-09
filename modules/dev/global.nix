@@ -1,11 +1,36 @@
-{ inputs, config, pkgs, lib, nixvim, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  nixvim,
+  ...
+}:
 
 let
-  c-cpp = import ./c-cpp.nix { inherit inputs config pkgs lib; };
-  rust = import ./rust.nix { inherit inputs config pkgs lib; };
+  c-cpp = import ./c-cpp.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
+  rust = import ./rust.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
   cfg = config.dev;
-in {
-  imports = [ c-cpp rust ];
+in
+{
+  imports = [
+    c-cpp
+    rust
+  ];
 
   options.dev = {
     enable = lib.mkOption {
@@ -31,7 +56,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     home = {
-      packages = with pkgs;
+      packages =
+        with pkgs;
         [
           fd
           direnv
@@ -47,7 +73,8 @@ in {
           nixvim
           ripgrep
           nixfmt
-        ] ++ (if pkgs.stdenv.isLinux then [ valgrind ] else [ ]);
+        ]
+        ++ (if pkgs.stdenv.isLinux then [ valgrind ] else [ ]);
     };
     catppuccin.bat.enable = true;
     programs = {

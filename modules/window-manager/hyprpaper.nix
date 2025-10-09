@@ -1,13 +1,19 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.window-manager.hyprpaper;
   image = pkgs.fetchurl {
-    url =
-      "https://github.com/zhichaoh/catppuccin-wallpapers/blob/main/misc/cat_bunnies.png?raw=true";
+    url = "https://github.com/zhichaoh/catppuccin-wallpapers/blob/main/misc/cat_bunnies.png?raw=true";
     sha256 = "167ndqbq4mmm486rszvablyykpckaz68djhagskwc5nf187263ia";
   };
-in {
+in
+{
   config = lib.mkIf cfg {
     services.hyprpaper = {
       enable = true;

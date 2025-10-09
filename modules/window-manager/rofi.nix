@@ -1,7 +1,15 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let cfg = config.window-manager.rofi;
-in {
+let
+  cfg = config.window-manager.rofi;
+in
+{
   config = lib.mkIf cfg {
     catppuccin.rofi.enable = true;
     programs.rofi = {
