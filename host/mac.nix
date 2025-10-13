@@ -111,10 +111,10 @@ in
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      serif = [ "FiraCode Nerd Font" ];
-      sansSerif = [ "FiraCode Nerd Font" ];
-      monospace = [ "FiraCode Nerd Font" ];
-      emoji = [ "FiraCode Nerd Font" ];
+      serif = [ "FiraCode" ];
+      sansSerif = [ "FiraCode" ];
+      monospace = [ "FiraCode" ];
+      emoji = [ "FiraCode" ];
     };
   };
   programs.home-manager.enable = true;
