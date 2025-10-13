@@ -7,7 +7,7 @@
 }:
 
 let
-  cfg = config.application.kitty;
+  cfg = config.application.cava;
 in
 {
   config = lib.mkIf cfg {
@@ -19,10 +19,6 @@ in
           bars = 7;
         };
         smoothing.noise_reduction = 60;
-        color = {
-          background = "'#24273a'";
-          foreground = "'#c6a0f6'";
-        };
       };
     };
   };
