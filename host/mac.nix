@@ -67,7 +67,7 @@ in
   ];
 
   application = {
-    cava = true;
+    cava = false;
     cider = false;
     element = true;
     enable = true;
@@ -78,7 +78,7 @@ in
     obs = false;
     obsidian = false;
     openvpn = true;
-    prismlauncher = true;
+    prismlauncher = false;
     slack = true;
     ungoogled = false;
     teamspeak = false;
