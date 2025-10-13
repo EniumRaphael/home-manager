@@ -12,12 +12,12 @@ let
 in
 {
   config = lib.mkIf cfg {
-    home.packages = with pkgs; [ nerd-fonts.fira-code ];
+    home.packages = with pkgs; [ fira-code ];
     programs.kitty = {
       enable = true;
       font = {
-        name = "FiraCode Nerd Font";
-        package = pkgs.nerd-fonts.fira-code;
+        name = "Fira Code";
+        package = pkgs.fira-code;
         size = font_size;
       };
       settings = {
