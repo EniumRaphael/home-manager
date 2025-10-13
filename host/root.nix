@@ -124,10 +124,10 @@ in
   fonts.fontconfig = {
     enable = pkgs.stdenv.isLinux;
     defaultFonts = {
-      serif = [ "FiraCode Nerd Font" ];
-      sansSerif = [ "FiraCode Nerd Font" ];
-      monospace = [ "FiraCode Nerd Font" ];
-      emoji = [ "FiraCode Nerd Font" ];
+      serif = [ "Fira Code" ];
+      sansSerif = [ "Fira Code" ];
+      monospace = [ "Fira Code" ];
+      emoji = [ "Fira Code" ];
     };
   };
   programs.home-manager.enable = true;
