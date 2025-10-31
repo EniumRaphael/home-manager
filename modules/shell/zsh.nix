@@ -25,8 +25,6 @@ in
       wget
       zoxide
     ];
-    # file.".ssh/allowed_signers".text =
-    #   "* ${builtins.readFile ~/.ssh/id_ed25519.pub}";
   };
 
   programs = {
@@ -53,8 +51,18 @@ in
     };
     git = {
       enable = true;
-      userName = "Raphael";
-      userEmail = "rparodi@student.42.fr";
+      settings = {
+        user = {
+          name = "Raphael";
+          email = "rparodi@student.42.fr";
+          signingkey = "~/.ssh/id_ed25519.pub";
+        };
+        gpg = {
+          format = "ssh";
+          ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+        };
+        commit.gpgsign = true;
+      };
       ignores = [
         ".DS_Store"
         "*.swp"
@@ -64,12 +72,6 @@ in
         "node_modules/"
         ".env"
       ];
-      extraConfig = {
-        commit.gpgsign = true;
-        gpg.format = "ssh";
-        gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-        user.signingkey = "~/.ssh/id_ed25519.pub";
-      };
     };
     zsh = {
       enable = true;
