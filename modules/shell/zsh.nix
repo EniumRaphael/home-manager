@@ -137,6 +137,9 @@ in
         [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ] && source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
         [ -f /etc/zshenv ] && source /etc/zshenv
         [ -d ${pkgs.fzf} ] && source ${pkgs.fzf}/share/fzf/completion.zsh && source ${pkgs.fzf}/share/fzf/key-bindings.zsh
+        if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+          eval "$(ssh-agent -s)"
+        fi
       '';
       initContent = lib.mkMerge [
         (lib.mkAfter ''
