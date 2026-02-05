@@ -165,7 +165,7 @@ in
       ++ (if cfg.slack then [ slack ] else [ ])
       ++ (if cfg.ungoogled then [ ungoogled-chromium ] else [ ])
       ++ (if cfg.vesktop then [ vesktop ] else [ ])
-      ++ (if cfg.teamspeak then [ teamspeak_client ] else [ ])
+      ++ (if cfg.teamspeak then [ teamspeak3 ] else [ ])
       ++ (if cfg.vlc then [ vlc ] else [ ])
       ++ (if cfg.evince then [ evince ] else [ ])
       ++ (if cfg.imv then [ imv ] else [ ])
