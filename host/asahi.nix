@@ -91,7 +91,7 @@ in
     slack = false;
     ungoogled = true;
     vesktop = true;
-    teamspeak = true;
+    teamspeak = false;
     vlc = true;
     zed = true;
     zen = true;
