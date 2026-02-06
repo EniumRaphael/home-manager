@@ -13,11 +13,11 @@ in
   config = lib.mkIf cfg {
     home.packages = with pkgs; [
       gvfs
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      xfce.thunar-volman
-      xfce.tumbler
-      xfce.xfconf
+      thunar
+      thunar-archive-plugin
+      thunar-volman
+      tumbler
+      xfconf
     ];
   };
 }

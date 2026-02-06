@@ -82,7 +82,7 @@ in
         bind = [
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
           "$mod, w, exec, zen"
-          "$mod, e, exec, ${pkgs.xfce.thunar}/bin/thunar"
+          "$mod, e, exec, ${pkgs.thunar}/bin/thunar"
           "$mod, b, exec, pkill Hyprland"
           "$mod, SPACE, exec, rofi -show drun"
           "$mod, q, killactive"
