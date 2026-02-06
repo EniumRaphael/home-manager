@@ -18,8 +18,10 @@ in
     catppuccin.mako.enable = true;
     services.mako = {
       enable = true;
-      font = "Fira Code 12";
-      defaultTimeout = 5000;
+      settings = {
+        font = "Fira Code 12";
+        defaultTimeout = 5000;
+      };
     };
   };
 }
