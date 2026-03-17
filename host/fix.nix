@@ -88,9 +88,9 @@ in
     obs = true;
     obsidian = true;
     openvpn = true;
-    prismlauncher = true;
+    prismlauncher = false;
     slack = true;
-    ungoogled = true;
+    ungoogled = false;
     vesktop = true;
     vlc = true;
     teamspeak = true;
