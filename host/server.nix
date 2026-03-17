@@ -71,8 +71,6 @@ in
     flavor = "mocha";
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   imports = [
     cyber
     dev

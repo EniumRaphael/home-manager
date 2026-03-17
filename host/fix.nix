@@ -66,8 +66,6 @@ in
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   imports = [
     cyber
     dev
