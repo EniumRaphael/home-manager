@@ -9,8 +9,11 @@
     };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     hyprland.url = "github:hyprwm/Hyprland";
+    nixvim = {
+      url = "github:EniumRaphael/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixvim.url = "github:EniumRaphael/nixvim";
   };
 
   outputs =
