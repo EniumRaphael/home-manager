@@ -139,8 +139,8 @@ in
           ",XF86MonBrightnessUp, exec, brightnessctl set 10%+ "
         ];
         windowrule = [
-          "float,class:^(Rofi)$"
-          "float,title:^(Picture-in-Picture)$"
+          "float,class:^(Rofi)$,1"
+          "float,title:^(Picture-in-Picture)$,1"
           "opacity 0.9 0.6 override ^(Rofi)$"
           "opacity 0.9 0.7 override ^(Brave-browser(-beta|-dev)?)$"
           "opacity 0.9 0.7 override ^(Zen|Firefox|org.mozilla.firefox|Firefox-esr)$"
@@ -175,13 +175,9 @@ in
           "opacity 0.9 0.7 override ^(Whatsapp-for-linux)$"
           "opacity 0.9 0.7 override ^(Ferdium)$"
           "opacity 0.95 0.95 override title:^(Picture-in-Picture)$"
-          "pin,title:^(Rofi)$"
-          "pin,title:^(Picture-in-Picture)$"
-          "keepaspectratio,title:^(Picture-in-Picture)$"
-          "workspace 7,^(Slack)$"
-          "workspace 8,^(Element)$"
-          "workspace 9,^(Discord|WebCord|Vesktop)$"
-          "workspace 10,^(Cider)$"
+          "pin,title:^(Rofi)$,1"
+          "pin,title:^(Picture-in-Picture)$,1"
+          "keepaspectratio,title:^(Picture-in-Picture)$,1"
         ];
 
       };
