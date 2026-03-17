@@ -41,6 +41,8 @@ in
     };
     wayland.windowManager.hyprland = {
       enable = true;
+      withUWSM = true;
+      systemd.enable = false;
       xwayland.enable = true;
       settings = {
         "$mod" = "SUPER";

@@ -69,7 +69,7 @@ in
   application = {
     cava = false;
     cider = false;
-    element = true;
+    element = false;
     enable = true;
     evince = false;
     fonts = true;
@@ -82,7 +82,7 @@ in
     slack = true;
     ungoogled = false;
     teamspeak = false;
-    vesktop = true;
+    vesktop = false;
     vlc = false;
     wireshark = true;
     zed = false;
