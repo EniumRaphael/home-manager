@@ -41,7 +41,6 @@ in
     };
     wayland.windowManager.hyprland = {
       enable = true;
-      withUWSM = true;
       systemd.enable = false;
       xwayland.enable = true;
       settings = {
@@ -139,7 +138,7 @@ in
           ",XF86MonBrightnessDown, exec, brightnessctl set 10%-"
           ",XF86MonBrightnessUp, exec, brightnessctl set 10%+ "
         ];
-        windowrulev2 = [
+        windowrule = [
           "float, class:^([Rr]ofi)$"
           "float, title:^(Picture-in-Picture)$"
 
