@@ -77,25 +77,25 @@ in
   ];
 
   application = {
-    cava = false;
+    cava = true;
     cider = false;
     element = false;
-    enable = false;
+    enable = true;
     evince = false;
     fonts = false;
     imv = false;
-    kitty = false;
+    kitty = true;
     obs = false;
     obsidian = false;
     openvpn = false;
     prismlauncher = false;
     slack = false;
     ungoogled = false;
-    vesktop = false;
+    vesktop = true;
     vlc = false;
     teamspeak = false;
-    zed = false;
-    zen = false;
+    zed = true;
+    zen = true;
   };
 
   cyber = {
