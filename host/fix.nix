@@ -77,30 +77,30 @@ in
   ];
 
   application = {
-    cava = true;
-    cider = true;
-    element = true;
-    enable = true;
-    evince = true;
-    fonts = true;
-    imv = true;
-    kitty = true;
-    obs = true;
-    obsidian = true;
-    openvpn = true;
+    cava = false;
+    cider = false;
+    element = false;
+    enable = false;
+    evince = false;
+    fonts = false;
+    imv = false;
+    kitty = false;
+    obs = false;
+    obsidian = false;
+    openvpn = false;
     prismlauncher = false;
-    slack = true;
+    slack = false;
     ungoogled = false;
-    vesktop = true;
-    vlc = true;
-    teamspeak = true;
-    zed = true;
-    zen = true;
+    vesktop = false;
+    vlc = false;
+    teamspeak = false;
+    zed = false;
+    zen = false;
   };
 
   cyber = {
-    tui = true;
-    gui = true;
+    tui = false;
+    gui = false;
   };
 
   dev = {
