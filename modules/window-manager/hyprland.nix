@@ -183,7 +183,7 @@ in
           "opacity 0.94 0.86, match:class ^(Cider)$"
           "opacity 0.94 0.86, match:class ^(Slack)$"
           "opacity 0.94 0.86, match:class ^(Revolt-desktop)$"
-          "opacity 0.94 0.86, match:class ^(Discord|vesktop)$"
+          "opacity 0.94 0.86, match:class ^(vesktop)$"
           "opacity 0.9 0.8, match:class ^(Element)$"
           "opacity 0.9 0.8, match:class ^(im.riot.Riot)$"
           "opacity 0.94 0.86, match:class ^(gnome-disks|evince|wihotspot(-gui)?|org.gnome.baobab)$"
