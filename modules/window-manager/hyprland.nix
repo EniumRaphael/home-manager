@@ -87,6 +87,8 @@ in
         exec-once = [
           "waybar"
           ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
+          "cider-2"
+          "hyprpaper"
           "vesktop"
           "pw-metadata -n settings 0 clock.force-quantum 512"
         ];
@@ -194,6 +196,9 @@ in
           "opacity 0.9 0.7, match:class ^(Whatsapp-for-linux)$"
           "opacity 0.9 0.7, match:class ^(Ferdium)$"
           "opacity 0.95 0.95, match:title ^(Picture-in-Picture)$"
+
+          "workspace 9, match:class ^(vesktop)$"
+          "workspace 10, match:class ^(Cider)$"
         ];
 
       };
