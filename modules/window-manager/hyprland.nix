@@ -94,7 +94,7 @@ in
         ];
         bind = [
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
-          "$mod, w, exec, zen"
+          "$mod, w, exec, zen-beta"
           "$mod, e, exec, ${pkgs.thunar}/bin/thunar"
           "$mod, b, exec, pkill Hyprland"
           "$mod, SPACE, exec, rofi -show drun"
