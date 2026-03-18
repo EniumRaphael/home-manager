@@ -77,7 +77,7 @@ in
   application = {
     cava = true;
     cider = true;
-    element = false;
+    element = true;
     enable = true;
     evince = true;
     fonts = true;
@@ -86,9 +86,9 @@ in
     obs = true;
     obsidian = true;
     openvpn = true;
-    prismlauncher = false;
-    slack = false;
-    ungoogled = false;
+    prismlauncher = true;
+    slack = true;
+    ungoogled = true;
     vesktop = true;
     vlc = true;
     teamspeak = true;
@@ -97,8 +97,8 @@ in
   };
 
   cyber = {
-    tui = false;
-    gui = false;
+    tui = true;
+    gui = true;
   };
 
   dev = {
