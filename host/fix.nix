@@ -112,6 +112,7 @@ in
   window-manager = {
     enable = true;
     hyprland = true;
+    hyprlock = true;
     hyprpaper = true;
     mako = true;
     rofi = true;
