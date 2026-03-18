@@ -19,7 +19,7 @@ in
         position = "top";
         height = 34;
         output = [
-          "eDP-1"
+          "DP-1"
           "HDMI-A-1"
         ];
         modules-left = [
