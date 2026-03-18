@@ -154,11 +154,11 @@ in
           "3, monitor:HDMI-A-1"
           "4, monitor:HDMI-A-1"
           "5, monitor:HDMI-A-1"
-          "6, monitor:DP-1"
-          "7, monitor:DP-1"
-          "8, monitor:DP-1"
-          "9, monitor:DP-1"
-          "10, monitor:DP-1"
+          "6, monitor:DP-2"
+          "7, monitor:DP-2"
+          "8, monitor:DP-2"
+          "9, monitor:DP-2"
+          "20, monitor:DP-1"
         ];
         windowrule = [
           "opacity 0.9 0.6 override ^(Rofi)$"
