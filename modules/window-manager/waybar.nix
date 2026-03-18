@@ -52,7 +52,7 @@ in
         "clock" = {
           tooltip-format = "{calendar}";
           format-alt = "  {:%a, %d %b %Y}";
-          format = "  {:%H:%M}";
+          format = "⏰ {:%H:%M}";
         };
         "hyprland/workspaces" = {
           "on-click" = "activate";
