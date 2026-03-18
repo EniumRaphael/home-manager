@@ -79,13 +79,13 @@ in
     cider = false;
     element = false;
     enable = true;
-    evince = false;
-    fonts = false;
-    imv = false;
+    evince = true;
+    fonts = true;
+    imv = true;
     kitty = true;
     obs = false;
     obsidian = false;
-    openvpn = false;
+    openvpn = true;
     prismlauncher = false;
     slack = false;
     ungoogled = false;
