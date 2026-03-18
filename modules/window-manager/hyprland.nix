@@ -62,6 +62,11 @@ in
           resize_on_border = false;
           allow_tearing = false;
         };
+        monitor = [
+          "HDMI-A-1, 1920x1080, 0x0, 1"
+          "DP-2, 1920x1080, -1080x-840, 1, transform, 1"
+          ", prefered, auto, 1"
+        ];
         env = [
           "CLUTTER_BACKEND,wayland"
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
