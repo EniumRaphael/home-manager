@@ -47,6 +47,14 @@ let
       lib
       ;
   };
+  hyprlock = import ./hyprlock.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
   waybar = import ./waybar.nix {
     inherit
       inputs
@@ -65,6 +73,7 @@ in
     mako
     rofi
     thunar
+    hyprlock
     waybar
   ];
 
@@ -75,6 +84,11 @@ in
       description = "Enable the configuration of the window-manager";
     };
     hyprland = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable the Hyprland configuration";
+    };
+    hyprlock = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = "Enable the Hyprland configuration";
