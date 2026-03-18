@@ -76,22 +76,22 @@ in
 
   application = {
     cava = true;
-    cider = false;
+    cider = true;
     element = false;
     enable = true;
     evince = true;
     fonts = true;
     imv = true;
     kitty = true;
-    obs = false;
-    obsidian = false;
+    obs = true;
+    obsidian = true;
     openvpn = true;
     prismlauncher = false;
     slack = false;
     ungoogled = false;
     vesktop = true;
-    vlc = false;
-    teamspeak = false;
+    vlc = true;
+    teamspeak = true;
     zed = true;
     zen = true;
   };
