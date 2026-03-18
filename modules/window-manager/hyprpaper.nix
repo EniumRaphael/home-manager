@@ -28,9 +28,6 @@ in
       };
     };
     home = {
-      packages = with pkgs; [
-        fetchurl
-      ];
       file."Pictures/wallpaper.png".source = image;
     };
   };
