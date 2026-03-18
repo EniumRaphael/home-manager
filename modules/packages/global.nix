@@ -139,7 +139,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages =
       with pkgs;
-      (if cfg.cider then [ cider ] else [ ])
+      (if cfg.cider then [ cider-2 ] else [ ])
       ++ (
         if cfg.prismlauncher then
           [
