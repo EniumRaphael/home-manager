@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    hyprland.nix                                       :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/03/18 00:41:41 by rparodi           #+#    #+#              #
-#    Updated: 2026/03/18 11:00:14 by rparodi          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 {
   inputs,
   config,
@@ -159,6 +147,18 @@ in
           ",XF86AudioRaiseVolume, exec, pamixer -i 5"
           ",XF86MonBrightnessDown, exec, brightnessctl set 10%-"
           ",XF86MonBrightnessUp, exec, brightnessctl set 10%+ "
+        ];
+        workspace = [
+          "1, monitor:HDMI-A-1"
+          "2, monitor:HDMI-A-1"
+          "3, monitor:HDMI-A-1"
+          "4, monitor:HDMI-A-1"
+          "5, monitor:HDMI-A-1"
+          "6, monitor:DP-1"
+          "7, monitor:DP-1"
+          "8, monitor:DP-1"
+          "9, monitor:DP-1"
+          "10, monitor:DP-1"
         ];
         windowrule = [
           "opacity 0.9 0.6 override ^(Rofi)$"
