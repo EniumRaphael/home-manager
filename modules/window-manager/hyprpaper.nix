@@ -9,26 +9,36 @@
 let
   cfg = config.window-manager.hyprpaper;
   image = pkgs.fetchurl {
-    url = "https://github.com/zhichaoh/catppuccin-wallpapers/blob/main/misc/cat_bunnies.png?raw=true";
-    sha256 = "167ndqbq4mmm486rszvablyykpckaz68djhagskwc5nf187263ia";
+    url = "https://www.baltana.com/files/wallpapers-20/Cyberpunk-Pixel-Art-Wallpaper-HD-49317.jpg";
+    sha256 = "sha256-dv5jHAfqJjvl6an5Xl8lMr7xlpvM5F8OrDMRYy/wOSU=";
   };
+  wallpaperPath = "/home/${config.home.username}/Pictures/wallpaper.png";
 in
 {
   config = lib.mkIf cfg {
+    home.packages = with pkgs; [
+      hyprpaper
+    ];
+    home.file."Pictures/wallpaper.png".source = image;
     services.hyprpaper = {
       enable = true;
       settings = {
-        ipc = "on";
+        ipc = true;
         splash = false;
-        splash_offset = 2.0;
 
-        preload = [ "~/Pictures/wallpaper.png" ];
+        preload = [ wallpaperPath ];
 
-        wallpaper = [ ",~/Pictures/wallpaper.png" ];
+        wallpaper = [
+          {
+            path = "/home/${config.home.username}/Pictures/wallpaper.png";
+            monitor = "DP-2";
+          }
+          {
+            path = "/home/${config.home.username}/Pictures/wallpaper.png";
+            monitor = "HDMI-A-1";
+          }
+        ];
       };
-    };
-    home = {
-      file."Pictures/wallpaper.png".source = image;
     };
   };
 }
