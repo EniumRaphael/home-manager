@@ -173,6 +173,11 @@ in
           bindkey '^[[1;3C' end-of-line
           bindkey '^H' backward-kill-word
           bindkey -r '^['
+
+          autoload -Uz zmv
+          autoload -U edit-command-line
+          zle -N edit-command-line
+          bindkey '^xe' edit-command-line
         '')
       ];
       loginExtra = ''
@@ -183,6 +188,7 @@ in
         PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver:$PATH";
         MANPAGER = "/bin/sh -c 'col -bx | bat -l man --style=plain --paging=always'";
         MANROFFOPT = "-c";
+        EDITOR = "nvim";
         FZF_CTRL_R_OPTS = "--layout reverse --bind='ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort' --header='Ctrl-Y pour copier'";
       };
     };
