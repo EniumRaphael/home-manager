@@ -110,7 +110,7 @@ in
     hyprland = false;
     hyprpaper = false;
     mako = false;
-    rofi = false;
+    vicinae = false;
     thunar = false;
     waybar = false;
   };

@@ -115,7 +115,7 @@ in
     hyprland = true;
     hyprpaper = true;
     mako = true;
-    rofi = true;
+    vicinae = true;
     thunar = true;
     waybar = true;
   };
