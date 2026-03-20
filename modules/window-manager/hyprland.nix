@@ -15,6 +15,7 @@ in
       hyprcursor
       brightnessctl
       pamixer
+      wl-clipboard
     ];
     catppuccin = {
       hyprland.enable = true;
@@ -35,8 +36,8 @@ in
         "image/webp" = [ "imv.desktop" ];
         "text/plain" = [ "dev.zed.Zed.desktop" ];
         "application/pdf" = [ "org.gnome.Evince.desktop" ];
-        "x-scheme-handler/http" = [ "zen.desktop" ];
-        "x-scheme-handler/https" = [ "zen.desktop" ];
+        "x-scheme-handler/http" = [ "zen-beta.desktop" ];
+        "x-scheme-handler/https" = [ "zen-beta.desktop" ];
       };
     };
     wayland.windowManager.hyprland = {
@@ -96,12 +97,13 @@ in
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
           "$mod, w, exec, zen-beta"
           "$mod, e, exec, ${pkgs.thunar}/bin/thunar"
-          "$mod, b, exec, pkill Hyprland"
-          "$mod, SPACE, exec, rofi -show drun"
+          "$mod, b, exec, vicinae toggle -q 'power system'"
+          "ALT, SPACE, exec, ${pkgs.vicinae}/bin/vicinae toggle"
           "$mod, q, killactive"
           "ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
           "$mod SHIFT, ESCAPE, exit,"
           "$mod, V, togglefloating,"
+          "$mod, F, fullscreen"
           "$mod, R, exec, $menu"
           "$mod, P, togglesplit"
           "$mod, h, movefocus, l"
@@ -160,9 +162,11 @@ in
           "8, monitor:DP-2"
           "9, monitor:DP-2"
           "10, monitor:DP-2"
+          "11, monitor:HDMI-A-1, border:false, rounding:false"
         ];
         windowrule = [
           "opacity 0.9 0.6, match:class ^(Rofi)$"
+          "opacity 0.9 0.6, match:class ^(Vicinae)$"
           "opacity 0.9 0.7, match:class ^(Brave-browser(-beta|-dev)?)$"
           "opacity 0.9 0.7, match:class ^(zen-beta|Firefox|org.mozilla.firefox|Firefox-esr)$"
           "opacity 0.9 0.6, match:class ^(Thorium-browser)$"
@@ -199,8 +203,10 @@ in
 
           "workspace 9, match:class ^(vesktop)$"
           "workspace 10, match:class ^(Cider)$"
-        ];
 
+          "fullscreen 1, match:class ^(steam_app_\\d+)$"
+          "workspace 11, match:class ^(steam_app_\\d+)$"
+        ];
       };
     };
   };
