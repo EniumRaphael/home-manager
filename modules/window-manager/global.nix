@@ -31,7 +31,7 @@ let
       lib
       ;
   };
-  rofi = import ./rofi.nix {
+  vicinae = import ./vicinae.nix {
     inherit
       inputs
       config
@@ -71,7 +71,7 @@ in
     hyprland
     hyprpaper
     mako
-    rofi
+    vicinae
     thunar
     hyprlock
     waybar
@@ -108,10 +108,10 @@ in
       default = false;
       description = "Enable the Thunar configuration";
     };
-    rofi = lib.mkOption {
+    vicinae = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable the Rofi configuration";
+      description = "Enable the Vicinae configuration";
     };
     waybar = lib.mkOption {
       type = lib.types.bool;
@@ -126,7 +126,7 @@ in
         hyprland = false;
         hyprpaper = false;
         mako = false;
-        rofi = false;
+        vicinae = false;
         waybar = false;
         thunar = false;
       };
