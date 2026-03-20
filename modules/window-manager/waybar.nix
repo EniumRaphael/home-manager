@@ -11,7 +11,10 @@ let
 in
 {
   config = lib.mkIf cfg {
-    home.packages = with pkgs; [ nerd-fonts.fira-code ];
+    home.packages = with pkgs; [
+      nerd-fonts.fira-code
+      rofi-power-menu
+    ];
     programs.waybar = {
       enable = true;
       settings.mainBar = {
@@ -42,7 +45,7 @@ in
         "custom/power" = {
           "format" = "󰤆";
           "tooltip" = false;
-          "on-click" = "pkill hyprland";
+          "on-click" = "rofi -show power-menu -modi power-menu:rofi-power-menu --confirm=reboot/shutdown/logout";
         };
         "custom/logo" = {
           "format" = "  ";
@@ -153,7 +156,7 @@ in
         }
 
         window#waybar {
-          background-color: #181825;
+          background-color: rgba(0, 0, 0, 0);
           transition-property: background-color;
           transition-duration: 0.5s;
         }
@@ -167,42 +170,39 @@ in
         }
 
         #custom-spacer {
-          color: #cba6f7;
+          color: rgba(180, 190, 254, 0.8);
         }
 
         #cava {
-          color: #cba6f7;
+          color: rgba(203, 166, 247, 0.8);
           background-color: transparent;
         }
 
         #workspaces button {
           all: initial;
-          /* remove gtk theme values (waybar #1351) */
           min-width: 0;
-          /* fix weird spacing in materia (waybar #450) */
           box-shadow: inset 0 -3px transparent;
-          /* use box-shadow instead of border so the text isn't offset */
           padding: 6px 18px;
           margin: 6px 3px;
           border-radius: 4px;
-          background-color: #1e1e2e;
+          background-color: rgba(49, 50, 68, 0.8);
           color: #cdd6f4;
         }
 
         #workspaces button.active {
           color: #1e1e2e;
-          background-color: #cdd6f4;
+          background-color: rgba(205, 214, 244, 0.8);
         }
 
         #workspaces button:hover {
           box-shadow: inherit;
           text-shadow: inherit;
           color: #1e1e2e;
-          background-color: #cdd6f4;
+          background-color: rgba(245, 224, 220, 0.8);
         }
 
         #workspaces button.urgent {
-          background-color: #f38ba8;
+          background-color: rgba(243, 139, 168, 0.8);
         }
 
         #memory,
@@ -245,7 +245,7 @@ in
         #battery.critical,
         #battery.urgent {
           background-color: #ff0000;
-          color: #FFFF00;
+          color: #ffff00;
         }
 
         #battery.charging {
@@ -258,7 +258,7 @@ in
         }
 
         #pulseaudio {
-          background-color: #f9e2af;
+          background-color: rgba(249, 226, 175, 0.8);
         }
 
         #network {
@@ -268,11 +268,11 @@ in
 
         #clock {
           font-family: "Fira Code";
-          background-color: #cba6f7;
+          background-color: rgba(203, 166, 247, 0.8);
         }
 
         #custom-power {
-          background-color: #f2cdcd;
+          background-color: rgba(243, 139, 168, 0.8);
         }
 
 
