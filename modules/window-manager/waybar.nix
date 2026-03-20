@@ -13,7 +13,6 @@ in
   config = lib.mkIf cfg {
     home.packages = with pkgs; [
       nerd-fonts.fira-code
-      rofi-power-menu
     ];
     programs.waybar = {
       enable = true;
@@ -45,12 +44,12 @@ in
         "custom/power" = {
           "format" = "󰤆";
           "tooltip" = false;
-          "on-click" = "rofi -show power-menu -modi power-menu:rofi-power-menu --confirm=reboot/shutdown/logout";
+          "on-click" = "vicinae toggle -q 'power system'";
         };
         "custom/logo" = {
           "format" = "  ";
           "tooltip" = false;
-          "on-click" = "rofi -show drun";
+          "on-click" = "vicinae toggle";
         };
         "clock" = {
           tooltip-format = "{calendar}";
