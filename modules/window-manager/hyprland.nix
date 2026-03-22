@@ -205,8 +205,8 @@ in
           "workspace 9, match:class ^(vesktop)$"
           "workspace 10, match:class ^(Cider)$"
 
-          "workspace 11, match:class ^(steam_app_\\d+)$"
-          "fullscreen 1, match:class ^(steam_app_\\d+)$"
+          "workspace 11, match:class ^(gamescope|steam_app_\\d+)$"
+          "fullscreen 1, match:class ^(gamescope|steam_app_\\d+)$"
 
           "float 1, match:title ^(Picture-in-Picture)$"
           "pin 1, match:title ^(Picture-in-Picture)$"
