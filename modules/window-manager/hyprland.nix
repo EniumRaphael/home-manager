@@ -90,7 +90,7 @@ in
           ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
           "cider-2"
           "hyprpaper"
-          "vesktop"
+          "vesktop --ozone-platform-hint=auto"
           "pw-metadata -n settings 0 clock.force-quantum 512"
         ];
         bind = [
@@ -206,6 +206,11 @@ in
 
           "fullscreen 1, match:class ^(steam_app_\\d+)$"
           "workspace 11, match:class ^(steam_app_\\d+)$"
+
+          "float 1, match:title ^(Picture-in-Picture)$"
+          "pin 1, match:title ^(Picture-in-Picture)$"
+          "keep_aspect_ratio 1, match:title ^(Picture-in-Picture)$"
+          "size = (monitor_w*0.3) (monitor_h*0.3), match:title ^(Picture-in-Picture)$"
         ];
       };
     };
