@@ -91,6 +91,7 @@ in
           "cider-2"
           "hyprpaper"
           "vesktop --ozone-platform-hint=auto"
+          "vicinae server"
           "pw-metadata -n settings 0 clock.force-quantum 512"
         ];
         bind = [
