@@ -11,6 +11,7 @@ let
 in
 {
   config = lib.mkIf cfg {
+    home.packages = with pkgs; [ vicinae ];
     catppuccin.vicinae.enable = true;
     programs.vicinae = {
       enable = true;
