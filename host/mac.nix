@@ -77,6 +77,7 @@ in
     kitty = true;
     obs = false;
     obsidian = false;
+    orcaslicer = true;
     openvpn = true;
     prismlauncher = false;
     slack = true;

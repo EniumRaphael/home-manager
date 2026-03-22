@@ -79,6 +79,11 @@ in
       default = false;
       description = "Enable the Nerd Fonts";
     };
+    orcaslicer = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable the Obsidian";
+    };
     obsidian = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -161,6 +166,7 @@ in
           [ ]
       )
       ++ (if cfg.obsidian then [ obsidian ] else [ ])
+      ++ (if cfg.orcaslicer then [ orca-slicer ] else [ ])
       ++ (if cfg.openvpn then [ openvpn ] else [ ])
       ++ (if cfg.slack then [ slack ] else [ ])
       ++ (if cfg.ungoogled then [ ungoogled-chromium ] else [ ])

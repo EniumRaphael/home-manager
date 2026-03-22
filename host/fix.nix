@@ -86,6 +86,7 @@ in
     obs = true;
     obsidian = true;
     openvpn = true;
+    orcaslicer = true;
     prismlauncher = true;
     slack = true;
     ungoogled = true;
