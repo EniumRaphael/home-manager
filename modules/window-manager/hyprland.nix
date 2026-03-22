@@ -205,13 +205,14 @@ in
           "workspace 9, match:class ^(vesktop)$"
           "workspace 10, match:class ^(Cider)$"
 
-          "fullscreen 1, match:class ^(steam_app_\\d+)$"
           "workspace 11, match:class ^(steam_app_\\d+)$"
+          "fullscreen 1, match:class ^(steam_app_\\d+)$"
 
           "float 1, match:title ^(Picture-in-Picture)$"
           "pin 1, match:title ^(Picture-in-Picture)$"
           "keep_aspect_ratio 1, match:title ^(Picture-in-Picture)$"
           "size = (monitor_w*0.3) (monitor_h*0.3), match:title ^(Picture-in-Picture)$"
+          "move = center, match:float 1"
         ];
       };
     };
