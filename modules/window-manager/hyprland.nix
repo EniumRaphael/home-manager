@@ -71,7 +71,7 @@ in
         env = [
           "CLUTTER_BACKEND,wayland"
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
-          "GDK_BACKEND,dri,wayland,x11"
+          "GDK_BACKEND,dri"
           "MOZ_ENABLE_WAYLAND,1"
           "QT_AUTO_SCREEN_SCALE_FACTOR,1"
           "QT_QPA_PLATFORM,wayland;xcb"
