@@ -24,6 +24,7 @@ in
       lolcat
       wget
       zoxide
+      unzip
     ];
   };
 
