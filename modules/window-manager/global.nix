@@ -39,7 +39,7 @@ let
       lib
       ;
   };
-  thunar = import ./thunar.nix {
+  nautilus = import ./nautilus.nix {
     inherit
       inputs
       config
@@ -72,7 +72,7 @@ in
     hyprpaper
     mako
     vicinae
-    thunar
+    nautilus
     hyprlock
     waybar
   ];
@@ -103,10 +103,10 @@ in
       default = false;
       description = "Enable the mako configuration";
     };
-    thunar = lib.mkOption {
+    nautilus = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable the Thunar configuration";
+      description = "Enable the Nautilus configuration";
     };
     vicinae = lib.mkOption {
       type = lib.types.bool;
@@ -128,7 +128,7 @@ in
         mako = false;
         vicinae = false;
         waybar = false;
-        thunar = false;
+        nautilus = false;
       };
     }
     // lib.mkIf cfg.enable {
