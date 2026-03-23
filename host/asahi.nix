@@ -116,7 +116,7 @@ in
     hyprpaper = true;
     mako = true;
     vicinae = true;
-    thunar = true;
+    nautilus = true;
     waybar = true;
   };
 
