@@ -20,7 +20,7 @@ in
       enable = true;
       settings = {
         font = "Fira Code 12";
-        defaultTimeout = 5000;
+        default-timeout = 5000;
       };
     };
   };
