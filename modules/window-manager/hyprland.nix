@@ -27,14 +27,14 @@ in
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "inode/directory" = [ "thunar.desktop" ];
+        "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
         "audio/*" = [ "vlc.desktop" ];
         "video/*" = [ "vlc.desktop" ];
         "image/jpeg" = [ "imv.desktop" ];
         "image/png" = [ "imv.desktop" ];
         "image/gif" = [ "imv.desktop" ];
         "image/webp" = [ "imv.desktop" ];
-        "text/plain" = [ "dev.zed.Zed.desktop" ];
+        "text/plain" = [ "nvim.desktop" ];
         "application/pdf" = [ "org.gnome.Evince.desktop" ];
         "x-scheme-handler/http" = [ "zen-beta.desktop" ];
         "x-scheme-handler/https" = [ "zen-beta.desktop" ];
@@ -71,7 +71,7 @@ in
         env = [
           "CLUTTER_BACKEND,wayland"
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
-          "GDK_BACKEND,wayland,x11"
+          "GDK_BACKEND,dri,wayland,x11"
           "MOZ_ENABLE_WAYLAND,1"
           "QT_AUTO_SCREEN_SCALE_FACTOR,1"
           "QT_QPA_PLATFORM,wayland;xcb"
@@ -97,7 +97,7 @@ in
         bind = [
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
           "$mod, w, exec, zen-beta"
-          "$mod, e, exec, ${pkgs.thunar}/bin/thunar"
+          "$mod, e, exec, ${pkgs.nautilus}/bin/nautilus"
           "$mod, b, exec, vicinae toggle -q 'power system'"
           "ALT, SPACE, exec, ${pkgs.vicinae}/bin/vicinae toggle"
           "$mod, q, killactive"
@@ -174,7 +174,7 @@ in
           "opacity 0.9 0.8, match:class ^(Microsoft-edge(-stable|-beta|-dev|-unstable)?)$"
           "opacity 0.9 0.8, match:class ^(google-chrome(-beta|-dev|-unstable)?)$"
           "opacity 0.94 0.86, match:class ^(chrome-.+-Default)$"
-          "opacity 0.9 0.8, match:class ^(Thunar|org.gnome.Nautilus)$"
+          "opacity 0.9 0.8, match:class ^(org.gnome.Nautilus)$"
           "opacity 0.8 0.6, match:class ^(pcmanfm-qt)$"
           "opacity 0.8 0.7, match:class ^(gedit|org.gnome.TextEditor|mousepad)$"
           "opacity 0.9 0.8, match:class ^(deluge)$"
