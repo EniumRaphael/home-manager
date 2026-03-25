@@ -154,7 +154,6 @@ in
         else
           [ ]
       )
-      ++ (if cfg.element then [ element-desktop ] else [ ])
       ++ (
         if cfg.fonts then
           with pkgs.nerd-fonts;
@@ -165,6 +164,7 @@ in
         else
           [ ]
       )
+      ++ (if cfg.element then [ element-desktop libsecret ] else [ ])
       ++ (if cfg.obsidian then [ obsidian ] else [ ])
       ++ (if cfg.orcaslicer then [ orca-slicer ] else [ ])
       ++ (if cfg.openvpn then [ openvpn ] else [ ])
@@ -178,6 +178,11 @@ in
       ++ (if cfg.wireshark then [ wireshark-cli ] else [ ])
       ++ (if cfg.zed then [ zed-editor ] else [ ])
       ++ (if cfg.zen then [ zen-browser ] else [ ]);
+    catppuccin = {
+      vesktop.enable = cfg.vesktop;
+      element-desktop.enable = cfg.element;
+      zed.enable = cfg.zed;
+    };
     programs = {
       obs-studio = lib.mkIf cfg.obs {
         enable = true;
