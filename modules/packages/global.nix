@@ -164,7 +164,15 @@ in
         else
           [ ]
       )
-      ++ (if cfg.element then [ element-desktop libsecret ] else [ ])
+      ++ (
+        if cfg.element then
+          [
+            element-desktop
+            libsecret
+          ]
+        else
+          [ ]
+      )
       ++ (if cfg.obsidian then [ obsidian ] else [ ])
       ++ (if cfg.orcaslicer then [ orca-slicer ] else [ ])
       ++ (if cfg.openvpn then [ openvpn ] else [ ])
