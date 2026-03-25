@@ -75,10 +75,10 @@ in
   ];
 
   application = {
+    enable = true;
     cava = true;
     cider = true;
     element = true;
-    enable = true;
     evince = true;
     fonts = true;
     imv = true;
