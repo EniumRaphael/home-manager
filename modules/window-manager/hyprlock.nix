@@ -9,7 +9,7 @@
 let
   cfg = config.window-manager.hyprlock;
 in
-  {
+{
   config = lib.mkIf cfg {
     home.packages = with pkgs; [
       hyprlock
