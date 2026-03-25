@@ -92,6 +92,7 @@ in
           ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
           "cider-2"
           "hyprpaper"
+          "thunderbird"
           "vesktop --ozone-platform-hint=auto"
           "vicinae server"
           "pw-metadata -n settings 0 clock.force-quantum 512"
@@ -191,7 +192,7 @@ in
           "opacity 0.94 0.86, match:class ^(Cider)$"
           "opacity 0.94 0.86, match:class ^(Slack)$"
           "opacity 0.94 0.86, match:class ^(Revolt-desktop)$"
-          "opacity 0.94 0.86, match:class ^(vesktop)$"
+          "opacity 0.9 0.8, match:class ^(vesktop)$"
           "opacity 0.9 0.8, match:class ^(Element)$"
           "opacity 0.9 0.8, match:class ^(im.riot.Riot)$"
           "opacity 0.94 0.86, match:class ^(gnome-disks|evince|wihotspot(-gui)?|org.gnome.baobab)$"
@@ -204,6 +205,9 @@ in
           "opacity 0.9 0.7, match:class ^(Ferdium)$"
           "opacity 0.95 0.95, match:title ^(Picture-in-Picture)$"
 
+          "workspace 8, match:class ^(Element)$"
+          "workspace 8, match:class ^(Slack)$"
+          "workspace 8, match:class ^(thunderbird)$"
           "workspace 9, match:class ^(vesktop)$"
           "workspace 10, match:class ^(Cider)$"
 
@@ -219,4 +223,3 @@ in
       };
     };
   };
-}
