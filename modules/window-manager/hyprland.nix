@@ -179,6 +179,7 @@ in
           "opacity 0.94 0.86, match:class ^(chrome-.+-Default)$"
           "opacity 0.9 0.8, match:class ^(org.gnome.Nautilus)$"
           "opacity 0.8 0.6, match:class ^(pcmanfm-qt)$"
+          "opacity 0.8 0.7, match:class ^(thunderbird)$"
           "opacity 0.8 0.7, match:class ^(gedit|org.gnome.TextEditor|mousepad)$"
           "opacity 0.9 0.8, match:class ^(deluge)$"
           "opacity 0.8 0.7, match:class ^(Alacritty|kitty|kitty-dropterm)$"
