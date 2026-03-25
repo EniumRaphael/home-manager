@@ -205,9 +205,9 @@ in
           "opacity 0.9 0.7, match:class ^(Ferdium)$"
           "opacity 0.95 0.95, match:title ^(Picture-in-Picture)$"
 
-          "workspace 8, match:class ^(Element)$"
           "workspace 8, match:class ^(Slack)$"
           "workspace 8, match:class ^(thunderbird)$"
+          "workspace 9, match:class ^(Element)$"
           "workspace 9, match:class ^(vesktop)$"
           "workspace 10, match:class ^(Cider)$"
 
@@ -223,3 +223,4 @@ in
       };
     };
   };
+}
