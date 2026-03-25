@@ -76,7 +76,10 @@ in
         ]
         ++ (if pkgs.stdenv.isLinux then [ valgrind ] else [ ]);
     };
-    catppuccin.bat.enable = true;
+    catppuccin = {
+      bat.enable = true;
+      lazygit.enable = true;
+    };
     programs = {
       lazygit.enable = true;
       man.enable = true;
