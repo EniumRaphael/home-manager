@@ -218,11 +218,14 @@ in
 
           "float 1, match:initial_title ^(Discord Popout)"
           "pin 1, match:initial_title ^(Discord Popout)$"
+
           "float 1, match:title ^(Picture-in-Picture)$"
           "pin 1, match:title ^(Picture-in-Picture)$"
           "keep_aspect_ratio 1, match:title ^(Picture-in-Picture)$"
           "size = (monitor_w*0.3) (monitor_h*0.3), match:title ^(Picture-in-Picture)$"
-          "move = center, match:float 1"
+
+          "move 1593 42, match:class ^(Mullvad VPN)$"
+          "float 1, match:class ^(Mullvad VPN)$"
         ];
       };
     };
