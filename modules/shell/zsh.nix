@@ -62,6 +62,7 @@ in
           format = "ssh";
           ssh.allowedSignersFile = "~/.ssh/allowed_signers";
         };
+        signing.format = "openpgp";
         commit.gpgsign = true;
       };
       ignores = [
