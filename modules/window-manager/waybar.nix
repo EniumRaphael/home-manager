@@ -19,7 +19,7 @@ in
       settings.mainBar = {
         layer = "top";
         position = "top";
-        height = 34;
+        height = 42;
         output = [
           "DP-2"
           "HDMI-A-1"
@@ -314,7 +314,6 @@ in
         #custom-power {
           background-color: rgba(243, 139, 168, 0.8);
         }
-
 
         tooltip {
           border-radius: 8px;
