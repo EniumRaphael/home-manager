@@ -89,6 +89,7 @@ in
         ];
         exec-once = [
           "waybar"
+          "mullvad-vpn"
           ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
           "cider-2"
           "hyprpaper"
