@@ -216,6 +216,8 @@ in
           "workspace 11, match:class ^(gamescope|steam_app_\\d+)$"
           "fullscreen 1, match:class ^(gamescope|steam_app_\\d+)$"
 
+          "float 1, match:initial_title ^(Discord Popout)"
+          "pin 1, match:initial_title ^(Discord Popout)$"
           "float 1, match:title ^(Picture-in-Picture)$"
           "pin 1, match:title ^(Picture-in-Picture)$"
           "keep_aspect_ratio 1, match:title ^(Picture-in-Picture)$"
