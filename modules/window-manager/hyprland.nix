@@ -89,14 +89,14 @@ in
         ];
         exec-once = [
           "waybar"
-          "mullvad-vpn"
           ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
-          "cider-2"
           "hyprpaper"
-          "thunderbird"
-          "vesktop --ozone-platform-hint=auto"
           "vicinae server"
           "pw-metadata -n settings 0 clock.force-quantum 512"
+          "thunderbird"
+          "cider-2"
+          "vesktop --ozone-platform-hint=auto"
+          "mullvad-vpn"
         ];
         bind = [
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
