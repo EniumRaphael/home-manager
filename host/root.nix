@@ -5,6 +5,7 @@
   pkgs,
   lib,
   nixvim,
+  orca-slicer-pkg,
   zen-browser,
   ...
 }:
@@ -35,6 +36,7 @@ let
       config
       pkgs
       lib
+      orca-slicer-pkg
       zen-browser
       ;
   };
