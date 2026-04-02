@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    orca-slicer-flake.url = "github:EniumRaphael/orca-slicer-flake";
     hyprland.url = "github:hyprwm/Hyprland";
     nixvim = {
       url = "github:EniumRaphael/nixvim";
@@ -23,6 +24,7 @@
       hyprland,
       nixpkgs,
       nixvim,
+      orca-slicer-flake,
       zen-browser,
       ...
     }:
@@ -44,6 +46,7 @@
           ];
           extraSpecialArgs = {
             inherit system inputs;
+            orca-slicer-pkg = if orca-slicer-flake.packages ? ${system} then orca-slicer-flake.packages.${system}.default else null;
             nixvim = nixvim.packages.${system}.default;
             zen-browser = if system == "aarch64-darwin" then null else zen-browser.packages.${system}.default;
           };
