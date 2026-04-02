@@ -4,6 +4,7 @@
   config,
   pkgs,
   lib,
+  orca-slicer-pkg,
   zen-browser,
   ...
 }:
@@ -174,7 +175,7 @@ in
           [ ]
       )
       ++ (if cfg.obsidian then [ obsidian ] else [ ])
-      ++ (if cfg.orcaslicer then [ orca-slicer ] else [ ])
+      ++ (if cfg.orcaslicer then [ orca-slicer-pkg ] else [ ])
       ++ (if cfg.openvpn then [ openvpn ] else [ ])
       ++ (if cfg.slack then [ slack ] else [ ])
       ++ (if cfg.ungoogled then [ ungoogled-chromium ] else [ ])
