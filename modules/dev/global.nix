@@ -59,20 +59,20 @@ in
       packages =
         with pkgs;
         [
-          fd
           direnv
           doxygen
           fastmod
-          gotop
+          fd
+          htop
           jq
           lazydocker
           lldb
           llvm
           man-pages
           man-pages-posix
+          nixfmt
           nixvim
           ripgrep
-          nixfmt
         ]
         ++ (if pkgs.stdenv.isLinux then [ valgrind ] else [ ]);
     };
