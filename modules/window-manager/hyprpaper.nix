@@ -35,7 +35,7 @@ in
         wallpaper = [
           {
             path = "/home/${config.home.username}/Pictures/vertical.png";
-            monitor = "DP-2";
+            monitor = "DP-1";
           }
           {
             path = "/home/${config.home.username}/Pictures/horizontal.png";

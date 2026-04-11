@@ -21,7 +21,7 @@ in
         position = "top";
         height = 42;
         output = [
-          "DP-2"
+          "DP-1"
           "HDMI-A-1"
         ];
         modules-left = [
