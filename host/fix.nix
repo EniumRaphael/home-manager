@@ -114,7 +114,14 @@ in
 
   window-manager = {
     enable = true;
-    hyprland = true;
+    hyprland = {
+      enable = true;
+      monitors = [
+        "HDMI-A-1, 1920x1080, 0x0, 1"
+        "DP-1, 1920x1080, -1080x-840, 1, transform, 1"
+        ", prefered, auto, 1"
+      ];
+    };
     hyprlock = true;
     hyprpaper = true;
     mako = true;
@@ -138,5 +145,6 @@ in
       emoji = [ "Fira Code" ];
     };
   };
+
   programs.home-manager.enable = true;
 }
