@@ -83,10 +83,17 @@ in
       default = false;
       description = "Enable the configuration of the window-manager";
     };
-    hyprland = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enable the Hyprland configuration";
+    hyprland = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable the Hyprland configuration";
+      };
+      monitors = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [ ",preferred,auto,1" ];
+        description = "Configuration des écrans (monitor) pour Hyprland";
+      };
     };
     hyprlock = lib.mkOption {
       type = lib.types.bool;
