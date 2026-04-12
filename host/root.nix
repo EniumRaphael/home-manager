@@ -109,7 +109,7 @@ in
 
   window-manager = {
     enable = false;
-    hyprland = false;
+    hyprland.enable = false;
     hyprpaper = false;
     mako = false;
     vicinae = false;
