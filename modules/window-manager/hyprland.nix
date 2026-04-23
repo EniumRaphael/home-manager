@@ -239,6 +239,9 @@ in
           "float 1, match:class ^(Mullvad VPN)$"
         ];
         input = lib.mkIf cfg.isLaptop {
+          gesture = [
+            "4, horizontal, workspace"
+          ];
           touchpad = {
             natural_scroll = true;
             disable_while_typing = true;
