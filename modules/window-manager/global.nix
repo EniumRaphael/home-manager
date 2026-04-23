@@ -89,6 +89,11 @@ in
         default = false;
         description = "Enable the Hyprland configuration";
       };
+      primaryMonitor = lib.mkOption {
+        type = lib.types.str;
+        default = "eDP-1";
+        description = "The default monitor for hyprland";
+      };
       monitors = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [ ",preferred,auto,1" ];
