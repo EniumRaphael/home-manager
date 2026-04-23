@@ -227,7 +227,7 @@ in
           "keep_aspect_ratio 1, match:title ^(Picture-in-Picture)$"
           "size = (monitor_w*0.3) (monitor_h*0.3), match:title ^(Picture-in-Picture)$"
 
-          "move 1593 42, match:class ^(Mullvad VPN)$"
+          "move (monitor_w-321) 42, match:class ^(Mullvad VPN)$"
           "workspace 1, match:class ^(Mullvad VPN)$"
           "float 1, match:class ^(Mullvad VPN)$"
         ];
