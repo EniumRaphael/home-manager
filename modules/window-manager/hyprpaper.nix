@@ -39,6 +39,10 @@ in
           }
           {
             path = "/home/${config.home.username}/Pictures/horizontal.png";
+            monitor = "eDP-1";
+          }
+          {
+            path = "/home/${config.home.username}/Pictures/horizontal.png";
             monitor = "HDMI-A-1";
           }
         ];
