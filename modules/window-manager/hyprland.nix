@@ -17,6 +17,8 @@ in
       pamixer
       wl-clipboard
       xrandr
+      libinput
+      libinput-gestures
     ];
     catppuccin = {
       hyprland.enable = true;
@@ -241,6 +243,12 @@ in
           "workspace 1, match:class ^(Mullvad VPN)$"
           "float 1, match:class ^(Mullvad VPN)$"
         ];
+        input = lib.mkIf cfg.isLaptop {
+          touchpad = {
+            natural_scroll = true;
+            disable_while_typing = true;
+          };
+        };
       };
     };
   };
