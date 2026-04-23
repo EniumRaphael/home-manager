@@ -18,6 +18,9 @@ in
     programs.hyprlock = {
       enable = true;
       settings = {
+        auth = lib.mkIf config.window-manager.hyprland.isLaptop {
+          fingerprint.enabled = true;
+        };
         general = {
           hide_cursor = true;
           ignore_empty_input = true;
