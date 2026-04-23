@@ -16,6 +16,7 @@ in
       brightnessctl
       pamixer
       wl-clipboard
+      xrandr
     ];
     catppuccin = {
       hyprland.enable = true;
@@ -108,6 +109,7 @@ in
           "cider-2"
           "vesktop --ozone-platform-hint=auto"
           "mullvad-vpn"
+          "xrandr --output ${cfg.primaryMonitor} --primary"
         ];
         bind = [
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
