@@ -117,6 +117,7 @@ in
     hyprland = {
       enable = true;
       primaryMonitor = "HDMI-A-1";
+      usingNVIDIA = true;
       monitors = [
         "HDMI-A-1, 1920x1080, 0x0, 1"
         "DP-1, 1920x1080, -1080x-840, 1, transform, 1"
