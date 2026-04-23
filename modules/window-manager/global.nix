@@ -99,6 +99,11 @@ in
         default = [ ",preferred,auto,1" ];
         description = "Monitor configuration";
       };
+      workspaces = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [ ];
+        description = "Workspaces configuration";
+      };
       isLaptop = lib.mkOption {
         type = lib.types.bool;
         default = false;
@@ -152,7 +157,6 @@ in
       home.packages = with pkgs; [
         grim
         pavucontrol
-        blueman
         slurp
       ];
 
