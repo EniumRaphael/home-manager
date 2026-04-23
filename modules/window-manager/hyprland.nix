@@ -87,12 +87,6 @@ in
           "MOZ_ENABLE_WAYLAND=1"
           "ELECTRON_OZONE_PLATFORM_HINT=auto"
 
-          "LIBVA_DRIVER_NAME=nvidia"
-          "__GLX_VENDOR_LIBRARY_NAME=nvidia"
-          "__NV_PRIME_RENDER_OFFLOAD=1"
-          "__GL_SYNC_TO_VBLANK=0"
-          "__GL_THREADED_OPTIMIZATIONS=1"
-          "NVD_BACKEND=direct"
           "WLR_RENDERER=vulkan"
           "GAMEMODE=1"
           "MANGOHUD=1"
@@ -100,7 +94,20 @@ in
           "PROTON_USE_WINED3D=0"
           "_JAVA_AWT_WM_NONREPARENTING=1"
           "HYPRLAND_NO_SD_NOTIFY=1"
-        ];
+
+        ] ++ lib.optionals (cfg.usingNVIDIA) [
+            "LIBVA_DRIVER_NAME=nvidia"
+            "__GLX_VENDOR_LIBRARY_NAME=nvidia"
+            "__NV_PRIME_RENDER_OFFLOAD=1"
+            "__GL_SYNC_TO_VBLANK=0"
+            "__GL_THREADED_OPTIMIZATIONS=1"
+            "NVD_BACKEND=direct"
+
+          ] ++ lib.optionals (cfg.usingAMD) [
+            "LIBVA_DRIVER_NAME=radeonsi"
+            "VDPAU_DRIVER=radeonsi"
+          ];
+
         exec-once = [
           "waybar"
           ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
