@@ -117,6 +117,7 @@ in
     hyprland = {
       enable = true;
       primaryMonitor = "eDP-1";
+      usingAMD = true;
       isLaptop = true;
       monitors = [
         "eDP-1, 2560x1600@165.00000, 0x0, 1.6"
