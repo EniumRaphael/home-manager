@@ -97,7 +97,12 @@ in
       monitors = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [ ",preferred,auto,1" ];
-        description = "Configuration des écrans (monitor) pour Hyprland";
+        description = "Monitor configuration";
+      };
+      isLaptop = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable the laptop";
       };
     };
     hyprlock = lib.mkOption {
@@ -147,6 +152,7 @@ in
       home.packages = with pkgs; [
         grim
         pavucontrol
+        blueman
         slurp
       ];
 
