@@ -59,6 +59,11 @@
           system = "x86_64-linux";
           modulePath = ./host/server.nix;
         };
+        "hm-framework" = mkHomeConfig {
+          name = "hm-framework";
+          system = "x86_64-linux";
+          modulePath = ./host/framework.nix;
+        };
         "hm-fix" = mkHomeConfig {
           name = "hm-fix";
           system = "x86_64-linux";
@@ -92,6 +97,7 @@
       };
       homeModules = {
         server = ./host/server.nix;
+        framework = ./host/framework.nix;
         fix = ./host/fix.nix;
         root = ./host/root.nix;
         cluster = ./host/cluster.nix;
