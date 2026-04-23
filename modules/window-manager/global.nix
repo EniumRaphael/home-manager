@@ -104,6 +104,16 @@ in
         default = [ ];
         description = "Workspaces configuration";
       };
+      usingAMD = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable the amd var loading";
+      };
+      usingNVIDIA = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable the nvidia var loading";
+      };
       isLaptop = lib.mkOption {
         type = lib.types.bool;
         default = false;
