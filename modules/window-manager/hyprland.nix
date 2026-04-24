@@ -241,6 +241,7 @@ in
         input = lib.mkIf cfg.isLaptop {
           gesture = [
             "4, horizontal, workspace"
+            "3, horizontal, workspace"
           ];
           touchpad = {
             natural_scroll = true;
