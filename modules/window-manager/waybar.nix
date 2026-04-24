@@ -19,7 +19,7 @@ in
       settings.mainBar = {
         layer = "top";
         position = "top";
-        height = 42;
+        height = 21;
         output = [
           "eDP-1"
           "DP-1"
@@ -51,20 +51,20 @@ in
           spacing = 10;
         };
         cpu = {
-          format = " {usage}%";
+          format = "  {usage}%";
           tooltip = true;
           interval = 2;
         };
         network = {
           format = "";
-          format-wifi = " {essid} ({signalStrength}%)";
-          format-ethernet = "";
+          format-wifi = "  {signalStrength}%";
+          format-ethernet = "󰈀";
           tooltip-format-wifi = "{ipaddr}/{cidr}";
           tooltip-format-ethernet = "{ipaddr}/{cidr}";
           interval = 2;
         };
         memory = {
-          format = " {percentage}%";
+          format = "  {percentage}%";
           tooltip-format = "{used:0.1f}/{total:0.1f} GiB";
           interval = 5;
         };
@@ -189,14 +189,14 @@ in
       style = ''
         * {
           border: none;
-          border-radius: 0;
+          border-radius: 13px;
           min-height: 0;
+          background-color: rgba(0, 0, 0, 0);
           font-family: "Fira Code";
           font-size: 13px;
         }
 
         window#waybar {
-          background-color: rgba(0, 0, 0, 0);
           transition-property: background-color;
           transition-duration: 0.5s;
         }
@@ -219,19 +219,16 @@ in
         }
 
         #workspaces button {
-          all: initial;
           min-width: 0;
           box-shadow: inset 0 -3px transparent;
           padding: 6px 18px;
           margin: 6px 3px;
-          border-radius: 4px;
-          background-color: rgba(49, 50, 68, 0.8);
-          color: #cdd6f4;
+          color: #b4befe
         }
 
         #workspaces button.active {
-          color: #1e1e2e;
-          background-color: rgba(205, 214, 244, 0.8);
+          color: rgba(203, 166, 247, 0.8);
+          border: 1px solid rgba(203, 166, 247, 0.5);
         }
 
         #workspaces button:hover {
@@ -242,7 +239,7 @@ in
         }
 
         #workspaces button.urgent {
-          background-color: rgba(243, 139, 168, 0.8);
+          color: rgba(243, 139, 168, 0.8);
         }
 
         #memory,
@@ -255,15 +252,13 @@ in
         #custom-gpu,
         #clock
         {
-          border-radius: 4px;
           margin: 6px 3px;
           padding: 6px 12px;
-          color: #181825;
-          background-color: rgba(250, 179, 135, 0.8);
+          color: #fab387;
+          border: 1px solid #fab387;
         }
         
         #tray {
-          border-radius: 4px;
           margin: 6px 3px;
           padding: 6px 12px;
           color: rgba(203, 166, 247, 0.8);
@@ -284,19 +279,20 @@ in
         }
 
         #battery {
-          background-color: #f38ba8;
+          color: #89dceb;
+          border: 1px solid #89dceb;
         }
 
         #battery.warning,
         #battery.critical,
         #battery.urgent {
+          color: #11111b;
           background-color: #ff0000;
-          color: #ffff00;
         }
 
         #battery.charging {
-          background-color: #a6e3a1;
-          color: #181825;
+          color: #a6e3a1;
+          border: 1px solid #a6e3a1;
         }
 
         #backlight {
@@ -304,20 +300,22 @@ in
         }
 
         #pulseaudio {
-          background-color: rgba(249, 226, 175, 0.8);
+          color: rgba(249, 226, 175, 0.8);
+          border: 1px solid rgba(249, 226, 175, 0.8);
         }
 
         #clock {
           font-family: "Fira Code";
-          background-color: rgba(203, 166, 247, 0.8);
+          color: rgba(203, 166, 247, 0.8);
+          border: 1px solid rgba(203, 166, 247, 0.5);
         }
 
         #custom-power {
-          background-color: rgba(243, 139, 168, 0.8);
+          color: rgba(243, 139, 168, 0.8);
+          border: 1px solid rgba(243, 139, 168, 0.8);
         }
 
         tooltip {
-          border-radius: 8px;
           padding: 15px;
           background-color: #131822;
         }
