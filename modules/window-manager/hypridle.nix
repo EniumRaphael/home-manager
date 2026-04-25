@@ -11,6 +11,9 @@ let
 in
 {
   config = lib.mkIf cfg {
+    home.packages = with pkgs; [
+      hypridle
+    ];
     services.hypridle = {
       enable = true;
       settings = {
