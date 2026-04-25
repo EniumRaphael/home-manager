@@ -10,6 +10,9 @@ let
   cfg = config.window-manager.hyprland;
 in
 {
+  imports = [
+    ./autostart.nix
+  ];
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       hyprcursor
@@ -112,10 +115,6 @@ in
           ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
           "vicinae server"
           "pw-metadata -n settings 0 clock.force-quantum 512"
-          "thunderbird"
-          "cider-2"
-          "vesktop --ozone-platform-hint=auto"
-          "mullvad-vpn"
           "xrandr --output ${cfg.primaryMonitor} --primary"
         ];
         bind = [
