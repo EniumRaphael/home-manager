@@ -15,6 +15,14 @@ let
       lib
       ;
   };
+  hypridle = import ./hypridle.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
   hyprpaper = import ./hyprpaper.nix {
     inherit
       inputs
@@ -69,6 +77,7 @@ in
 {
   imports = [
     hyprland
+    hypridle
     hyprpaper
     mako
     vicinae
