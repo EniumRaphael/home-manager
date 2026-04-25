@@ -10,10 +10,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     orca-slicer-flake.url = "github:EniumRaphael/orca-slicer-flake";
     hyprland.url = "github:hyprwm/Hyprland";
-    nixvim = {
-      url = "github:EniumRaphael/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:EniumRaphael/nixvim";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
