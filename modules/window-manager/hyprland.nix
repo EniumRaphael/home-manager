@@ -119,6 +119,8 @@ in
           "vesktop --ozone-platform-hint=auto"
           "mullvad-vpn"
           "xrandr --output ${cfg.primaryMonitor} --primary"
+        ] ++ lib.optionals cfg.isLaptop [
+          "hypridle"
         ];
         bind = [
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
