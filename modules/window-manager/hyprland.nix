@@ -109,9 +109,7 @@ in
           ];
 
         exec-once = [
-          "waybar"
           ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
-          "hyprpaper"
           "vicinae server"
           "pw-metadata -n settings 0 clock.force-quantum 512"
           "thunderbird"
