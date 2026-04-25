@@ -10,9 +10,6 @@ let
   cfg = config.window-manager.hyprland;
 in
 {
-  imports = [
-    ./autostart.nix
-  ];
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       hyprcursor
@@ -116,6 +113,11 @@ in
           "vicinae server"
           "pw-metadata -n settings 0 clock.force-quantum 512"
           "xrandr --output ${cfg.primaryMonitor} --primary"
+          "${pkgs.bash}/bin/bash -c 'while ! pidof waybar > /dev/null; do sleep 0.5; done'"
+          "mullvad-gui"
+          "cider-2" 
+          "thunderbird"
+          "vesktop"
         ];
         bind = [
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
