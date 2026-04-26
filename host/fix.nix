@@ -78,6 +78,7 @@ in
 
   application = {
     enable = true;
+    bitwarden = true;
     cava = true;
     cider = true;
     element = true;
