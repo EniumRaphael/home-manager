@@ -79,7 +79,7 @@ in
         };
         clock = {
           tooltip-format = "{calendar}";
-          format-alt = "  {:%a, %d %b %Y}";
+          format-alt = "  {:%a %D}";
           format = "⏰ {:%H:%M:%S}";
           interval = 1;
         };
