@@ -39,7 +39,6 @@ in
           "cpu"
           "memory"
           "custom/gpu"
-          # "network"
           "tray"
           "pulseaudio"
           "battery"
@@ -56,14 +55,6 @@ in
           tooltip = true;
           interval = 2;
         };
-        # network = {
-        #   format = "";
-        #   format-wifi = "  {signalStrength}%";
-        #   format-ethernet = "󰈀";
-        #   tooltip-format-wifi = "{ipaddr}/{cidr}";
-        #   tooltip-format-ethernet = "{ipaddr}/{cidr}";
-        #   interval = 2;
-        # };
         memory = {
           format = "  {percentage}%";
           tooltip-format = "{used:0.1f}/{total:0.1f} GiB";
