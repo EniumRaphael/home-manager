@@ -86,6 +86,7 @@ in
 
           "MOZ_ENABLE_WAYLAND=1"
           "ELECTRON_OZONE_PLATFORM_HINT=auto"
+          "NIXOS_OZONE_WL,1"
 
           "WLR_RENDERER=vulkan"
           "GAMEMODE=1"
