@@ -114,7 +114,6 @@ in
           "vicinae server"
           "pw-metadata -n settings 0 clock.force-quantum 512"
           "xrandr --output ${cfg.primaryMonitor} --primary"
-          "mullvad-vpn"
           "thunderbird"
           "cider-2"
           "vesktop"
@@ -234,7 +233,6 @@ in
           "size = (monitor_w*0.3) (monitor_h*0.3), match:title ^(Picture-in-Picture)$"
 
           "move (monitor_w-321) 42, match:class ^(Mullvad VPN)$"
-          "workspace 1, match:class ^(Mullvad VPN)$"
           "float 1, match:class ^(Mullvad VPN)$"
         ];
         input = lib.mkIf cfg.isLaptop {
