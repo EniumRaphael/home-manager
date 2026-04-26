@@ -113,7 +113,10 @@ in
           "vicinae server"
           "pw-metadata -n settings 0 clock.force-quantum 512"
           "xrandr --output ${cfg.primaryMonitor} --primary"
-          "${pkgs.bash}/bin/bash -c 'while ! pidof waybar > /dev/null; do sleep 0.5; done && sleep 2 && mullvad-vpn & thunderbird & vesktop & cider-2 &'" 
+          "mullvad-vpn"
+          "thunderbird"
+          "cider-2"
+          "vesktop"
         ];
         bind = [
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
