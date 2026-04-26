@@ -32,6 +32,7 @@ in
   imports = [
     cava
     kitty
+    inputs.zen-browser.homeModules.beta
   ];
 
   options.application = {
@@ -185,14 +186,14 @@ in
       ++ (if cfg.evince then [ evince ] else [ ])
       ++ (if cfg.imv then [ imv ] else [ ])
       ++ (if cfg.wireshark then [ wireshark-cli ] else [ ])
-      ++ (if cfg.zed then [ zed-editor ] else [ ])
-      ++ (if cfg.zen then [ zen-browser ] else [ ]);
+      ++ (if cfg.zed then [ zed-editor ] else [ ]);
     catppuccin = {
       vesktop.enable = cfg.vesktop;
       element-desktop.enable = cfg.element;
       zed.enable = cfg.zed;
     };
     programs = {
+      zen-browser.enable = cfg.zen;
       obs-studio = lib.mkIf cfg.obs {
         enable = true;
         plugins = with pkgs.obs-studio-plugins; [
