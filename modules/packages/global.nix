@@ -41,6 +41,11 @@ in
       default = false;
       description = "Enable the default applications";
     };
+    bitwarden = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable the Bitwarden";
+    };
     cider = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -186,7 +191,8 @@ in
       ++ (if cfg.evince then [ evince ] else [ ])
       ++ (if cfg.imv then [ imv ] else [ ])
       ++ (if cfg.wireshark then [ wireshark-cli ] else [ ])
-      ++ (if cfg.zed then [ zed-editor ] else [ ]);
+      ++ (if cfg.zed then [ zed-editor ] else [ ])
+      ++ (if cfg.bitwarden then [ bitwarden-desktop ] else [ ]);
     catppuccin = {
       vesktop.enable = cfg.vesktop;
       element-desktop.enable = cfg.element;
