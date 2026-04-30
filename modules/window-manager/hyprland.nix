@@ -226,6 +226,7 @@ in
 
           "float 1, match:initial_title ^(Discord Popout)"
           "pin 1, match:initial_title ^(Discord Popout)$"
+          "keep_aspect_ratio 1, match:initial_title ^(Discord Popout)$"
 
           "float 1, match:title ^(Picture-in-Picture)$"
           "pin 1, match:title ^(Picture-in-Picture)$"
