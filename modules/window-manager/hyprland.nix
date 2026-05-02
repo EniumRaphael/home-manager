@@ -11,7 +11,7 @@ let
   clamshell = pkgs.writeShellScriptBin "clamshell" ''
     #!/usr/bin/env bash
     
-    INTERNAL_DISPLAY=${cfg.primaryMonitor}}
+    INTERNAL_DISPLAY=${cfg.primaryMonitor}
     
     ICON_LAPTOP="computer-laptop"
     ICON_MONITOR="video-display"
