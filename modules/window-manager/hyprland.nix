@@ -8,10 +8,56 @@
 
 let
   cfg = config.window-manager.hyprland;
+  clamshell = pkgs.writeShellScriptBin "clamshell" ''
+    #!/usr/bin/env bash
+    
+    INTERNAL_DISPLAY="eDP-1"
+    
+    ICON_LAPTOP="computer-laptop"
+    ICON_MONITOR="video-display"
+    
+    notify_user() {
+      notify-send -i "$3" "$1" "$2"
+    }
+    
+    # --- MODES ---
+    mode_close() {
+      MONITORS_COUNT=$(hyprctl monitors all | grep -c "Monitor")
+      if [[ $MONITORS_COUNT -gt 1 ]]; then
+        hyprctl keyword monitor "$INTERNAL_DISPLAY, disable"
+      fi
+    }
+    
+    mode_open() {
+      hyprctl keyword monitor "$INTERNAL_DISPLAY, preferred, auto, 1"
+    }
+    
+    if [[ "$1" == "close" ]]; then
+      mode_close
+      notify_user "Clamshell Mode" "External monitor active. Laptop screen disabled." "$ICON_MONITOR"
+    
+    elif [[ "$1" == "open" ]]; then
+      mode_open
+      notify_user "Laptop Mode" "Laptop screen enabled." "$ICON_LAPTOP"
+    
+    elif [[ "$1" == "check" ]]; then
+      if grep -q "open" /proc/acpi/button/lid/*/state; then
+        mode_open
+      else
+        mode_close
+      fi
+    
+    else
+      echo "Usage: $0 [open|close|check]"
+      exit 1
+    fi
+  '';
 in
 {
   config = lib.mkIf cfg.enable {
+
     home.packages = with pkgs; [
+      clamshell
       hyprcursor
       brightnessctl
       pamixer
@@ -117,6 +163,7 @@ in
           "thunderbird"
           "cider-2"
           "vesktop"
+          "clamshell check"
         ];
         bind = [
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
@@ -175,6 +222,10 @@ in
           ",XF86AudioRaiseVolume, exec, pamixer -i 5"
           ",XF86MonBrightnessDown, exec, brightnessctl set 10%-"
           ",XF86MonBrightnessUp, exec, brightnessctl set 10%+ "
+        ];
+        bindl = [
+          ", switch:on:Lid Switch, exec, clamshell close"
+          ", switch:off:Lid Switch, exec, clamshell open"
         ];
         workspace = cfg.workspaces;
         windowrule = [
