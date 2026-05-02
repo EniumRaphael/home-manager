@@ -11,7 +11,7 @@ let
   clamshell = pkgs.writeShellScriptBin "clamshell" ''
     #!/usr/bin/env bash
     
-    INTERNAL_DISPLAY="eDP-1"
+    INTERNAL_DISPLAY=${cfg.primaryMonitor}}
     
     ICON_LAPTOP="computer-laptop"
     ICON_MONITOR="video-display"
@@ -29,7 +29,7 @@ let
     }
     
     mode_open() {
-      hyprctl keyword monitor "$INTERNAL_DISPLAY, preferred, auto, 1"
+      hyprctl keyword monitor ${pkgs.lib.head cfg.monitors}
     }
     
     if [[ "$1" == "close" ]]; then
@@ -48,7 +48,7 @@ let
       fi
     
     else
-      echo "Usage: $0 [open|close|check]"
+      echo "Usage: clamshell [open|close|check]"
       exit 1
     fi
   '';
