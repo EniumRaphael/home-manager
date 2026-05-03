@@ -25,11 +25,13 @@ let
       MONITORS_COUNT=$(hyprctl monitors all | grep -c "Monitor")
       if [[ $MONITORS_COUNT -gt 1 ]]; then
         hyprctl keyword monitor "$INTERNAL_DISPLAY, disable"
+        sudo ${pkgs.systemd}/bin/systemctl stop fprintd.service
       fi
     }
     
     mode_open() {
       hyprctl keyword monitor ${pkgs.lib.head cfg.monitors}
+      sudo ${pkgs.systemd}/bin/systemctl start fprintd.service
     }
     
     if [[ "$1" == "close" ]]; then
