@@ -71,6 +71,11 @@ in
       default = false;
       description = "Enable the OBS Studio";
     };
+    nextcloud = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable the nextcloud client";
+    };
     slack = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -181,6 +186,7 @@ in
           [ ]
       )
       ++ (if cfg.obsidian then [ obsidian ] else [ ])
+      ++ (if cfg.nextcloud then [ nextcloud-client ] else [ ])
       ++ (if cfg.orcaslicer then [ orca-slicer-pkg ] else [ ])
       ++ (if cfg.openvpn then [ openvpn ] else [ ])
       ++ (if cfg.slack then [ slack ] else [ ])
