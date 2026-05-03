@@ -86,16 +86,17 @@ in
     fonts = true;
     imv = true;
     kitty = true;
+    nextcloud = true;
     obs = true;
     obsidian = true;
     openvpn = true;
     orcaslicer = true;
     prismlauncher = true;
     slack = true;
+    teamspeak = true;
     ungoogled = true;
     vesktop = true;
     vlc = true;
-    teamspeak = true;
     zed = true;
     zen = true;
   };
