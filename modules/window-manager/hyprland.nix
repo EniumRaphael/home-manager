@@ -289,6 +289,8 @@ in
 
           "move (monitor_w-321) 42, match:class ^(Mullvad VPN)$"
           "float 1, match:class ^(Mullvad VPN)$"
+          "pin 1, match:class ^(Mullvad VPN)$"
+          "pin 1, match:class ^(gcr-prompter)$"
         ];
         input = lib.mkIf cfg.isLaptop {
           gesture = [
