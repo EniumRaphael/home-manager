@@ -186,7 +186,6 @@ in
           [ ]
       )
       ++ (if cfg.obsidian then [ obsidian ] else [ ])
-      ++ (if cfg.nextcloud then [ nextcloud-client ] else [ ])
       ++ (if cfg.orcaslicer then [ orca-slicer-pkg ] else [ ])
       ++ (if cfg.openvpn then [ openvpn ] else [ ])
       ++ (if cfg.slack then [ slack ] else [ ])
@@ -206,14 +205,18 @@ in
     };
     programs = {
       zen-browser.enable = cfg.zen;
-      obs-studio = lib.mkIf cfg.obs {
-        enable = true;
+      obs-studio = {
+        enable = cfg.obs;
         plugins = with pkgs.obs-studio-plugins; [
           wlrobs
           obs-backgroundremoval
           obs-pipewire-audio-capture
         ];
       };
+    };
+    services.nextcloud-client = {
+        enable = cfg.nextcloud;
+        startInBackground = true;
     };
   };
 }
