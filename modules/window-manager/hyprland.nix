@@ -20,7 +20,6 @@ let
       notify-send -i "$3" "$1" "$2"
     }
     
-    # --- MODES ---
     mode_close() {
       MONITORS_COUNT=$(hyprctl monitors all | grep -c "Monitor")
       if [[ $MONITORS_COUNT -gt 1 ]]; then
@@ -59,7 +58,6 @@ in
   config = lib.mkIf cfg.enable {
 
     home.packages = with pkgs; [
-      clamshell
       hyprcursor
       brightnessctl
       pamixer
@@ -67,6 +65,8 @@ in
       xrandr
       libinput
       libinput-gestures
+    ] ++ lib.optionals (cfg.isLaptop) [
+      clamshell
     ];
     catppuccin = {
       hyprland.enable = true;
@@ -165,6 +165,7 @@ in
           "thunderbird"
           "cider-2"
           "vesktop"
+        ] ++ lib.optionals (cfg.isLaptop) [
           "clamshell check"
         ];
         bind = [
