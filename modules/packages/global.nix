@@ -185,6 +185,7 @@ in
         else
           [ ]
       )
+      ++ (if cfg.nextcloud then [ libsecret ] else [ ])
       ++ (if cfg.obsidian then [ obsidian ] else [ ])
       ++ (if cfg.orcaslicer then [ orca-slicer-pkg ] else [ ])
       ++ (if cfg.openvpn then [ openvpn ] else [ ])
@@ -214,9 +215,15 @@ in
         ];
       };
     };
-    services.nextcloud-client = {
+    services = {
+      gnome-keyring = {
+        enable = true;
+        components = [ "pkcs11" "secrets" "ssh" ];
+      };
+      nextcloud-client = {
         enable = cfg.nextcloud;
         startInBackground = true;
+      };
     };
   };
 }
