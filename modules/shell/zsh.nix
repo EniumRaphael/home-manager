@@ -18,6 +18,7 @@ in
   home = {
     packages = with pkgs; [
       cowsay
+      perl
       direnv
       eza
       gnupg
