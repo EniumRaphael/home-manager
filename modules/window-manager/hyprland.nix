@@ -169,6 +169,7 @@ in
           "vesktop"
         ] ++ lib.optionals (cfg.isLaptop) [
           "clamshell check"
+          "nm-applet"
         ];
         bind = [
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
