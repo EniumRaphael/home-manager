@@ -67,6 +67,7 @@ in
       libinput-gestures
     ] ++ lib.optionals (cfg.isLaptop) [
       clamshell
+      networkmanagerapplet
     ];
     catppuccin = {
       hyprland.enable = true;
@@ -91,7 +92,6 @@ in
         "x-scheme-handler/https" = [ "zen-beta.desktop" ];
       };
     };
-    programs.nm-applet.enable = cfg.isLaptop;
     services.blueman-applet.enable = cfg.isLaptop;
     wayland.windowManager.hyprland = {
       enable = true;
