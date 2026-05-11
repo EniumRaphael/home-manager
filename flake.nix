@@ -2,7 +2,11 @@
   description = "Full nixos configuration of home-manager";
 
   inputs = {
-    catppuccin.url = "github:catppuccin/nix";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,9 +19,14 @@
       };
     };
     orca-slicer-flake.url = "github:EniumRaphael/orca-slicer-flake";
-    hyprland.url = "github:hyprwm/Hyprland";
-    nixvim.url = "github:EniumRaphael/nixvim";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:EniumRaphael/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
