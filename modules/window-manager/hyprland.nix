@@ -92,7 +92,6 @@ in
         "x-scheme-handler/https" = [ "zen-beta.desktop" ];
       };
     };
-    services.blueman-applet.enable = cfg.isLaptop;
     wayland.windowManager.hyprland = {
       enable = true;
       systemd = {
