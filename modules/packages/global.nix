@@ -205,7 +205,14 @@ in
       zed.enable = cfg.zed;
     };
     programs = {
-      zen-browser.enable = cfg.zen;
+      zen-browser = {
+        enable = cfg.zen;
+        profiles."default" = {
+          settings = {
+            "ui.textScaleFactor" = 120;
+          };
+        };
+      };
       obs-studio = {
         enable = cfg.obs;
         plugins = with pkgs.obs-studio-plugins; [
