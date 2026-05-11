@@ -18,7 +18,10 @@
         home-manager.follows = "home-manager";
       };
     };
-    orca-slicer-flake.url = "github:EniumRaphael/orca-slicer-flake";
+    orca-slicer-flake = {
+      url = "github:EniumRaphael/orca-slicer-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
