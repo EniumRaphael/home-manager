@@ -178,11 +178,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778534125,
-        "narHash": "sha256-NtERcpQEPjcal0WWC9ZuL5C52zU3L22Z2xkEUR1GoRs=",
+        "lastModified": 1778535464,
+        "narHash": "sha256-kkUQYSv70wynJ/DfnGals6r98I6bK3CVNVTN1zbAd7Y=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bc63bedcab3454f11c79fcdbcf90301deb562b6c",
+        "rev": "b659c7ffd40fc9e3bb60d420c79c67e769b9f4ab",
         "type": "github"
       },
       "original": {
@@ -268,11 +268,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1778504983,
-        "narHash": "sha256-F70mt2snAYPobaMEEGRJmCqOmqU/zDM31HldpMUIWi0=",
+        "lastModified": 1778588655,
+        "narHash": "sha256-7zcsu103YzjuBBx3ToFodHBQl8W3e5GBu8C915I538Y=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "5e441cae538c9396f2ee30338419bec12969608c",
+        "rev": "d61c96913cbe3c3f9aacc198b1f1e6489349615d",
         "type": "github"
       },
       "original": {
@@ -512,6 +512,26 @@
         "type": "github"
       }
     },
+    "hytale-launcher": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778254216,
+        "narHash": "sha256-Zye2Stp1oqwzC4JvIdJevB5/CG0XrEqjNji+3nVvCyo=",
+        "owner": "JPyke3",
+        "repo": "hytale-launcher-nix",
+        "rev": "6293d33be6a5cd1a763fe00477339b98f72da2b2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JPyke3",
+        "repo": "hytale-launcher-nix",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1777954456,
@@ -651,6 +671,7 @@
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hytale-launcher": "hytale-launcher",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "orca-slicer-flake": "orca-slicer-flake",
@@ -753,11 +774,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778394798,
-        "narHash": "sha256-/jR8bModWv0ji305ecMgAB+2eaXLZiYdH+9Z4JIRkuA=",
+        "lastModified": 1778585655,
+        "narHash": "sha256-yfxy9aTlIgU2Z36H8cJURgYLgjT4qvFeOzoAC/HXcKM=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "45bc54456044b96492923739bfae633e1a4352e1",
+        "rev": "42f41abcef13dc81c85407b57aa1fd1bde46e46c",
         "type": "github"
       },
       "original": {

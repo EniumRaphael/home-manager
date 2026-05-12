@@ -8,6 +8,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hytale-launcher = {
+      url = "github:JPyke3/hytale-launcher-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +46,7 @@
       catppuccin,
       home-manager,
       hyprland,
+      hytale-launcher,
       nixpkgs,
       nixvim,
       orca-slicer-flake,
@@ -71,7 +76,11 @@
           ];
           extraSpecialArgs = {
             inherit system inputs;
-            orca-slicer-pkg = if orca-slicer-flake.packages ? ${system} then orca-slicer-flake.packages.${system}.default else null;
+            orca-slicer-pkg =
+              if orca-slicer-flake.packages ? ${system} then
+                orca-slicer-flake.packages.${system}.default
+              else
+                null;
             nixvim = nixvim.packages.${system}.default;
             zen-browser = if system == "aarch64-darwin" then null else zen-browser.packages.${system}.default;
           };
