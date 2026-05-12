@@ -902,7 +902,7 @@ in
             "privacy.trackingprotection.enabled" = true;
             "privacy.trackingprotection.socialtracking.enabled" = true;
             "privacy.fingerprintingProtection" = true;
-            "privacy.sanitize.sanitizeOnShutdown" = true;
+            "privacy.sanitize.sanitizeOnShutdown" = false;
             "privacy.clearOnShutdown.history" = false;
             "privacy.clearOnShutdown.cookies" = false;
             "privacy.clearOnShutdown.cache" = true;
