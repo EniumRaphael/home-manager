@@ -207,12 +207,79 @@ in
     programs = {
       zen-browser = {
         enable = cfg.zen;
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          bitwarden
+          cookie-editor
+          darkreader
+          foxyproxy-standard
+          hacktools
+          owasp-penetration-testing-kit
+          privacy-badger
+          return-youtube-dislikes
+          sponsorblock
+          ublock-origin
+          vimiumc
+          violentmonkey
+          wappalyzer
+          wayback-machine
+        ];
         profiles."default" = {
           settings = {
+            # UI
             "ui.textScaleFactor" = 120;
+            "browser.uidensity" = 1;
+            "browser.theme.content-theme" = 0;
+            "browser.theme.toolbar-theme" = 0;
+            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
+            # Zen
+            "zen.view.compact.enable-at-startup" = true;
+            "zen.theme.accent-color" = "#8caaee";
+            "zen.tabs.vertical.right-side" = false;
+
+            # Privacy
+            "privacy.trackingprotection.enabled" = true;
+            "privacy.trackingprotection.socialtracking.enabled" = true;
+            "privacy.fingerprintingProtection" = true;
+            "privacy.sanitize.sanitizeOnShutdown" = true;
+            "privacy.clearOnShutdown.history" = false;
+            "privacy.clearOnShutdown.cookies" = false;
+            "privacy.clearOnShutdown.cache" = true;
+            "privacy.clearOnShutdown.downloads" = false;
+
+            # Telemetry
+            "datareporting.healthreport.uploadEnabled" = false;
+            "datareporting.policy.dataSubmissionEnabled" = false;
+            "toolkit.telemetry.enabled" = false;
+            "toolkit.telemetry.unified" = false;
+            "browser.ping-centre.telemetry" = false;
+            "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+            "browser.newtabpage.activity-stream.telemetry" = false;
+
+            # Network
+            "network.dns.disablePrefetch" = true;
+            "network.prefetch-next" = false;
+            "network.http.speculative-parallel-limit" = 0;
+
+            # Passwords
+            "signon.rememberSignons" = false;
+            "signon.autofillForms" = false;
+
+            # Performance
+            "gfx.webrender.all" = true;
+            "media.ffmpeg.vaapi.enabled" = true;
+            "media.hardware-decoding.force-enabled" = true;
+
+            # Misc
+            "browser.shell.checkDefaultBrowser" = false;
+            "browser.startup.page" = 3;
+            "browser.sessionstore.resume_from_crash" = true;
+            "browser.newtabpage.enabled" = false;
+            "browser.download.useDownloadDir" = true;
           };
         };
       };
+
       obs-studio = {
         enable = cfg.obs;
         plugins = with pkgs.obs-studio-plugins; [
