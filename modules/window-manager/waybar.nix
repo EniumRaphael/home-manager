@@ -1,15 +1,15 @@
 {
-inputs,
-config,
-pkgs,
-lib,
-...
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
 }:
 
 let
   cfg = config.window-manager.waybar;
 in
-  {
+{
   config = lib.mkIf cfg {
     home.packages = with pkgs; [
       nerd-fonts.fira-code
@@ -61,7 +61,7 @@ in
           interval = 5;
         };
         "custom/power" = {
-          format  = "";
+          format = "";
           tooltip = false;
           menu = "on-click";
           menu-file = "~/.config/waybar/power_menu.xml";
@@ -249,7 +249,7 @@ in
           color: #fab387;
           border: 1px solid #fab387;
         }
-        
+
         #tray {
           margin: 6px 3px;
           padding: 6px 12px;
@@ -320,34 +320,34 @@ in
     };
     xdg.configFile."waybar/power_menu.xml" = {
       text = ''
- <?xml version="1.0" encoding="UTF-8"?>
- <interface>
-     <object class="GtkMenu" id="menu">
-         <child>
-             <object class="GtkMenuItem" id="lock">
-                 <property name="label">🔒 Lock</property>
-             </object>
-         </child>
-         <child>
-             <object class="GtkMenuItem" id="logout">
-                 <property name="label">🚪 Logout</property>
-             </object>
-         </child>
-         <child>
-             <object class="GtkSeparatorMenuItem" id="delimiter1" />
-         </child>
-         <child>
-             <object class="GtkMenuItem" id="shutdown">
-                 <property name="label">🛑 Shutdown</property>
-             </object>
-         </child>
-         <child>
-             <object class="GtkMenuItem" id="reboot">
-                 <property name="label">🔁 Reboot</property>
-             </object>
-         </child>
-     </object>
- </interface>
+        <?xml version="1.0" encoding="UTF-8"?>
+        <interface>
+            <object class="GtkMenu" id="menu">
+                <child>
+                    <object class="GtkMenuItem" id="lock">
+                        <property name="label">🔒 Lock</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkMenuItem" id="logout">
+                        <property name="label">🚪 Logout</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSeparatorMenuItem" id="delimiter1" />
+                </child>
+                <child>
+                    <object class="GtkMenuItem" id="shutdown">
+                        <property name="label">🛑 Shutdown</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkMenuItem" id="reboot">
+                        <property name="label">🔁 Reboot</property>
+                    </object>
+                </child>
+            </object>
+        </interface>
       '';
       executable = true;
     };

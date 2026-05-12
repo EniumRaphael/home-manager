@@ -86,6 +86,7 @@ in
     fonts = true;
     imv = true;
     kitty = true;
+    hytale = false;
     nextcloud = true;
     obs = true;
     obsidian = true;

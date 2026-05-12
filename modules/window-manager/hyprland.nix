@@ -10,16 +10,16 @@ let
   cfg = config.window-manager.hyprland;
   clamshell = pkgs.writeShellScriptBin "clamshell" ''
     #!/usr/bin/env bash
-    
+
     INTERNAL_DISPLAY=${cfg.primaryMonitor}
-    
+
     ICON_LAPTOP="computer-laptop"
     ICON_MONITOR="video-display"
-    
+
     notify_user() {
       notify-send -i "$3" "$1" "$2"
     }
-    
+
     mode_close() {
       MONITORS_COUNT=$(hyprctl monitors all | grep -c "Monitor")
       if [[ $MONITORS_COUNT -gt 1 ]]; then
@@ -27,27 +27,27 @@ let
         sudo ${pkgs.systemd}/bin/systemctl stop fprintd.service
       fi
     }
-    
+
     mode_open() {
       hyprctl keyword monitor ${pkgs.lib.head cfg.monitors}
       sudo ${pkgs.systemd}/bin/systemctl start fprintd.service
     }
-    
+
     if [[ "$1" == "close" ]]; then
       mode_close
       notify_user "Clamshell Mode" "External monitor active. Laptop screen disabled." "$ICON_MONITOR"
-    
+
     elif [[ "$1" == "open" ]]; then
       mode_open
       notify_user "Laptop Mode" "Laptop screen enabled." "$ICON_LAPTOP"
-    
+
     elif [[ "$1" == "check" ]]; then
       if grep -q "open" /proc/acpi/button/lid/*/state; then
         mode_open
       else
         mode_close
       fi
-    
+
     else
       echo "Usage: clamshell [open|close|check]"
       exit 1
@@ -57,18 +57,21 @@ in
 {
   config = lib.mkIf cfg.enable {
 
-    home.packages = with pkgs; [
-      hyprcursor
-      brightnessctl
-      pamixer
-      wl-clipboard
-      xrandr
-      libinput
-      libinput-gestures
-    ] ++ lib.optionals (cfg.isLaptop) [
-      clamshell
-      networkmanagerapplet
-    ];
+    home.packages =
+      with pkgs;
+      [
+        hyprcursor
+        brightnessctl
+        pamixer
+        wl-clipboard
+        xrandr
+        libinput
+        libinput-gestures
+      ]
+      ++ lib.optionals (cfg.isLaptop) [
+        clamshell
+        networkmanagerapplet
+      ];
     catppuccin = {
       hyprland.enable = true;
       cursors = {
@@ -145,18 +148,20 @@ in
           "_JAVA_AWT_WM_NONREPARENTING=1"
           "HYPRLAND_NO_SD_NOTIFY=1"
 
-        ] ++ lib.optionals (cfg.usingNVIDIA) [
-            "LIBVA_DRIVER_NAME=nvidia"
-            "__GLX_VENDOR_LIBRARY_NAME=nvidia"
-            "__NV_PRIME_RENDER_OFFLOAD=1"
-            "__GL_SYNC_TO_VBLANK=0"
-            "__GL_THREADED_OPTIMIZATIONS=1"
-            "NVD_BACKEND=direct"
+        ]
+        ++ lib.optionals (cfg.usingNVIDIA) [
+          "LIBVA_DRIVER_NAME=nvidia"
+          "__GLX_VENDOR_LIBRARY_NAME=nvidia"
+          "__NV_PRIME_RENDER_OFFLOAD=1"
+          "__GL_SYNC_TO_VBLANK=0"
+          "__GL_THREADED_OPTIMIZATIONS=1"
+          "NVD_BACKEND=direct"
 
-          ] ++ lib.optionals (cfg.usingAMD) [
-            "LIBVA_DRIVER_NAME=radeonsi"
-            "VDPAU_DRIVER=radeonsi"
-          ];
+        ]
+        ++ lib.optionals (cfg.usingAMD) [
+          "LIBVA_DRIVER_NAME=radeonsi"
+          "VDPAU_DRIVER=radeonsi"
+        ];
 
         exec-once = [
           ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
@@ -166,7 +171,8 @@ in
           "thunderbird"
           "cider-2"
           "vesktop"
-        ] ++ lib.optionals (cfg.isLaptop) [
+        ]
+        ++ lib.optionals (cfg.isLaptop) [
           "clamshell check"
           "nm-applet"
         ];
