@@ -45,8 +45,6 @@
     inputs@{
       catppuccin,
       home-manager,
-      hyprland,
-      hytale-launcher,
       nixpkgs,
       nixvim,
       orca-slicer-flake,
@@ -54,19 +52,20 @@
       ...
     }:
     let
+      lib = nixpkgs.lib;
+
+      pkgsFor =
+        system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+
       mkHomeConfig =
-        {
-          name,
-          system,
-          modulePath,
-        }:
+        { system, modulePath }:
         let
-          pkgs = import nixpkgs {
-            inherit system;
-            config = {
-              allowUnfree = true;
-            };
-          };
+          pkgs = pkgsFor system;
+          sys = pkgs.stdenv.hostPlatform.system;
         in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -75,69 +74,59 @@
             modulePath
           ];
           extraSpecialArgs = {
-            inherit system inputs;
+            inherit inputs;
             orca-slicer-pkg =
-              if orca-slicer-flake.packages ? ${system} then
-                orca-slicer-flake.packages.${system}.default
-              else
-                null;
-            nixvim = nixvim.packages.${system}.default;
-            zen-browser = if system == "aarch64-darwin" then null else zen-browser.packages.${system}.default;
+              if orca-slicer-flake.packages ? ${sys} then orca-slicer-flake.packages.${sys}.default else null;
+            nixvim = nixvim.packages.${sys}.default;
+            zen-browser = if zen-browser.packages ? ${sys} then zen-browser.packages.${sys}.default else null;
           };
         };
+
+      hosts = {
+        server = {
+          system = "x86_64-linux";
+          path = ./host/server.nix;
+        };
+        framework = {
+          system = "x86_64-linux";
+          path = ./host/framework.nix;
+        };
+        fix = {
+          system = "x86_64-linux";
+          path = ./host/fix.nix;
+        };
+        root = {
+          system = "x86_64-linux";
+          path = ./host/root.nix;
+        };
+        cluster = {
+          system = "x86_64-linux";
+          path = ./host/cluster.nix;
+        };
+        mac = {
+          system = "aarch64-darwin";
+          path = ./host/mac.nix;
+        };
+        asahi = {
+          system = "aarch64-linux";
+          path = ./host/asahi.nix;
+        };
+        rasberry = {
+          system = "aarch64-linux";
+          path = ./host/rasberry.nix;
+        };
+      };
+
     in
     {
-      homeConfigurations = {
-        "hm-server" = mkHomeConfig {
-          name = "hm-server";
-          system = "x86_64-linux";
-          modulePath = ./host/server.nix;
-        };
-        "hm-framework" = mkHomeConfig {
-          name = "hm-framework";
-          system = "x86_64-linux";
-          modulePath = ./host/framework.nix;
-        };
-        "hm-fix" = mkHomeConfig {
-          name = "hm-fix";
-          system = "x86_64-linux";
-          modulePath = ./host/fix.nix;
-        };
-        "hm-root" = mkHomeConfig {
-          name = "hm-root";
-          system = "x86_64-linux";
-          modulePath = ./host/root.nix;
-        };
-        "hm-cluster" = mkHomeConfig {
-          name = "hm-cluster";
-          system = "x86_64-linux";
-          modulePath = ./host/cluster.nix;
-        };
-        "hm-mac" = mkHomeConfig {
-          name = "hm-mac";
-          system = "aarch64-darwin";
-          modulePath = ./host/mac.nix;
-        };
-        "hm-asahi" = mkHomeConfig {
-          name = "hm-asahi";
-          system = "aarch64-linux";
-          modulePath = ./host/asahi.nix;
-        };
-        "hm-rasberry" = mkHomeConfig {
-          name = "hm-rasberry";
-          system = "aarch64-linux";
-          modulePath = ./host/rasberry.nix;
-        };
-      };
-      homeModules = {
-        server = ./host/server.nix;
-        framework = ./host/framework.nix;
-        fix = ./host/fix.nix;
-        root = ./host/root.nix;
-        cluster = ./host/cluster.nix;
-        mac = ./host/mac.nix;
-        asahi = ./host/asahi.nix;
-        rasberry = ./host/rasberry.nix;
-      };
+      homeConfigurations = lib.mapAttrs (
+        _: h:
+        mkHomeConfig {
+          system = h.system;
+          modulePath = h.path;
+        }
+      ) hosts;
+
+      homeModules = lib.mapAttrs (_: h: h.path) hosts;
     };
 }
