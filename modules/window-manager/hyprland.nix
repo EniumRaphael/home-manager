@@ -97,7 +97,7 @@ in
     };
     wayland.windowManager.hyprland = {
       enable = true;
-      configType = "hyprlang";
+      configType = "hyprlua";
       systemd = {
         enable = false;
         variables = [
@@ -189,7 +189,6 @@ in
           "$mod, V, togglefloating,"
           "$mod, F, fullscreen"
           "$mod, R, exec, $menu"
-          "$mod, P, togglesplit"
           "$mod, h, movefocus, l"
           "$mod, l, movefocus, r"
           "$mod, j, movefocus, u"
