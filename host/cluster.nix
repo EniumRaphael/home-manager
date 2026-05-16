@@ -11,15 +11,6 @@
 }:
 
 let
-  cyber = import ../modules/cyber/global.nix {
-    inherit
-      inputs
-      config
-      pkgs
-      lib
-      nixvim
-      ;
-  };
   dev = import ../modules/dev/global.nix {
     inherit
       inputs
@@ -63,7 +54,6 @@ in
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    cyber
     dev
     package
     zsh
@@ -97,11 +87,6 @@ in
       c-cpp = false;
       rust = false;
     };
-  };
-
-  cyber = {
-    tui = false;
-    gui = false;
   };
 
   catppuccin = {

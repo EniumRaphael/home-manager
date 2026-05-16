@@ -11,15 +11,6 @@
 }:
 
 let
-  cyber = import ../modules/cyber/global.nix {
-    inherit
-      inputs
-      config
-      pkgs
-      lib
-      nixvim
-      ;
-  };
   dev = import ../modules/dev/global.nix {
     inherit
       inputs
@@ -70,7 +61,6 @@ in
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    cyber
     dev
     package
     window-manager
