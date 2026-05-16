@@ -316,6 +316,49 @@ in
           padding: 5px;
           background-color: #131822;
         }
+
+        #tray menu {
+          background-color: #1e1e2e; /* ou ta couleur */
+          color: #cdd6f4;
+          border: 1px solid rgba(203, 166, 247, 0.5);
+          border-radius: 13px;
+          padding: 5px;
+        }
+        
+        #tray menu menuitem {
+          background-color: #1e1e2e;
+          padding: 5px 10px;
+          border-radius: 8px;
+        }
+        
+        #tray menu menuitem:hover {
+          background-color: rgba(203, 166, 247, 0.2);
+        }
+
+      menu {
+        background-color: #1e1e2e;
+        color: #cdd6f4;
+        border: 1px solid rgba(203, 166, 247, 0.5);
+        border-radius: 13px;
+        padding: 5px;
+      }
+      
+      menuitem {
+        background-color: #1e1e2e;
+        color: #cdd6f4;
+        padding: 6px 12px;
+        border-radius: 8px;
+      }
+      
+      menuitem:hover {
+        background-color: rgba(203, 166, 247, 0.2);
+        color: #cba6f7;
+      }
+      
+      separator {
+        background-color: rgba(203, 166, 247, 0.3);
+        margin: 3px 0px;
+      }
       '';
     };
     xdg.configFile."waybar/power_menu.xml" = {
