@@ -879,7 +879,6 @@ in
               ublock-origin
               vimium-c
               violentmonkey
-              wappalyzer
               wayback-machine
             ];
           };
