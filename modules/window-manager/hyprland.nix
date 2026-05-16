@@ -97,7 +97,7 @@ in
     };
     wayland.windowManager.hyprland = {
       enable = true;
-      configType = "hyprlua";
+      configType = "lua";
       systemd = {
         enable = false;
         variables = [
