@@ -102,11 +102,6 @@ in
               default_area = "menupanel";
               private_browsing = false;
             };
-            "wappalyzer@crunchlabz.com" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/latest/wappalyzer/latest.xpi";
-              default_area = "menupanel";
-              private_browsing = false;
-            };
             "wayback_machine@mozilla.org" = {
               install_url = "https://addons.mozilla.org/firefox/downloads/latest/wayback-machine/latest.xpi";
               default_area = "menupanel";
