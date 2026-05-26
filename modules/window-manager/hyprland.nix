@@ -73,7 +73,7 @@ in
         networkmanagerapplet
       ];
     catppuccin = {
-      hyprland.enable = true;
+      hyprland.enable = false;
       cursors = {
         enable = true;
         accent = "dark";
