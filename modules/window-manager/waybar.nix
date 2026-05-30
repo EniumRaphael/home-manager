@@ -68,7 +68,7 @@ in
           menu-actions = {
             shutdown = "systemctl poweroff";
             reboot = "systemctl reboot";
-            logout = "hyprctl dispatch exit";
+            logout = "uwsm stop";
             lock = "hyprlock";
           };
         };
