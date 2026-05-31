@@ -166,7 +166,7 @@ in
 
         exec-once = [
           ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
-          "vicinae server"
+          "rofi -show drun"
           "pw-metadata -n settings 0 clock.force-quantum 512"
           "xrandr --output ${cfg.primaryMonitor} --primary"
           "thunderbird"
