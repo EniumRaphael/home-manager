@@ -166,7 +166,6 @@ in
 
         exec-once = [
           ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
-          "rofi -show drun"
           "pw-metadata -n settings 0 clock.force-quantum 512"
           "xrandr --output ${cfg.primaryMonitor} --primary"
           "thunderbird"
@@ -181,8 +180,8 @@ in
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
           "$mod, w, exec, zen-beta"
           "$mod, e, exec, ${pkgs.nautilus}/bin/nautilus"
-          "$mod, b, exec, vicinae toggle -q 'power system'"
-          "ALT, SPACE, exec, ${pkgs.vicinae}/bin/vicinae toggle"
+          "$mod, b, exec, "
+          "ALT, SPACE, exec, rofi -show drun"
           "$mod, q, killactive"
           "ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
           "$mod SHIFT, ESCAPE, exit,"
