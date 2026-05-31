@@ -64,10 +64,10 @@ in
       default = false;
       description = "enable the teamspealk client";
     };
-    prismlauncher = lib.mkOption {
+    minecraft = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable the Prism Launcher";
+      description = "Enable the Minecraft launchers";
     };
     zed = lib.mkOption {
       type = lib.types.bool;
@@ -171,8 +171,9 @@ in
       with pkgs;
       (if cfg.cider then [ cider-2 ] else [ ])
       ++ (
-        if cfg.prismlauncher then
+        if cfg.minecraft then
           [
+            lunar-client
             prismlauncher
             openjdk
           ]
