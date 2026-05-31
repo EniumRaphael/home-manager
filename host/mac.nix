@@ -71,7 +71,7 @@ in
     obsidian = false;
     orcaslicer = true;
     openvpn = true;
-    prismlauncher = false;
+    minecraft = false;
     slack = true;
     ungoogled = false;
     teamspeak = false;

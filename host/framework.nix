@@ -82,7 +82,7 @@ in
     obsidian = true;
     openvpn = true;
     orcaslicer = true;
-    prismlauncher = true;
+    minecraft = true;
     slack = true;
     teamspeak = true;
     ungoogled = true;

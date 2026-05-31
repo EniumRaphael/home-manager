@@ -83,7 +83,7 @@ in
     obs = false;
     obsidian = false;
     openvpn = true;
-    prismlauncher = false;
+    minecraft = false;
     slack = false;
     teamspeak = false;
     ungoogled = false;

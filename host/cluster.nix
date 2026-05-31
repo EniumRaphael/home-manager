@@ -71,7 +71,7 @@ in
     obs = false;
     obsidian = false;
     openvpn = false;
-    prismlauncher = false;
+    minecraft = false;
     slack = false;
     ungoogled = false;
     vesktop = false;

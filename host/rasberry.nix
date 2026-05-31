@@ -80,7 +80,7 @@ in
     obs = false;
     obsidian = true;
     openvpn = true;
-    prismlauncher = false;
+    minecraft = false;
     slack = false;
     ungoogled = false;
     vesktop = true;
