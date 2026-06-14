@@ -100,15 +100,16 @@ in
   window-manager = {
     enable = false;
     hyprland.enable = false;
+    hyprlock = false;
     hyprpaper = false;
+    noctalia = false;
     mako = false;
-    vicinae = false;
     nautilus = false;
-    waybar = false;
   };
 
   catppuccin = {
     enable = true;
+    autoEnable = true;
     accent = "mauve";
     flavor = "mocha";
   };
