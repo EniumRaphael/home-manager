@@ -2,7 +2,7 @@
   description = "Full nixos configuration of home-manager";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -27,6 +27,10 @@
         home-manager.follows = "home-manager";
       };
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     orca-slicer-flake = {
       url = "github:EniumRaphael/orca-slicer-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,6 +51,7 @@
       home-manager,
       nixpkgs,
       nixvim,
+      noctalia,
       orca-slicer-flake,
       zen-browser,
       ...
@@ -71,6 +76,7 @@
           inherit pkgs;
           modules = [
             catppuccin.homeModules.catppuccin
+            inputs.noctalia.homeModules.default
             modulePath
           ];
           extraSpecialArgs = {
