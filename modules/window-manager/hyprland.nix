@@ -8,7 +8,7 @@
 
 let
   cfg = config.window-manager.hyprland;
-  ipc = "noctalia-shell ipc call";
+  ipc = "noctalia msg";
   clamshell = pkgs.writeShellScriptBin "clamshell" ''
     #!/usr/bin/env bash
 
@@ -172,6 +172,7 @@ in
           "thunderbird"
           "cider-2"
           "vesktop"
+          "noctalia"
         ]
         ++ lib.optionals (cfg.isLaptop) [
           "nm-applet"
@@ -182,10 +183,9 @@ in
           "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
           "$mod, w, exec, zen-beta"
           "$mod, e, exec, ${pkgs.nautilus}/bin/nautilus"
-          "$mod SHIFT, e , exec, ${ipc} launcher emoji"
           "$mod, b, exec, "
-          "ALT, SPACE, exec, ${ipc} launcher toggle"
-          "ALT, L, exec, ${ipc} lockScreen lock"
+          "ALT, SPACE, exec, ${ipc} panel-toggle launcher"
+          "ALT, L, exec, ${ipc} session lock"
           "$mod SHIFT, ESCAPE, exit,"
           "$mod, V, togglefloating,"
           "$mod, F, fullscreen"
@@ -199,10 +199,9 @@ in
           "$mod, mouse_down, workspace, e+1"
           "$mod, mouse_up, workspace, e-1"
           ''$mod SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy''
-          ",XF86AudioPlay, exec, ${ipc} media playPause"
+          ",XF86AudioPlay, exec, ${ipc} media toggle"
           ",XF86AudioPrev, exec, ${ipc} media previous"
           ",XF86AudioNext, exec, ${ipc} media next"
-          ",XF86AudioMute, exec, ${ipc} volume muteOutput"
           "$mod, 1, workspace, 1"
           "$mod, 2, workspace, 2"
           "$mod, 3, workspace, 3"
@@ -229,13 +228,13 @@ in
           "$mod, mouse:273, resizewindow"
         ];
         bindel = [
-          ",XF86AudioLowerVolume, exec, ${ipc} volume decrease"
-          ",XF86AudioRaiseVolume, exec, ${ipc} volume increase"
-          ",XF86MonBrightnessDown, exec, ${ipc} volume increase"
-          ",XF86MonBrightnessUp, exec, ${ipc} volume decrease"
+          ",XF86AudioLowerVolume, exec, ${ipc} volume-down 5"
+          ",XF86AudioRaiseVolume, exec, ${ipc} volume-up 5"
+          ",XF86MonBrightnessDown, exec, ${ipc} brightness-down all 5"
+          ",XF86MonBrightnessUp, exec, ${ipc} brightness-up all 5"
         ];
         bindl = [
-          ", XF86AudioMute, exec, ${ipc} volume muteOutput"
+          ",XF86AudioMute, exec, ${ipc} volume-mute"
           ", switch:on:Lid Switch, exec, clamshell close"
           ", switch:off:Lid Switch, exec, clamshell open"
         ];
