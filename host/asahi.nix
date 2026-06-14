@@ -103,13 +103,13 @@ in
     hyprland.enable = true;
     hyprpaper = true;
     mako = true;
-    vicinae = true;
+    noctalia = true;
     nautilus = true;
-    waybar = true;
   };
 
   catppuccin = {
     enable = true;
+    autoEnable = true;
     accent = "mauve";
     flavor = "mocha";
   };

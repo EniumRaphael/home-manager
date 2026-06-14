@@ -114,14 +114,14 @@ in
     };
     hyprlock = true;
     hyprpaper = true;
+    noctalia = true;
     mako = true;
-    vicinae = true;
     nautilus = true;
-    waybar = true;
   };
 
   catppuccin = {
     enable = true;
+    autoEnable = true;
     accent = "mauve";
     flavor = "mocha";
   };

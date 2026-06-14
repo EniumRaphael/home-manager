@@ -60,6 +60,7 @@ in
 
   catppuccin = {
     enable = true;
+    autoEnable = true;
     accent = "mauve";
     flavor = "mocha";
   };
@@ -104,11 +105,11 @@ in
   window-manager = {
     enable = false;
     hyprland.enable = false;
+    hyprlock = false;
     hyprpaper = false;
+    noctalia = false;
     mako = false;
-    vicinae = false;
     nautilus = false;
-    waybar = false;
   };
 
   fonts.fontconfig = {
