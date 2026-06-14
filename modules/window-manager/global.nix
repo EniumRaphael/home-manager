@@ -31,7 +31,7 @@ let
       lib
       ;
   };
-  mako = import ./mako.nix {
+  noctalia = import ./noctalia.nix {
     inherit
       inputs
       config
@@ -39,7 +39,7 @@ let
       lib
       ;
   };
-  vicinae = import ./vicinae.nix {
+  mako = import ./mako.nix {
     inherit
       inputs
       config
@@ -63,14 +63,6 @@ let
       lib
       ;
   };
-  waybar = import ./waybar.nix {
-    inherit
-      inputs
-      config
-      pkgs
-      lib
-      ;
-  };
 
   cfg = config.window-manager;
 in
@@ -79,11 +71,10 @@ in
     hyprland
     hypridle
     hyprpaper
+    noctalia
     mako
-    vicinae
     nautilus
     hyprlock
-    waybar
   ];
 
   options.window-manager = {
@@ -149,15 +140,10 @@ in
       default = false;
       description = "Enable the Nautilus configuration";
     };
-    vicinae = lib.mkOption {
+    noctalia = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable the Vicinae configuration";
-    };
-    waybar = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enable the Waybar configuration";
+      description = "Enable the Noctalia configuration";
     };
   };
 
@@ -167,8 +153,7 @@ in
         hyprland = false;
         hyprpaper = false;
         mako = false;
-        vicinae = false;
-        waybar = false;
+        noctalia = false;
         nautilus = false;
       };
     }
