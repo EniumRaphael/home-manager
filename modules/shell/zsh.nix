@@ -23,6 +23,7 @@ in
       direnv
       eza
       gnupg
+      pinentry-tty
       lolcat
       wget
       zoxide
@@ -74,6 +75,7 @@ in
           "rb" = "rebase";
           "ss" = "status --short";
           "rbi" = "rebase -i";
+<<<<<<< HEAD
         };
         core = {
           editor = "nvim";
@@ -85,6 +87,31 @@ in
           signByDefault = true;
         };
       };
+=======
+        };
+        core = {
+          editor = "nvim";
+          pager = "bat -p";
+        };
+        signing = {
+          format = "openpgp";
+          signByDefault = true;
+        };
+        user = {
+          name = "Raphael Parodi";
+          email = "raphael@parodi.pro";
+        };
+      };
+      ignores = [
+        ".DS_Store"
+        "*.swp"
+        "*.swo"
+        "*.swm"
+        "*.swu"
+        "node_modules/"
+        ".env"
+      ];
+>>>>>>> f78e3e4 (feat(modules[shell]): add the git configuration w/ signing key)
     };
     zsh = {
       enable = true;
@@ -116,14 +143,6 @@ in
       shellAliases = {
         "cls" = "clear";
         "vim" = "nvim";
-        "gcl" = "git clone";
-        "gs" = "git status";
-        "gm" = "git commit -m";
-        "gc" = "git commit -m";
-        "gp" = "git push";
-        "gpp" = "git pull";
-        "ga" = "git add .";
-        "gr" = "git restore .";
         "ls" = "eza -h --icons=always";
         "ll" = "ls -l";
         "l" = "ls -l";
