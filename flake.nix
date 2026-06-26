@@ -67,7 +67,7 @@
         };
 
       mkHomeConfig =
-        { system, modulePath }:
+        { system, modulePath, gpg ? null }:
         let
           pkgs = pkgsFor system;
           sys = pkgs.stdenv.hostPlatform.system;
@@ -81,6 +81,7 @@
           ];
           extraSpecialArgs = {
             inherit inputs;
+            gpgFingerprint = gpg;
             orca-slicer-pkg =
               if orca-slicer-flake.packages ? ${sys} then orca-slicer-flake.packages.${sys}.default else null;
             nixvim = nixvim.packages.${sys}.default;
@@ -96,6 +97,7 @@
         framework = {
           system = "x86_64-linux";
           path = ./host/framework.nix;
+          gpg = "7E68 D47E EEE8 16AB 5C22  3E06 C0D7 7521 C860 610C";
         };
         fix = {
           system = "x86_64-linux";
@@ -130,6 +132,7 @@
         mkHomeConfig {
           system = h.system;
           modulePath = h.path;
+          gpg = h.gpg;
         }
       ) hosts;
 

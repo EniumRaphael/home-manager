@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  gpgFingerprint ? null,
   ...
 }:
 
@@ -30,6 +31,9 @@ in
   };
 
   programs = {
+    gpg = lib.mkIf (gpgFingerprint != null) {
+      enable = true;
+    };
     fzf = {
       enable = true;
       enableZshIntegration = true;
@@ -54,27 +58,33 @@ in
     git = {
       enable = true;
       settings = {
-        user = {
-          name = "Raphael";
-          email = "rparodi@student.42.fr";
-          signingkey = "~/.ssh/id_ed25519.pub";
+        alias = {
+          "a" = "add";
+          "c" = "commit";
+          "d" = "diff";
+          "h" = "history";
+          "m" = "commit -m";
+          "p" = "push";
+          "r" = "restore";
+          "s" = "status";
+          "cl" = "clone";
+          "co" = "checkout";
+          "pf" = "push --force-with-lease";
+          "pp" = "pull";
+          "rb" = "rebase";
+          "ss" = "status --short";
+          "rbi" = "rebase -i";
         };
-        gpg = {
-          format = "ssh";
-          ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+        core = {
+          editor = "nvim";
+          pager = "bat -p";
         };
-        commit.gpgsign = true;
+        signing = lib.mkIf (gpgFingerprint != null) {
+          key = gpgFingerprint;
+          format = "openpgp";
+          signByDefault = true;
+        };
       };
-      signing.format = "openpgp";
-      ignores = [
-        ".DS_Store"
-        "*.swp"
-        "*.swo"
-        "*.swm"
-        "*.swu"
-        "node_modules/"
-        ".env"
-      ];
     };
     zsh = {
       enable = true;
