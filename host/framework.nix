@@ -4,6 +4,7 @@
   config,
   pkgs,
   lib,
+  gpgFingerprint,
   nixvim,
   orca-slicer-pkg,
   zen-browser,
@@ -45,6 +46,7 @@ let
       config
       pkgs
       lib
+      gpgFingerprint
       ;
   };
 in
