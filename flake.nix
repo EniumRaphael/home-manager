@@ -97,7 +97,7 @@
         framework = {
           system = "x86_64-linux";
           path = ./host/framework.nix;
-          gpg = "7E68 D47E EEE8 16AB 5C22  3E06 C0D7 7521 C860 610C";
+          gpg = "7E68D47EEEE816AB5C223E06C0D77521C860610C";
         };
         fix = {
           system = "x86_64-linux";
