@@ -58,6 +58,15 @@ in
     };
     git = {
       enable = true;
+      ignores = [
+        ".DS_Store"
+        "*.swp"
+        "*.swo"
+        "*.swm"
+        "*.swu"
+        "node_modules/"
+        ".env"
+      ];
       settings = {
         alias = {
           "a" = "add";
@@ -75,11 +84,14 @@ in
           "rb" = "rebase";
           "ss" = "status --short";
           "rbi" = "rebase -i";
-<<<<<<< HEAD
         };
         core = {
           editor = "nvim";
           pager = "bat -p";
+        };
+        user = {
+          name = "Raphael Parodi";
+          email = "raphael@parodi.pro";
         };
         signing = lib.mkIf (gpgFingerprint != null) {
           key = gpgFingerprint;
@@ -87,31 +99,6 @@ in
           signByDefault = true;
         };
       };
-=======
-        };
-        core = {
-          editor = "nvim";
-          pager = "bat -p";
-        };
-        signing = {
-          format = "openpgp";
-          signByDefault = true;
-        };
-        user = {
-          name = "Raphael Parodi";
-          email = "raphael@parodi.pro";
-        };
-      };
-      ignores = [
-        ".DS_Store"
-        "*.swp"
-        "*.swo"
-        "*.swm"
-        "*.swu"
-        "node_modules/"
-        ".env"
-      ];
->>>>>>> f78e3e4 (feat(modules[shell]): add the git configuration w/ signing key)
     };
     zsh = {
       enable = true;
