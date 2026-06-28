@@ -94,6 +94,7 @@ in
         "application/pdf" = [ "org.gnome.Evince.desktop" ];
         "x-scheme-handler/http" = [ "zen-beta.desktop" ];
         "x-scheme-handler/https" = [ "zen-beta.desktop" ];
+      "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
       };
     };
     wayland.windowManager.hyprland = {
@@ -175,7 +176,7 @@ in
           "noctalia"
         ]
         ++ lib.optionals (cfg.isLaptop) [
-          "nm-applet"
+          "upower"
         ];
         exec = "clamshell check";
         bind = [
