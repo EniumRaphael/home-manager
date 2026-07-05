@@ -89,6 +89,9 @@ in
           editor = "nvim";
           pager = "bat -p";
         };
+        push = {
+          autoSetupRemote = true;
+        };
         user = {
           name = "Raphael Parodi";
           email = "raphael@parodi.pro";
@@ -196,7 +199,7 @@ in
           autoload -Uz zmv
           autoload -U edit-command-line
           zle -N edit-command-line
-          bindkey '^xe' edit-command-line
+          bindkey '^x^e' edit-command-line
         '')
       ];
       loginExtra = ''
