@@ -22,7 +22,6 @@ jobs:
           git clone "${REPO_URL}" .
           git config user.name "Flake Updater"
           git config user.email "no-reply@enium.eu"
-
       - name: Enable flakes
         run: |
           mkdir -p ~/.config/nix
@@ -49,7 +48,6 @@ jobs:
         env:
           FORGEJO_TOKEN: ${{ secrets.GITEA_TOKEN }}
           REPO_FULL_NAME: ${{ steps.repo.outputs.full_name }}
-          SERVER_URL: ${{ steps.repo.outputs.server_url }}
         run: |
-          HOST=$(echo "${SERVER_URL}" | sed -e 's|^https\?://||')
+          HOST=git.enium.eu
           git push "https://oauth2:${FORGEJO_TOKEN}@${HOST}/${REPO_FULL_NAME}.git"
