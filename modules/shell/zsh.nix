@@ -72,7 +72,7 @@ in
           "a" = "add";
           "c" = "commit";
           "d" = "diff";
-          "h" = "history";
+          "h" = "log --oneline";
           "m" = "commit -m";
           "p" = "push";
           "r" = "restore";
@@ -83,11 +83,14 @@ in
           "pp" = "pull";
           "rb" = "rebase";
           "ss" = "status --short";
-          "rbi" = "rebase -i";
+          "rbi" = "rebase -i origin";
         };
         core = {
           editor = "nvim";
           pager = "bat -p";
+        };
+        pull = {
+          rebase = true;
         };
         push = {
           autoSetupRemote = true;
