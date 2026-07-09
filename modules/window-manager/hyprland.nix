@@ -262,7 +262,7 @@ in
           "opacity 0.9 0.7, match:class ^(Audacious)$"
           "opacity 0.9 0.8, match:class ^(VSCode|code-url-handler)$"
           "opacity 0.9 0.8, match:class ^(jetbrains-.+)$"
-          "opacity 0.94 0.86, match:class ^(Cider)$"
+          "opacity 0.94 0.86, match:class ^(Cider|cider)$"
           "opacity 0.94 0.86, match:class ^(Slack)$"
           "opacity 0.94 0.86, match:class ^(Revolt-desktop)$"
           "opacity 0.9 0.8, match:class ^(vesktop)$"
@@ -282,7 +282,7 @@ in
           "workspace 8, match:class ^(thunderbird)$"
           "workspace 9, match:class ^(Element)$"
           "workspace 9, match:class ^(vesktop)$"
-          "workspace 10, match:class ^(Cider)$"
+          "workspace 10, match:class ^(Cider|cider)$"
 
           "workspace 11, match:class ^(.*\.exe|gamescope|steam_app_\\d+)$"
           "fullscreen 1, match:class ^(.*\.exe|gamescope|steam_app_\\d+)$"
