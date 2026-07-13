@@ -14,9 +14,6 @@ in
   imports = [
     inputs.zen-browser.homeModules.beta
   ];
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-39.8.10"
-  ];
   config = lib.mkIf cfg {
     programs = {
       zen-browser = {
