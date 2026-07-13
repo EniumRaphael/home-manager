@@ -73,6 +73,7 @@ in
         clamshell
         networkmanagerapplet
       ];
+    home.pointerCursor.enable = true;
     catppuccin = {
       hyprland.enable = false;
       cursors = {
