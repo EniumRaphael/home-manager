@@ -67,7 +67,11 @@
         };
 
       mkHomeConfig =
-        { system, modulePath, gpg ? null }:
+        {
+          system,
+          modulePath,
+          gpg ? null,
+        }:
         let
           pkgs = pkgsFor system;
           sys = pkgs.stdenv.hostPlatform.system;
