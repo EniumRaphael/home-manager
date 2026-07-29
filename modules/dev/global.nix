@@ -59,6 +59,7 @@ in
       packages =
         with pkgs;
         [
+          dig
           direnv
           doxygen
           fastmod
@@ -73,6 +74,7 @@ in
           nixfmt
           nixvim
           ripgrep
+          traceroute
         ]
         ++ (if pkgs.stdenv.isLinux then [ valgrind ] else [ ]);
     };
