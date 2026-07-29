@@ -95,7 +95,7 @@ in
         "application/pdf" = [ "org.gnome.Evince.desktop" ];
         "x-scheme-handler/http" = [ "zen-beta.desktop" ];
         "x-scheme-handler/https" = [ "zen-beta.desktop" ];
-      "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
+        "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
       };
     };
     wayland.windowManager.hyprland = {
