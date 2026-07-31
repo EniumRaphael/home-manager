@@ -77,6 +77,7 @@ in
           "p" = "push";
           "r" = "restore";
           "s" = "status";
+          "br" = "branch";
           "cl" = "clone";
           "co" = "checkout";
           "pf" = "push --force-with-lease";
