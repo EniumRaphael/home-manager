@@ -136,6 +136,7 @@ in
       };
       shellAliases = {
         "cls" = "clear";
+        "nrs" = "sudo nixos-rebuild switch --flake .#$(hostname) |& nom";
         "vim" = "nvim";
         "ls" = "eza -h --icons=always";
         "ll" = "ls -l";
