@@ -107,22 +107,8 @@ in
       primaryMonitor = "HDMI-A-1";
       usingNVIDIA = true;
       monitors = [
-        "HDMI-A-1, 1920x1080, 0x0, 1"
-        "DP-1, 1920x1080, -1080x-840, 1, transform, 1"
+        "DP-1, 3440x1440@175.00000, 0x0, 1, transform, 0"
         ", prefered, auto, 1"
-      ];
-      workspaces = [
-        "1, monitor:HDMI-A-1"
-        "2, monitor:HDMI-A-1"
-        "3, monitor:HDMI-A-1"
-        "4, monitor:HDMI-A-1"
-        "5, monitor:HDMI-A-1"
-        "6, monitor:DP-1"
-        "7, monitor:DP-1"
-        "8, monitor:DP-1"
-        "9, monitor:DP-1"
-        "10, monitor:DP-1"
-        "11, monitor:HDMI-A-1, border:false, rounding:false"
       ];
     };
     hyprlock = true;
