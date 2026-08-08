@@ -136,6 +136,7 @@ in
       };
       shellAliases = {
         "cls" = "clear";
+        "vim" = "nvim";
         "nrs" = "sudo nixos-rebuild switch --flake /etc/nixos#$(hostname) |& nom";
         "hms" = "home-manager switch --flake ~/.config/home-manager#$(hostname) --impure |& nom";
         "ls" = "eza -h --icons=always";
