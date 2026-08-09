@@ -71,7 +71,6 @@ in
       ]
       ++ lib.optionals (cfg.isLaptop) [
         clamshell
-        networkmanagerapplet
       ];
     home.pointerCursor.enable = true;
     catppuccin = {
