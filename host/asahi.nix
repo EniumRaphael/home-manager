@@ -39,7 +39,7 @@ let
       lib
       ;
   };
-  zsh = import ../modules/shell/zsh.nix {
+  zsh = import ../modules/shell/default.nix {
     inherit
       inputs
       config
