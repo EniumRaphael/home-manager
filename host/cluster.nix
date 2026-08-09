@@ -11,7 +11,7 @@
 }:
 
 let
-  dev = import ../modules/dev/global.nix {
+  dev = import ../modules/dev/default.nix {
     inherit
       inputs
       config
@@ -20,7 +20,7 @@ let
       nixvim
       ;
   };
-  package = import ../modules/packages/global.nix {
+  package = import ../modules/packages/default.nix {
     inherit
       system
       inputs
