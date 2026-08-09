@@ -24,6 +24,7 @@ in
       eza
       gnupg
       pinentry-tty
+      nix-output-monitor
       lolcat
       wget
       zoxide
