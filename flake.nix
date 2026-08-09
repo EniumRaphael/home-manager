@@ -59,11 +59,27 @@
     let
       lib = nixpkgs.lib;
 
+      overlays = [
+        (final: prev: {
+          lib = prev.lib // {
+            patchUnfree =
+              pkg:
+              pkg.overrideAttrs (old: {
+                meta = old.meta // {
+                  license = (old.meta.license or { }) // {
+                    free = true;
+                  };
+                };
+              });
+          };
+        })
+      ];
       pkgsFor =
         system:
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          inherit overlays;
         };
 
       mkHomeConfig =
