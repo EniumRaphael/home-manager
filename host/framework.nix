@@ -40,7 +40,7 @@ let
       lib
       ;
   };
-  zsh = import ../modules/shell/zsh.nix {
+  zsh = import ../modules/shell/default.nix {
     inherit
       inputs
       config
@@ -92,6 +92,15 @@ in
     vlc = true;
     zed = true;
     zen = true;
+  };
+
+  shell = {
+    enable = true;
+    tools = {
+      git = true;
+      starship = true;
+      tmux = true;
+    };
   };
 
   dev = {
