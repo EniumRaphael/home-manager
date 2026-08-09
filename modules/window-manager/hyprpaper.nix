@@ -35,7 +35,7 @@ in
         wallpaper = [
           {
             path = "/home/${config.home.username}/Pictures/vertical.png";
-            monitor = "DP-1";
+            monitor = "DVI-I-1";
           }
           {
             path = "/home/${config.home.username}/Pictures/horizontal.png";
@@ -43,7 +43,7 @@ in
           }
           {
             path = "/home/${config.home.username}/Pictures/horizontal.png";
-            monitor = "HDMI-A-1";
+            monitor = "DP-3";
           }
         ];
       };
