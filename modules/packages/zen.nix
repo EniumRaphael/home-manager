@@ -47,6 +47,11 @@ in
               default_area = "navbar";
               private_browsing = false;
             };
+            "amptra@keepa.com" = {
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4257674/latest.xpi";
+              default_area = "menupanel";
+              private_browsing = false;
+            };
             "cookie-editor@cgagnier.ca" = {
               install_url = "https://addons.mozilla.org/firefox/downloads/latest/cookie-editor/latest.xpi";
               default_area = "menupanel";
