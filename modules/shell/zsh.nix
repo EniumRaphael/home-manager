@@ -84,7 +84,7 @@ in
           "pp" = "pull";
           "rb" = "rebase";
           "ss" = "status --short";
-          "rbi" = "rebase -i origin";
+          "rbi" = "rebase -i";
         };
         core = {
           editor = "nvim";
