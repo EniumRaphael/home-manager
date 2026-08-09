@@ -11,7 +11,7 @@
 }:
 
 let
-  dev = import ../modules/dev/global.nix {
+  dev = import ../modules/dev/default.nix {
     inherit
       inputs
       config
@@ -20,7 +20,7 @@ let
       nixvim
       ;
   };
-  package = import ../modules/packages/global.nix {
+  package = import ../modules/packages/default.nix {
     inherit
       system
       inputs
@@ -31,7 +31,7 @@ let
       zen-browser
       ;
   };
-  window-manager = import ../modules/window-manager/global.nix {
+  window-manager = import ../modules/window-manager/default.nix {
     inherit
       inputs
       config
