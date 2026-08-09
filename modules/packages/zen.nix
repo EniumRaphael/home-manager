@@ -87,6 +87,11 @@ in
               default_area = "menupanel";
               private_browsing = false;
             };
+            "wappalyzer@crunchlabz.com" = {
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4887810/latest.xpi";
+              default_area = "menupanel";
+              private_browsing = false;
+            };
             "sponsorBlocker@ajay.app" = {
               install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
               default_area = "menupanel";
@@ -866,21 +871,27 @@ in
           };
           extensions = {
             force = true;
-            packages = with firefox-addons; [
-              bitwarden
-              cookie-editor
-              darkreader
-              foxyproxy-standard
-              hacktools
-              owasp-penetration-testing-kit
-              privacy-badger
-              return-youtube-dislikes
-              sponsorblock
-              ublock-origin
-              vimium-c
-              violentmonkey
-              wayback-machine
-            ];
+            packages =
+              with firefox-addons;
+              [
+                bitwarden
+                cookie-editor
+                darkreader
+                foxyproxy-standard
+                hacktools
+                owasp-penetration-testing-kit
+                privacy-badger
+                return-youtube-dislikes
+                sponsorblock
+                ublock-origin
+                vimium-c
+                violentmonkey
+                wayback-machine
+              ]
+              ++ [
+                (pkgs.lib.patchUnfree firefox-addons.keepa)
+                (pkgs.lib.patchUnfree firefox-addons.wappalyzer)
+              ];
           };
           settings = {
             # UI
