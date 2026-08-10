@@ -7,9 +7,15 @@
   ...
 }:
 
-
 let
-  git = import ./git.nix { inherit config pkgs lib gpgFingerprint; };
+  git = import ./git.nix {
+    inherit
+      config
+      pkgs
+      lib
+      gpgFingerprint
+      ;
+  };
   starship = import ./starship.nix { inherit config pkgs lib; };
   tmux = import ./tmux.nix { inherit config pkgs lib; };
   zsh = import ./zsh.nix { inherit config pkgs lib; };
