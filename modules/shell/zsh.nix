@@ -141,6 +141,7 @@ in
             bindkey '^[[1;2C' end-of-line
             bindkey '^[[1;3D' beginning-of-line
             bindkey '^[[1;3C' end-of-line
+            bindkey "\e[3;5~" kill-word
             bindkey '^H' backward-kill-word
             bindkey -r '^['
 
