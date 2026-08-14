@@ -76,7 +76,7 @@ in
           ripgrep
           traceroute
         ]
-        ++ (if pkgs.stdenv.isLinux then [ valgrind ] else [ ]);
+        ++ (if pkgs.stdenv.hostPlatform.isLinux then [ valgrind ] else [ ]);
     };
     catppuccin = {
       bat.enable = true;

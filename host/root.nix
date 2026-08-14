@@ -115,7 +115,7 @@ in
   };
 
   fonts.fontconfig = {
-    enable = pkgs.stdenv.isLinux;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     defaultFonts = {
       serif = [ "Fira Code" ];
       sansSerif = [ "Fira Code" ];
