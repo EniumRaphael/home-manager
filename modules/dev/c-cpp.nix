@@ -24,7 +24,7 @@ in
           gnumake
         ]
         ++ (
-          if pkgs.stdenv.isLinux then
+          if pkgs.stdenv.hostPlatform.isLinux then
             [
               glibc.dev
               valgrind
