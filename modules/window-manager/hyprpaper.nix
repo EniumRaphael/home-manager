@@ -45,6 +45,10 @@ in
             path = "/home/${config.home.username}/Pictures/horizontal.png";
             monitor = "DP-3";
           }
+          {
+            path = "/home/${config.home.username}/Pictures/horizontal.png";
+            monitor = "DP-1";
+          }
         ];
       };
     };
