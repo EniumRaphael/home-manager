@@ -121,6 +121,7 @@ in
       monitors = [
         "eDP-1, 2560x1600@165.00000, 0x0, 1.6"
         "DVI-I-1, 1920x1080@60.00000, -1080x-1080, 1, transform, 1"
+        "DVI-I-2, 1920x1080@60.00000, -1080x-1080, 1, transform, 1"
         "DP-3, 1920x1080@60.00000, 0x-1080, 1"
         ", prefered, auto, 1"
       ];
@@ -135,6 +136,11 @@ in
         "8, monitor:DVI-I-1"
         "9, monitor:DVI-I-1"
         "10, monitor:DVI-I-1"
+        "6, monitor:DVI-I-2"
+        "7, monitor:DVI-I-2"
+        "8, monitor:DVI-I-2"
+        "9, monitor:DVI-I-2"
+        "10, monitor:DVI-I-2"
         "11, monitor:DP-3, border:false, rounding:false"
       ];
     };
