@@ -34,20 +34,16 @@ in
 
         wallpaper = [
           {
+            path = "/home/${config.home.username}/Pictures/horizontal.png";
+            monitor = "";
+          }
+          {
             path = "/home/${config.home.username}/Pictures/vertical.png";
             monitor = "DVI-I-1";
           }
           {
-            path = "/home/${config.home.username}/Pictures/horizontal.png";
-            monitor = "eDP-1";
-          }
-          {
-            path = "/home/${config.home.username}/Pictures/horizontal.png";
-            monitor = "DP-3";
-          }
-          {
-            path = "/home/${config.home.username}/Pictures/horizontal.png";
-            monitor = "DP-1";
+            path = "/home/${config.home.username}/Pictures/vertical.png";
+            monitor = "DVI-I-2";
           }
         ];
       };
