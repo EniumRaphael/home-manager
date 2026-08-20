@@ -27,10 +27,6 @@
         home-manager.follows = "home-manager";
       };
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     orca-slicer-flake = {
       url = "github:EniumRaphael/orca-slicer-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,7 +47,6 @@
       home-manager,
       nixpkgs,
       nixvim,
-      noctalia,
       orca-slicer-flake,
       zen-browser,
       ...
@@ -96,7 +91,6 @@
           inherit pkgs;
           modules = [
             catppuccin.homeModules.catppuccin
-            inputs.noctalia.homeModules.default
             modulePath
           ];
           extraSpecialArgs = {
