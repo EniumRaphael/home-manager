@@ -26,6 +26,14 @@ let
       lib
       ;
   };
+  thunderbird = import ./thunderbird.nix {
+    inherit
+      inputs
+      config
+      pkgs
+      lib
+      ;
+  };
   zen = import ./zen.nix {
     inherit
       inputs
@@ -40,6 +48,7 @@ in
   imports = [
     cava
     kitty
+    thunderbird
     zen
   ];
 
@@ -163,6 +172,11 @@ in
       type = lib.types.bool;
       default = false;
       description = "Enable the kitty terminal emulator";
+    };
+    thunderbird = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable the thunderbird mail client";
     };
   };
 
