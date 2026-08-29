@@ -81,6 +81,7 @@ in
     fonts = false;
     imv = false;
     kitty = false;
+    thunderbird = false;
     obs = false;
     obsidian = false;
     openvpn = true;

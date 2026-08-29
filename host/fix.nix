@@ -54,6 +54,7 @@ in
     homeDirectory = "/home/raphael";
     stateVersion = "24.05";
     sessionVariables = {
+      MAILER = "thunderbird";
       ZED_ALLOW_EMULATED_GPU = 1;
       EDITOR = "nvim";
     };
@@ -76,6 +77,7 @@ in
     fonts = true;
     imv = true;
     kitty = true;
+    thunderbird = true;
     hytale = true;
     nextcloud = true;
     obs = true;

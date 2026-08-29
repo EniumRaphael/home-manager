@@ -67,6 +67,7 @@ in
     fonts = true;
     imv = false;
     kitty = true;
+    thunderbird = false;
     obs = false;
     obsidian = false;
     orcaslicer = true;
