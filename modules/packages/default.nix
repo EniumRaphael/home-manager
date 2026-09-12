@@ -148,6 +148,11 @@ in
       default = false;
       description = "Enable the IMV";
     };
+    libreoffice = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable the libreoffice";
+    };
     hytale = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -209,6 +214,16 @@ in
           [
             element-desktop
             libsecret
+          ]
+        else
+          [ ]
+      )
+      ++ (
+        if cfg.libreoffice then
+          [
+            libreoffice-stable
+            hunspellDicts.fr-any
+            hunspellDicts.en-us
           ]
         else
           [ ]
