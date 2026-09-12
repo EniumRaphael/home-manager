@@ -78,6 +78,7 @@ in
     imv = true;
     kitty = true;
     thunderbird = true;
+    libreoffice = true;
     hytale = true;
     nextcloud = true;
     obs = true;
