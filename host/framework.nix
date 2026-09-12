@@ -80,6 +80,7 @@ in
     imv = true;
     kitty = true;
     thunderbird = true;
+    libreoffice = true;
     hytale = false;
     nextcloud = true;
     obs = true;
