@@ -183,7 +183,7 @@ in
         exec = "clamshell check";
         bind = [
           "$mod, q, killactive"
-          "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty"
+          "$mod, RETURN, exec, ${pkgs.ghostty}/bin/ghostty +new-window"
           "$mod, w, exec, zen-beta"
           "$mod, e, exec, ${pkgs.nautilus}/bin/nautilus"
           "$mod, b, exec, "
@@ -256,7 +256,7 @@ in
           "opacity 0.8 0.7, match:class ^(thunderbird)$"
           "opacity 0.8 0.7, match:class ^(gedit|org.gnome.TextEditor|mousepad)$"
           "opacity 0.9 0.8, match:class ^(deluge)$"
-          "opacity 0.8 0.7, match:class ^(Alacritty|kitty|kitty-dropterm)$"
+          "opacity 0.8 0.7, match:class ^(Alacritty|com.mitchellh.ghostty|kitty|kitty-dropterm)$"
           "opacity 0.9 0.7, match:class ^(VSCodium|codium-url-handler)$"
           "opacity 0.9 0.8, match:class ^(nwg-look|qt5ct|qt6ct|Yad)$"
           "opacity 0.9 0.8, match:title ^(Kvantum Manager)$"

@@ -18,7 +18,7 @@ let
       lib
       ;
   };
-  kitty = import ./kitty.nix {
+  ghostty = import ./ghostty.nix {
     inherit
       inputs
       config
@@ -47,7 +47,7 @@ in
 {
   imports = [
     cava
-    kitty
+    ghostty
     thunderbird
     zen
   ];
@@ -173,10 +173,10 @@ in
       default = false;
       description = "Enable the cava audio visualiser";
     };
-    kitty = lib.mkOption {
+    ghostty = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable the kitty terminal emulator";
+      description = "Enable the ghostty terminal emulator";
     };
     thunderbird = lib.mkOption {
       type = lib.types.bool;

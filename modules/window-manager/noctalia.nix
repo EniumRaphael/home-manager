@@ -46,7 +46,7 @@ in
             showCategories = true;
             showIconBackground = false;
             sortByMostUsed = true;
-            terminalCommand = "kitty -e";
+            terminalCommand = "ghostty -e";
             viewMode = "list";
           };
 
