@@ -13,9 +13,12 @@ in
   config = lib.mkIf cfg {
     home.packages = with pkgs; [
       catppuccin-gtk
-      nautilus
-      gvfs
+      file-roller
       gnome-themes-extra
+      gvfs
+      nautilus
+      p7zip
+      unrar
     ];
     catppuccin.gtk.icon.enable = true;
     gtk = {

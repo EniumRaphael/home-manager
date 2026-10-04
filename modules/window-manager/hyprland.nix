@@ -97,6 +97,13 @@ in
         "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
         "message/rfc822" = [ "thunderbird.desktop" ];
         "x-scheme-handler/mid" = [ "thunderbird.desktop" ];
+        "application/zip" = "org.gnome.FileRoller.desktop";
+        "application/x-tar" = "org.gnome.FileRoller.desktop";
+        "application/x-compressed-tar" = "org.gnome.FileRoller.desktop";
+        "application/x-rar" = "org.gnome.FileRoller.desktop";
+        "application/x-7z-compressed" = "org.gnome.FileRoller.desktop";
+        "application/gzip" = "org.gnome.FileRoller.desktop";
+        "application/x-bzip2" = "org.gnome.FileRoller.desktop";
       };
     };
     wayland.windowManager.hyprland = {
