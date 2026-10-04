@@ -67,7 +67,7 @@ in
     evince = false;
     fonts = false;
     imv = false;
-    kitty = true;
+    ghostty = true;
     thunderbird = false;
     obs = false;
     obsidian = false;

@@ -80,7 +80,7 @@ in
     evince = false;
     fonts = false;
     imv = false;
-    kitty = false;
+    ghostty = false;
     thunderbird = false;
     obs = false;
     obsidian = false;

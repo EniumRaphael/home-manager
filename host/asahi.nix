@@ -76,7 +76,7 @@ in
     evince = true;
     fonts = true;
     imv = true;
-    kitty = true;
+    ghostty = true;
     obs = false;
     obsidian = true;
     openvpn = true;

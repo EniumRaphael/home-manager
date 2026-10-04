@@ -14,24 +14,25 @@ in
   config = lib.mkIf cfg {
     home.packages = with pkgs; [
       fira-code
+      nerd-fonts.fira-code
+      fira-code-symbols
     ];
 
     programs.ghostty = {
       enable = true;
       systemd.enable = true;
+      installVimSyntax = true;
+      enableZshIntegration = true;
       settings = {
         font-family = "Fira Code";
+        font-variation = "wght=400";
         font-size = font_size;
         font-feature = [
           "+calt"
-          "+liga"
-          "+dlig"
         ];
         confirm-close-surface = false;
         window-decoration = false;
         term = "xterm-256color";
-        installVimSyntax = true;
-        enableZshIntegration = true;
       };
     };
 
