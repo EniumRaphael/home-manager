@@ -15,7 +15,7 @@ in
       libnotify
       nerd-fonts.fira-code
     ];
-    catppuccin.mako.enable = false;
+    catppuccin.mako.enable = true;
     services.mako = {
       enable = true;
       settings = {
