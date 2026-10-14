@@ -55,9 +55,9 @@ in
           autoload -U compinit
           compinit
         '';
-        autosuggestion = {
-          enable = true;
-        };
+        syntaxHighlighting.enable = true;
+        autosuggestion.enable = true;
+        historySubstringSearch.enable = true;
         history = {
           append = true;
           expireDuplicatesFirst = false;
@@ -73,9 +73,6 @@ in
         };
         enableCompletion = true;
         autocd = true;
-        historySubstringSearch = {
-          enable = true;
-        };
         shellAliases = {
           "cls" = "clear";
           "vim" = "nvim";
@@ -89,17 +86,20 @@ in
             "valgrind --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --track-origins=yes --show-reachable=yes";
           "ssh" = "TERM=xterm-256color ssh";
         };
-        zplug = {
-          enable = true;
-          zplugHome = "${config.xdg.dataHome}/.zplug";
-          plugins = [
-            { name = "Aloxaf/fzf-tab"; }
-            { name = "nix-community/nix-zsh-completions"; }
-            { name = "z-shell/F-Sy-H"; }
-            { name = "zsh-users/zsh-autosuggestions"; }
-            { name = "zsh-users/zsh-syntax-highlighting"; }
-          ];
-        };
+        plugins = [
+          {
+            name = "fzf-tab";
+            src = pkgs.zsh-fzf-tab;
+          }
+          {
+            name = "nix-zsh-completions";
+            src = pkgs.nix-zsh-completions;
+          }
+          {
+            name = "F-Sy-H";
+            src = pkgs.zsh-f-sy-h;
+          }
+        ];
         envExtra = ''
           [ -f "$HOME/.zvars"  ] && source "$HOME/.zvars";
           [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]  && source "$HOME/.nix-profile/etc/profile.d/nix.sh"
@@ -127,7 +127,6 @@ in
             fi
           '')
           (lib.mkAfter ''
-            zplug load
             zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
             zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
             zstyle ':completion:*' menu no
