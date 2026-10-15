@@ -20,9 +20,15 @@ let
     }
     {
       label = "Password mail Perso";
-      service = "imap-perso";
+      service = "imap-pro-perso";
       user = "raphael@parodi.pro";
-      secretName = "mail-perso-password";
+      secretName = "mail-perso-pro-password";
+    }
+    {
+      label = "Password mail Tech";
+      service = "imap-tech-perso";
+      user = "raphael@parodi.tech";
+      secretName = "mail-perso-pro-password";
     }
     {
       label = "Password mail iCloud";
@@ -112,7 +118,7 @@ in
         };
       };
 
-      Perso = {
+      PersoPro = {
         address = "raphael@parodi.pro";
         userName = "raphael@parodi.pro";
         realName = "Raphael Parodi";
@@ -126,6 +132,30 @@ in
 
         smtp = {
           host = "ssl0.ovh.net";
+          port = 465;
+          tls.enable = true;
+        };
+
+        thunderbird = {
+          enable = true;
+          profiles = [ "raphael" ];
+        };
+      };
+
+      PersoTech = {
+        address = "raphael@parodi.tech";
+        userName = "raphael@parodi.tech";
+        realName = "Raphael Parodi";
+        primary = false;
+
+        imap = {
+          host = "imap.migadu.com";
+          port = 993;
+          tls.enable = true;
+        };
+
+        smtp = {
+          host = "smtp.migadu.com";
           port = 465;
           tls.enable = true;
         };
