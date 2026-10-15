@@ -275,7 +275,7 @@ in
           "opacity 0.94 0.86, match:class ^(Slack)$"
           "opacity 0.94 0.86, match:class ^(Revolt-desktop)$"
           "opacity 0.9 0.8, match:class ^(vesktop)$"
-          "opacity 0.9 0.8, match:class ^(element)$"
+          "opacity 0.9 0.8, match:initial_class ^(element-desktop)$"
           "opacity 0.9 0.8, match:class ^(im.riot.Riot)$"
           "opacity 0.94 0.86, match:class ^(gnome-disks|evince|wihotspot(-gui)?|org.gnome.baobab)$"
           "opacity 0.9 0.8, match:class ^(file-roller|org.gnome.FileRoller)$"
@@ -289,7 +289,7 @@ in
 
           "workspace 8, match:class ^(Slack)$"
           "workspace 8, match:class ^(thunderbird)$"
-          "workspace 9, match:class ^(element)$"
+          "workspace 9, match:initial_class ^(element-element)$"
           "workspace 10, match:class ^(cider)$"
 
           "workspace 11, match:class ^(.*\.exe|gamescope|steam_app_\\d+)$"
