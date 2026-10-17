@@ -58,8 +58,6 @@ in
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   imports = [
     dev
     package
