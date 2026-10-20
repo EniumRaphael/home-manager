@@ -289,7 +289,7 @@ in
 
           "workspace 8, match:class ^(Slack)$"
           "workspace 8, match:class ^(thunderbird)$"
-          "workspace 9, match:initial_class ^(element-element)$"
+          "workspace 9, match:initial_class ^(element-desktop)$"
           "workspace 10, match:class ^(cider)$"
 
           "workspace 11, match:class ^(.*\.exe|gamescope|steam_app_\\d+)$"
