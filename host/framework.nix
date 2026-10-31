@@ -54,7 +54,7 @@ in
   home = {
     username = "raphael";
     homeDirectory = "/home/raphael";
-    stateVersion = "24.05";
+    stateVersion = "26.05";
     sessionVariables = {
       MAILER = "thunderbird";
       ZED_ALLOW_EMULATED_GPU = 1;
@@ -122,29 +122,107 @@ in
       usingAMD = true;
       isLaptop = true;
       monitors = [
-        "eDP-1, 2560x1600@165.00000, 0x0, 1.6"
-        "DVI-I-1, 1920x1080@60.00000, -1080x-1080, 1, transform, 1"
-        "DVI-I-2, 1920x1080@60.00000, -1080x-1080, 1, transform, 1"
-        "DP-3, 1920x1080@60.00000, 0x-1080, 1"
-        ", prefered, auto, 1"
+        {
+          output = "eDP-1";
+          mode = "2560x1600@165.00000";
+          position = "0x0";
+          scale = 1.6;
+        }
+        {
+          output = "DVI-I-1";
+          mode = "1920x1080@60.00000";
+          position = "-1080x-1080";
+          scale = 1;
+          transform = 1;
+        }
+        {
+          output = "DVI-I-2";
+          mode = "1920x1080@60.00000";
+          position = "-1080x-1080";
+          scale = 1;
+          transform = 1;
+        }
+        {
+          output = "DP-3";
+          mode = "1920x1080@60.00000";
+          position = "0x-1080";
+          scale = 1;
+        }
+        {
+          output = "";
+          mode = "preferred";
+          position = "auto";
+          scale = 1;
+        }
       ];
       workspaces = [
-        "1, monitor:DP-3"
-        "2, monitor:DP-3"
-        "3, monitor:DP-3"
-        "4, monitor:DP-3"
-        "5, monitor:DP-3"
-        "6, monitor:DVI-I-1"
-        "7, monitor:DVI-I-1"
-        "8, monitor:DVI-I-1"
-        "9, monitor:DVI-I-1"
-        "10, monitor:DVI-I-1"
-        "6, monitor:DVI-I-2"
-        "7, monitor:DVI-I-2"
-        "8, monitor:DVI-I-2"
-        "9, monitor:DVI-I-2"
-        "10, monitor:DVI-I-2"
-        "11, monitor:DP-3, border:false, rounding:false"
+        {
+          workspace = "1";
+          monitor = "DP-3";
+          default = true;
+        }
+        {
+          workspace = "2";
+          monitor = "DP-3";
+        }
+        {
+          workspace = "3";
+          monitor = "DP-3";
+        }
+        {
+          workspace = "4";
+          monitor = "DP-3";
+        }
+        {
+          workspace = "5";
+          monitor = "DP-3";
+        }
+        {
+          workspace = "6";
+          monitor = "DVI-I-1";
+        }
+        {
+          workspace = "7";
+          monitor = "DVI-I-1";
+        }
+        {
+          workspace = "8";
+          monitor = "DVI-I-1";
+        }
+        {
+          workspace = "9";
+          monitor = "DVI-I-1";
+        }
+        {
+          workspace = "10";
+          monitor = "DVI-I-1";
+        }
+        {
+          workspace = "6";
+          monitor = "DVI-I-2";
+        }
+        {
+          workspace = "7";
+          monitor = "DVI-I-2";
+        }
+        {
+          workspace = "8";
+          monitor = "DVI-I-2";
+        }
+        {
+          workspace = "9";
+          monitor = "DVI-I-2";
+        }
+        {
+          workspace = "10";
+          monitor = "DVI-I-2";
+        }
+        {
+          workspace = "11";
+          monitor = "DP-3";
+          no_border = true;
+          no_rounding = true;
+        }
       ];
     };
     hyprlock = true;

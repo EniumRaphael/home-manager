@@ -52,7 +52,7 @@ in
   home = {
     username = "raphael";
     homeDirectory = "/home/raphael";
-    stateVersion = "24.05";
+    stateVersion = "26.05";
     sessionVariables = {
       MAILER = "thunderbird";
       ZED_ALLOW_EMULATED_GPU = 1;
@@ -110,8 +110,19 @@ in
       primaryMonitor = "HDMI-A-1";
       usingNVIDIA = true;
       monitors = [
-        "DP-1, 3440x1440@175.00000, 0x0, 1, transform, 0"
-        ", prefered, auto, 1"
+        {
+          output = "DP-1";
+          mode = "3440x1440@175.00000";
+          position = "0x0";
+          scale = 1;
+          transform = 0;
+        }
+        {
+          output = "";
+          mode = "preferred";
+          position = "auto";
+          scale = 1;
+        }
       ];
     };
     hyprlock = true;
