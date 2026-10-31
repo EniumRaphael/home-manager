@@ -9,28 +9,44 @@
 let
   cfg = config.window-manager.hyprland;
   ipc = "noctalia msg";
-  clamshell = pkgs.writeShellScriptBin "clamshell" ''
-    #!/usr/bin/env bash
+  mod = "SUPER";
+  lua = lib.generators.mkLuaInline;
+  toLua = lib.generators.toLua { multiline = false; };
+  exec = cmd: "hl.dsp.exec_cmd(${builtins.toJSON cmd})";
+  bind = key: dsp: opts: {
+    _args = [
+      key
+      (lua dsp)
+    ]
+    ++ lib.optional (opts != { }) opts;
+  };
+  op = active: inactive: match: {
+    inherit match;
+    opacity = "${active} ${inactive}";
+  };
 
+  monitorOpen = "hl.monitor(${toLua ((lib.head cfg.monitors) // { disabled = false; })})";
+
+  clamshell = pkgs.writeShellScriptBin "clamshell" ''
     INTERNAL_DISPLAY=${cfg.primaryMonitor}
 
     ICON_LAPTOP="computer-laptop"
     ICON_MONITOR="video-display"
 
     notify_user() {
-      notify-send -i "$3" "$1" "$2"
+      ${pkgs.libnotify}/bin/notify-send -i "$3" "$1" "$2"
     }
 
     mode_close() {
       MONITORS_COUNT=$(hyprctl monitors all | grep -c "Monitor")
       if [[ $MONITORS_COUNT -gt 1 ]]; then
-        hyprctl keyword monitor "$INTERNAL_DISPLAY, disable"
+        hyprctl eval "hl.monitor({ output = \"$INTERNAL_DISPLAY\", disabled = true })"
         sudo ${pkgs.systemd}/bin/systemctl stop fprintd.service
       fi
     }
 
     mode_open() {
-      hyprctl keyword monitor ${pkgs.lib.head cfg.monitors}
+      hyprctl eval '${monitorOpen}'
       sudo ${pkgs.systemd}/bin/systemctl start fprintd.service
     }
 
@@ -54,6 +70,221 @@ let
       exit 1
     fi
   '';
+
+  envVars = {
+    GDK_BACKEND = "wayland,x11,*";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    CLUTTER_BACKEND = "wayland";
+    SDL_VIDEODRIVER = "wayland,x11";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
+    QT_QUICK_CONTROLS_STYLE = "org.hyprland.style";
+
+    GDK_SCALE = "1";
+    QT_SCALE_FACTOR = "1";
+
+    MOZ_ENABLE_WAYLAND = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    NIXOS_OZONE_WL = "1";
+
+    WLR_RENDERER = "vulkan";
+    GAMEMODE = "1";
+    MANGOHUD = "1";
+    MANGOHUD_CONFIG = "cpu_temp,gpu_temp,ram,vram,fps,time";
+    PROTON_USE_WINED3D = "0";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+    HYPRLAND_NO_SD_NOTIFY = "1";
+  }
+  // lib.optionalAttrs cfg.usingNVIDIA {
+    LIBVA_DRIVER_NAME = "nvidia";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    __NV_PRIME_RENDER_OFFLOAD = "1";
+    __GL_SYNC_TO_VBLANK = "0";
+    __GL_THREADED_OPTIMIZATIONS = "1";
+    NVD_BACKEND = "direct";
+  }
+  // lib.optionalAttrs cfg.usingAMD {
+    LIBVA_DRIVER_NAME = "radeonsi";
+    VDPAU_DRIVER = "radeonsi";
+  };
+
+  startup = [
+    ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
+    "pw-metadata -n settings 0 clock.force-quantum 512"
+    "xrandr --output ${cfg.primaryMonitor} --primary"
+    "sleep 2 && noctalia"
+    "thunderbird"
+    "cider-2"
+    "element-desktop"
+  ]
+  ++ lib.optionals cfg.isLaptop [
+    "upower"
+    "clamshell check"
+  ];
+
+  startupFn = ''
+    function()
+    ${lib.concatMapStringsSep "\n" (c: "  hl.exec_cmd(${builtins.toJSON c})") startup}
+    end'';
+  reloadFn = ''
+    function()
+      hl.exec_cmd("clamshell check")
+    end'';
+
+  workspaceKeys = lib.range 1 10;
+  keyOf = i: if i == 10 then "0" else toString i;
+
+  binds = [
+    (bind "${mod} + Q" "hl.dsp.window.close()" { })
+    (bind "${mod} + RETURN" (exec "${pkgs.ghostty}/bin/ghostty +new-window") { })
+    (bind "${mod} + W" (exec "zen-beta") { })
+    (bind "${mod} + E" (exec "${pkgs.nautilus}/bin/nautilus") { })
+    (bind "ALT + SPACE" (exec "${ipc} panel-toggle launcher") { })
+    (bind "ALT + L" (exec "${ipc} session lock") { })
+    (bind "${mod} + SHIFT + ESCAPE" "hl.dsp.exit()" { })
+    (bind "${mod} + V" ''hl.dsp.window.float({ action = "toggle" })'' { })
+    (bind "${mod} + F" "hl.dsp.window.fullscreen()" { })
+
+    (bind "${mod} + H" ''hl.dsp.focus({ direction = "left" })'' { })
+    (bind "${mod} + L" ''hl.dsp.focus({ direction = "right" })'' { })
+    (bind "${mod} + J" ''hl.dsp.focus({ direction = "up" })'' { })
+    (bind "${mod} + K" ''hl.dsp.focus({ direction = "down" })'' { })
+
+    (bind "${mod} + Right" ''hl.dsp.focus({ workspace = "e+1" })'' { })
+    (bind "${mod} + Left" ''hl.dsp.focus({ workspace = "e-1" })'' { })
+    (bind "${mod} + mouse_down" ''hl.dsp.focus({ workspace = "e+1" })'' { })
+    (bind "${mod} + mouse_up" ''hl.dsp.focus({ workspace = "e-1" })'' { })
+
+    (bind "${mod} + SHIFT + S" (exec ''grim -g "$(slurp)" - | wl-copy'') { })
+
+    (bind "XF86AudioPlay" (exec "${ipc} media toggle") { })
+    (bind "XF86AudioPrev" (exec "${ipc} media previous") { })
+    (bind "XF86AudioNext" (exec "${ipc} media next") { })
+
+    (bind "${mod} + mouse:272" "hl.dsp.window.drag()" { mouse = true; })
+    (bind "${mod} + mouse:273" "hl.dsp.window.resize()" { mouse = true; })
+
+    (bind "XF86AudioLowerVolume" (exec "${ipc} volume-down 5") {
+      locked = true;
+      repeating = true;
+    })
+    (bind "XF86AudioRaiseVolume" (exec "${ipc} volume-up 5") {
+      locked = true;
+      repeating = true;
+    })
+    (bind "XF86MonBrightnessDown" (exec "${ipc} brightness-down all 5") {
+      locked = true;
+      repeating = true;
+    })
+    (bind "XF86MonBrightnessUp" (exec "${ipc} brightness-up all 5") {
+      locked = true;
+      repeating = true;
+    })
+
+    (bind "XF86AudioMute" (exec "${ipc} volume-mute") { locked = true; })
+  ]
+  ++ lib.optionals cfg.isLaptop [
+    (bind "switch:on:Lid Switch" (exec "clamshell close") { locked = true; })
+    (bind "switch:off:Lid Switch" (exec "clamshell open") { locked = true; })
+  ]
+  ++ map (
+    i: bind "${mod} + ${keyOf i}" "hl.dsp.focus({ workspace = ${toString i} })" { }
+  ) workspaceKeys
+  ++ map (
+    i: bind "${mod} + SHIFT + ${keyOf i}" "hl.dsp.window.move({ workspace = ${toString i} })" { }
+  ) workspaceKeys;
+
+  gameClass = "^(.*\\.exe|gamescope|steam_app_\\d+)$";
+
+  windowRules = [
+    (op "0.9" "0.6" { class = "^(Rofi)$"; })
+    (op "0.9" "0.6" { class = "^(Vicinae)$"; })
+    (op "0.9" "0.7" { class = "^(Brave-browser(-beta|-dev)?)$"; })
+    (op "0.9" "0.7" { class = "^(zen-beta|Firefox|org.mozilla.firefox|Firefox-esr)$"; })
+    (op "0.9" "0.6" { class = "^(Thorium-browser)$"; })
+    (op "0.9" "0.8" { class = "^(Microsoft-edge(-stable|-beta|-dev|-unstable)?)$"; })
+    (op "0.9" "0.8" { class = "^(google-chrome(-beta|-dev|-unstable)?)$"; })
+    (op "0.94" "0.86" { class = "^(chrome-.+-Default)$"; })
+    (op "0.9" "0.8" { class = "^(org.gnome.Nautilus)$"; })
+    (op "0.8" "0.6" { class = "^(pcmanfm-qt)$"; })
+    (op "0.8" "0.7" { class = "^(thunderbird)$"; })
+    (op "0.8" "0.7" { class = "^(gedit|org.gnome.TextEditor|mousepad)$"; })
+    (op "0.9" "0.8" { class = "^(deluge)$"; })
+    (op "0.8" "0.7" { class = "^(Alacritty|com.mitchellh.ghostty|kitty|kitty-dropterm)$"; })
+    (op "0.9" "0.7" { class = "^(VSCodium|codium-url-handler)$"; })
+    (op "0.9" "0.8" { class = "^(nwg-look|qt5ct|qt6ct|Yad)$"; })
+    (op "0.9" "0.8" { title = "^(Kvantum Manager)$"; })
+    (op "0.9" "0.7" { class = "^(com.obsproject.Studio)$"; })
+    (op "0.9" "0.7" { class = "^(Audacious)$"; })
+    (op "0.9" "0.8" { class = "^(VSCode|code-url-handler)$"; })
+    (op "0.9" "0.8" { class = "^(jetbrains-.+)$"; })
+    (op "0.94" "0.86" { class = "^(cider)$"; })
+    (op "0.94" "0.86" { class = "^(Slack)$"; })
+    (op "0.94" "0.86" { class = "^(Revolt-desktop)$"; })
+    (op "0.9" "0.8" { class = "^(vesktop)$"; })
+    (op "0.9" "0.8" { initial_class = "^(element-desktop)$"; })
+    (op "0.9" "0.8" { class = "^(im.riot.Riot)$"; })
+    (op "0.94" "0.86" { class = "^(gnome-disks|evince|wihotspot(-gui)?|org.gnome.baobab)$"; })
+    (op "0.9" "0.8" { class = "^(file-roller|org.gnome.FileRoller)$"; })
+    (op "0.8" "0.7" { class = "^(app.drey.Warp)$"; })
+    (op "0.9" "0.8" { class = "^(seahorse)$"; })
+    (op "0.82" "0.75" {
+      class = "^(gnome-system-monitor|org.gnome.SystemMonitor|io.missioncenter.MissionCenter)$";
+    })
+    (op "0.9" "0.8" { class = "^(xdg-desktop-portal-gtk)$"; })
+    (op "0.9" "0.7" { class = "^(Whatsapp-for-linux)$"; })
+    (op "0.9" "0.7" { class = "^(Ferdium)$"; })
+    (op "0.95" "0.95" { title = "^(Picture-in-Picture)$"; })
+    {
+      match.class = "^(Slack)$";
+      workspace = "8";
+    }
+    {
+      match.class = "^(thunderbird)$";
+      workspace = "8";
+    }
+    {
+      match.initial_class = "^(element-desktop)$";
+      workspace = "9";
+    }
+    {
+      match.class = "^(cider)$";
+      workspace = "10";
+    }
+    {
+      match.class = gameClass;
+      workspace = "11";
+      fullscreen = true;
+    }
+    {
+      match.initial_title = "^(Discord Popout)$";
+      float = true;
+      pin = true;
+      keep_aspect_ratio = true;
+    }
+    {
+      match.title = "^(Picture-in-Picture)$";
+      float = true;
+      pin = true;
+      keep_aspect_ratio = true;
+      size = "(monitor_w*0.3) (monitor_h*0.3)";
+    }
+    {
+      match.class = "^(Mullvad VPN)$";
+      move = "(monitor_w-321) 42";
+      float = true;
+      pin = true;
+    }
+    {
+      match.class = "^(gcr-prompter)$";
+      pin = true;
+    }
+  ];
 in
 {
   config = lib.mkIf cfg.enable {
@@ -69,10 +300,10 @@ in
         libinput
         libinput-gestures
       ]
-      ++ lib.optionals (cfg.isLaptop) [
-        clamshell
-      ];
+      ++ lib.optionals cfg.isLaptop [ clamshell ];
+
     home.pointerCursor.enable = true;
+
     catppuccin = {
       hyprland.enable = false;
       cursors = {
@@ -80,6 +311,7 @@ in
         accent = "dark";
       };
     };
+
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
@@ -106,219 +338,83 @@ in
         "application/x-bzip2" = "org.gnome.FileRoller.desktop";
       };
     };
+
     wayland.windowManager.hyprland = {
       enable = true;
-      configType = "hyprlang";
-      systemd = {
-        enable = false;
-        variables = [
-          "--all"
-        ];
-      };
+      configType = "lua";
+      systemd.enable = false;
       xwayland.enable = true;
+
       settings = {
-        "$mod" = "SUPER";
-        decoration = {
-          rounding = 8;
-        };
-        general = {
-          gaps_in = 5;
-          gaps_out = 20;
-          border_size = 2;
-          "col.active_border" = "rgba(cba6f7ee) rgba(89b4faee) 45deg";
-          "col.inactive_border" = "rgba(181825aa)";
-          resize_on_border = false;
-          allow_tearing = false;
-        };
-        monitor = cfg.monitors;
-        env = [
-          "GDK_BACKEND=wayland,x11,*"
-          "QT_QPA_PLATFORM=wayland;xcb"
-          "CLUTTER_BACKEND=wayland"
-          "SDL_VIDEODRIVER=wayland,x11"
-          "XDG_CURRENT_DESKTOP=Hyprland"
-          "XDG_SESSION_DESKTOP=Hyprland"
-          "XDG_SESSION_TYPE=wayland"
-
-          "QT_AUTO_SCREEN_SCALE_FACTOR=1"
-          "QT_WAYLAND_DISABLE_WINDOWDECORATION=1"
-          "QT_QPA_PLATFORMTHEME=qt6ct"
-          "QT_QUICK_CONTROLS_STYLE=org.hyprland.style"
-
-          "GDK_SCALE=1"
-          "QT_SCALE_FACTOR=1"
-
-          "MOZ_ENABLE_WAYLAND=1"
-          "ELECTRON_OZONE_PLATFORM_HINT=auto"
-          "NIXOS_OZONE_WL,1"
-
-          "WLR_RENDERER=vulkan"
-          "GAMEMODE=1"
-          "MANGOHUD=1"
-          "MANGOHUD_CONFIG=cpu_temp,gpu_temp,ram,vram,fps,time"
-          "PROTON_USE_WINED3D=0"
-          "_JAVA_AWT_WM_NONREPARENTING=1"
-          "HYPRLAND_NO_SD_NOTIFY=1"
-
-        ]
-        ++ lib.optionals (cfg.usingNVIDIA) [
-          "LIBVA_DRIVER_NAME=nvidia"
-          "__GLX_VENDOR_LIBRARY_NAME=nvidia"
-          "__NV_PRIME_RENDER_OFFLOAD=1"
-          "__GL_SYNC_TO_VBLANK=0"
-          "__GL_THREADED_OPTIMIZATIONS=1"
-          "NVD_BACKEND=direct"
-
-        ]
-        ++ lib.optionals (cfg.usingAMD) [
-          "LIBVA_DRIVER_NAME=radeonsi"
-          "VDPAU_DRIVER=radeonsi"
-        ];
-
-        exec-once = [
-          ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
-          "pw-metadata -n settings 0 clock.force-quantum 512"
-          "xrandr --output ${cfg.primaryMonitor} --primary"
-          "thunderbird"
-          "cider-2"
-          "element-desktop"
-          "noctalia"
-        ]
-        ++ lib.optionals (cfg.isLaptop) [
-          "upower"
-        ];
-        exec = "clamshell check";
-        bind = [
-          "$mod, q, killactive"
-          "$mod, RETURN, exec, ${pkgs.ghostty}/bin/ghostty +new-window"
-          "$mod, w, exec, zen-beta"
-          "$mod, e, exec, ${pkgs.nautilus}/bin/nautilus"
-          "$mod, b, exec, "
-          "ALT, SPACE, exec, ${ipc} panel-toggle launcher"
-          "ALT, L, exec, ${ipc} session lock"
-          "$mod SHIFT, ESCAPE, exit,"
-          "$mod, V, togglefloating,"
-          "$mod, F, fullscreen"
-          "$mod, R, exec, $menu"
-          "$mod, h, movefocus, l"
-          "$mod, l, movefocus, r"
-          "$mod, j, movefocus, u"
-          "$mod, k, movefocus, d"
-          "$mod, Right, workspace, e+1"
-          "$mod, Left, workspace, e-1"
-          "$mod, mouse_down, workspace, e+1"
-          "$mod, mouse_up, workspace, e-1"
-          ''$mod SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy''
-          ",XF86AudioPlay, exec, ${ipc} media toggle"
-          ",XF86AudioPrev, exec, ${ipc} media previous"
-          ",XF86AudioNext, exec, ${ipc} media next"
-          "$mod, 1, workspace, 1"
-          "$mod, 2, workspace, 2"
-          "$mod, 3, workspace, 3"
-          "$mod, 4, workspace, 4"
-          "$mod, 5, workspace, 5"
-          "$mod, 6, workspace, 6"
-          "$mod, 7, workspace, 7"
-          "$mod, 8, workspace, 8"
-          "$mod, 9, workspace, 9"
-          "$mod, 0, workspace, 10"
-          "$mod SHIFT, 1, movetoworkspace, 1"
-          "$mod SHIFT, 2, movetoworkspace, 2"
-          "$mod SHIFT, 3, movetoworkspace, 3"
-          "$mod SHIFT, 4, movetoworkspace, 4"
-          "$mod SHIFT, 5, movetoworkspace, 5"
-          "$mod SHIFT, 6, movetoworkspace, 6"
-          "$mod SHIFT, 7, movetoworkspace, 7"
-          "$mod SHIFT, 8, movetoworkspace, 8"
-          "$mod SHIFT, 9, movetoworkspace, 9"
-          "$mod SHIFT, 0, movetoworkspace, 10"
-        ];
-        bindm = [
-          "$mod, mouse:272, movewindow"
-          "$mod, mouse:273, resizewindow"
-        ];
-        bindel = [
-          ",XF86AudioLowerVolume, exec, ${ipc} volume-down 5"
-          ",XF86AudioRaiseVolume, exec, ${ipc} volume-up 5"
-          ",XF86MonBrightnessDown, exec, ${ipc} brightness-down all 5"
-          ",XF86MonBrightnessUp, exec, ${ipc} brightness-up all 5"
-        ];
-        bindl = [
-          ",XF86AudioMute, exec, ${ipc} volume-mute"
-          ", switch:on:Lid Switch, exec, clamshell close"
-          ", switch:off:Lid Switch, exec, clamshell open"
-        ];
-        workspace = cfg.workspaces;
-        windowrule = [
-          "opacity 0.9 0.6, match:class ^(Rofi)$"
-          "opacity 0.9 0.6, match:class ^(Vicinae)$"
-          "opacity 0.9 0.7, match:class ^(Brave-browser(-beta|-dev)?)$"
-          "opacity 0.9 0.7, match:class ^(zen-beta|Firefox|org.mozilla.firefox|Firefox-esr)$"
-          "opacity 0.9 0.6, match:class ^(Thorium-browser)$"
-          "opacity 0.9 0.8, match:class ^(Microsoft-edge(-stable|-beta|-dev|-unstable)?)$"
-          "opacity 0.9 0.8, match:class ^(google-chrome(-beta|-dev|-unstable)?)$"
-          "opacity 0.94 0.86, match:class ^(chrome-.+-Default)$"
-          "opacity 0.9 0.8, match:class ^(org.gnome.Nautilus)$"
-          "opacity 0.8 0.6, match:class ^(pcmanfm-qt)$"
-          "opacity 0.8 0.7, match:class ^(thunderbird)$"
-          "opacity 0.8 0.7, match:class ^(gedit|org.gnome.TextEditor|mousepad)$"
-          "opacity 0.9 0.8, match:class ^(deluge)$"
-          "opacity 0.8 0.7, match:class ^(Alacritty|com.mitchellh.ghostty|kitty|kitty-dropterm)$"
-          "opacity 0.9 0.7, match:class ^(VSCodium|codium-url-handler)$"
-          "opacity 0.9 0.8, match:class ^(nwg-look|qt5ct|qt6ct|Yad)$"
-          "opacity 0.9 0.8, match:title ^(Kvantum Manager)$"
-          "opacity 0.9 0.7, match:class ^(com.obsproject.Studio)$"
-          "opacity 0.9 0.7, match:class ^(Audacious)$"
-          "opacity 0.9 0.8, match:class ^(VSCode|code-url-handler)$"
-          "opacity 0.9 0.8, match:class ^(jetbrains-.+)$"
-          "opacity 0.94 0.86, match:class ^(cider)$"
-          "opacity 0.94 0.86, match:class ^(Slack)$"
-          "opacity 0.94 0.86, match:class ^(Revolt-desktop)$"
-          "opacity 0.9 0.8, match:class ^(vesktop)$"
-          "opacity 0.9 0.8, match:initial_class ^(element-desktop)$"
-          "opacity 0.9 0.8, match:class ^(im.riot.Riot)$"
-          "opacity 0.94 0.86, match:class ^(gnome-disks|evince|wihotspot(-gui)?|org.gnome.baobab)$"
-          "opacity 0.9 0.8, match:class ^(file-roller|org.gnome.FileRoller)$"
-          "opacity 0.8 0.7, match:class ^(app.drey.Warp)$"
-          "opacity 0.9 0.8, match:class ^(seahorse)$"
-          "opacity 0.82 0.75, match:class ^(gnome-system-monitor|org.gnome.SystemMonitor|io.missioncenter.MissionCenter)$"
-          "opacity 0.9 0.8, match:class ^(xdg-desktop-portal-gtk)$"
-          "opacity 0.9 0.7, match:class ^(Whatsapp-for-linux)$"
-          "opacity 0.9 0.7, match:class ^(Ferdium)$"
-          "opacity 0.95 0.95, match:title ^(Picture-in-Picture)$"
-
-          "workspace 8, match:class ^(Slack)$"
-          "workspace 8, match:class ^(thunderbird)$"
-          "workspace 9, match:initial_class ^(element-desktop)$"
-          "workspace 10, match:class ^(cider)$"
-
-          "workspace 11, match:class ^(.*\.exe|gamescope|steam_app_\\d+)$"
-          "fullscreen 1, match:class ^(.*\.exe|gamescope|steam_app_\\d+)$"
-
-          "float 1, match:initial_title ^(Discord Popout)"
-          "pin 1, match:initial_title ^(Discord Popout)$"
-          "keep_aspect_ratio 1, match:initial_title ^(Discord Popout)$"
-
-          "float 1, match:title ^(Picture-in-Picture)$"
-          "pin 1, match:title ^(Picture-in-Picture)$"
-          "keep_aspect_ratio 1, match:title ^(Picture-in-Picture)$"
-          "size = (monitor_w*0.3) (monitor_h*0.3), match:title ^(Picture-in-Picture)$"
-
-          "move (monitor_w-321) 42, match:class ^(Mullvad VPN)$"
-          "float 1, match:class ^(Mullvad VPN)$"
-          "pin 1, match:class ^(Mullvad VPN)$"
-          "pin 1, match:class ^(gcr-prompter)$"
-        ];
-        input = lib.mkIf cfg.isLaptop {
-          gesture = [
-            "4, horizontal, workspace"
-            "3, horizontal, workspace"
-          ];
-          touchpad = {
+        config = {
+          general = {
+            gaps_in = 5;
+            gaps_out = 20;
+            border_size = 2;
+            col = {
+              active_border = {
+                colors = [
+                  "rgba(cba6f7ee)"
+                  "rgba(89b4faee)"
+                ];
+                angle = 45;
+              };
+              inactive_border = "rgba(181825aa)";
+            };
+            resize_on_border = false;
+            allow_tearing = false;
+          };
+          decoration.rounding = 8;
+        }
+        // lib.optionalAttrs cfg.isLaptop {
+          input.touchpad = {
             natural_scroll = true;
             disable_while_typing = true;
           };
         };
+
+        env = lib.mapAttrsToList (name: value: {
+          _args = [
+            name
+            value
+          ];
+        }) envVars;
+
+        monitor = cfg.monitors;
+        workspace_rule = cfg.workspaces;
+
+        gesture = lib.optionals cfg.isLaptop [
+          {
+            fingers = 4;
+            direction = "horizontal";
+            action = "workspace";
+          }
+          {
+            fingers = 3;
+            direction = "horizontal";
+            action = "workspace";
+          }
+        ];
+
+        bind = binds;
+        window_rule = windowRules;
+
+        on = [
+          {
+            _args = [
+              "hyprland.start"
+              (lua startupFn)
+            ];
+          }
+        ]
+        ++ lib.optionals cfg.isLaptop [
+          {
+            _args = [
+              "config.reloaded"
+              (lua reloadFn)
+            ];
+          }
+        ];
       };
     };
   };
