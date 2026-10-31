@@ -44,7 +44,7 @@ in
   home = {
     username = "raphael";
     homeDirectory = "/Users/raphael";
-    stateVersion = "24.05";
+    stateVersion = "26.05";
     sessionVariables = {
       EDITOR = "nvim";
     };

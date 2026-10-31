@@ -52,7 +52,7 @@ in
   home = {
     username = "root";
     homeDirectory = "/root";
-    stateVersion = "24.05";
+    stateVersion = "26.05";
     sessionVariables = {
       EDITOR = "nvim";
     };

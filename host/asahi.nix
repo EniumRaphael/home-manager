@@ -52,7 +52,7 @@ in
   home = {
     username = "raphael";
     homeDirectory = "/home/raphael";
-    stateVersion = "24.05";
+    stateVersion = "26.05";
     sessionVariables = {
       ZED_ALLOW_EMULATED_GPU = 1;
       EDITOR = "nvim";
