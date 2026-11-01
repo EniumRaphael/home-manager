@@ -117,10 +117,10 @@ let
     ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
     "pw-metadata -n settings 0 clock.force-quantum 512"
     "xrandr --output ${cfg.primaryMonitor} --primary"
-    "sleep 2 && noctalia"
     "thunderbird"
     "cider-2"
     "element-desktop"
+    "sleep 2 && noctalia"
   ]
   ++ lib.optionals cfg.isLaptop [
     "upower"
@@ -342,7 +342,7 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       configType = "lua";
-      systemd.enable = false;
+      systemd.enable = true;
       xwayland.enable = true;
 
       settings = {
