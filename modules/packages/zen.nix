@@ -126,9 +126,9 @@ in
           pinsForce = true;
           pinsForceAction = "remove";
           pins = {
-            "Mammouth" = {
+            "Claude" = {
               id = "a1b2c3d4-e5f6-7890-abcd-ef1234567890";
-              url = "https://mammouth.ai";
+              url = "https://claude.ai";
               position = 101;
               isEssential = true;
             };
@@ -900,6 +900,7 @@ in
             "browser.theme.content-theme" = 0;
             "browser.theme.toolbar-theme" = 0;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+            "extensions.autoDisableScopes" = 0;
 
             # Zen
             "zen.view.compact.enable-at-startup" = true;
