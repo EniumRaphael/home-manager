@@ -53,6 +53,26 @@
         "type": "github"
       }
     },
+    "claude-cage": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793657029,
+        "narHash": "sha256-vUjum5bTPo+pIyddKXAIaQvBo/GiUHA2ViJLZLKfnzU=",
+        "owner": "EniumRaphael",
+        "repo": "claude-cage",
+        "rev": "531a4be3f6754ec2c09435616dbad83f2c92ac4f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "EniumRaphael",
+        "repo": "claude-cage",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "nixpkgs": [
@@ -642,6 +662,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "claude-cage": "claude-cage",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "hyprland": "hyprland",

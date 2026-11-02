@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
+    claude-cage = {
+      url = "github:EniumRaphael/claude-cage";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +49,7 @@
   outputs =
     inputs@{
       catppuccin,
+      claude-cage,
       home-manager,
       nixpkgs,
       nixvim,
@@ -151,5 +157,14 @@
       ) hosts;
 
       homeModules = lib.mapAttrs (_: h: h.path) hosts;
+      devShells =
+        lib.genAttrs
+          [
+            "x86_64-linux"
+            "aarch64-linux"
+          ]
+          (system: {
+            default = claude-cage.devShells.${system}.default;
+          });
     };
 }
