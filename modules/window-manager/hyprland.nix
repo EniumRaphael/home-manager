@@ -71,14 +71,13 @@ let
     fi
   '';
 
+  app = cmd: "uwsm app -- ${cmd}";
+
   envVars = {
     GDK_BACKEND = "wayland,x11,*";
     QT_QPA_PLATFORM = "wayland;xcb";
     CLUTTER_BACKEND = "wayland";
     SDL_VIDEODRIVER = "wayland,x11";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
 
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
@@ -98,7 +97,6 @@ let
     MANGOHUD_CONFIG = "cpu_temp,gpu_temp,ram,vram,fps,time";
     PROTON_USE_WINED3D = "0";
     _JAVA_AWT_WM_NONREPARENTING = "1";
-    HYPRLAND_NO_SD_NOTIFY = "1";
   }
   // lib.optionalAttrs cfg.usingNVIDIA {
     LIBVA_DRIVER_NAME = "nvidia";
@@ -116,11 +114,11 @@ let
     "xrandr --output ${cfg.primaryMonitor} --primary"
     ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
     "pw-metadata -n settings 0 clock.force-quantum 512"
-    "thunderbird"
-    "cider-2"
-    "streamdeck -n"
-    "element-desktop"
-    "sleep 3 && noctalia"
+    (app "thunderbird")
+    (app "cider-2")
+    (app "streamdeck -n")
+    (app "element-desktop")
+    (app "noctalia")
   ]
   ++ lib.optionals cfg.isLaptop [
     "upower"
@@ -141,12 +139,12 @@ let
 
   binds = [
     (bind "${mod} + Q" "hl.dsp.window.close()" { })
-    (bind "${mod} + RETURN" (exec "${pkgs.ghostty}/bin/ghostty +new-window") { })
-    (bind "${mod} + W" (exec "zen-beta") { })
-    (bind "${mod} + E" (exec "${pkgs.nautilus}/bin/nautilus") { })
+    (bind "${mod} + RETURN" (exec (app "${pkgs.ghostty}/bin/ghostty +new-window")) { })
+    (bind "${mod} + W" (exec (app "zen-beta")) { })
+    (bind "${mod} + E" (exec (app "${pkgs.nautilus}/bin/nautilus")) { })
     (bind "ALT + SPACE" (exec "${ipc} panel-toggle launcher") { })
     (bind "ALT + L" (exec "${ipc} session lock") { })
-    (bind "${mod} + SHIFT + ESCAPE" "hl.dsp.exit()" { })
+    (bind "${mod} + SHIFT + ESCAPE" (exec "uwsm stop") { })
     (bind "${mod} + V" ''hl.dsp.window.float({ action = "toggle" })'' { })
     (bind "${mod} + F" "hl.dsp.window.fullscreen()" { })
 
@@ -275,8 +273,8 @@ let
       size = "(monitor_w*0.3) (monitor_h*0.3)";
     }
     {
-      match.class = "^(Mullvad VPN)$";
-      move = "(monitor_w-321) 42";
+      match.class = "^(mullvad-vpn)$";
+      move = "(monitor_w-321) 52";
       float = true;
       pin = true;
     }
@@ -303,6 +301,15 @@ in
       ++ lib.optionals cfg.isLaptop [ clamshell ];
 
     home.pointerCursor.enable = true;
+
+    xdg.configFile."uwsm/env" = {
+      text = ''
+        . "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh"
+        ${lib.concatStringsSep "\n" (
+          lib.mapAttrsToList (name: value: "export ${name}=${lib.escapeShellArg value}") envVars
+        )}
+      '';
+    };
 
     catppuccin = {
       hyprland.enable = false;
@@ -342,7 +349,7 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       configType = "lua";
-      systemd.enable = true;
+      systemd.enable = false;
       xwayland.enable = true;
 
       settings = {
@@ -372,13 +379,6 @@ in
             disable_while_typing = true;
           };
         };
-
-        env = lib.mapAttrsToList (name: value: {
-          _args = [
-            name
-            value
-          ];
-        }) envVars;
 
         monitor = cfg.monitors;
         workspace_rule = cfg.workspaces;
