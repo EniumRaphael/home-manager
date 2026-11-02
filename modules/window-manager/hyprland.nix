@@ -105,7 +105,6 @@ let
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     __NV_PRIME_RENDER_OFFLOAD = "1";
     __GL_SYNC_TO_VBLANK = "0";
-    __GL_THREADED_OPTIMIZATIONS = "1";
     NVD_BACKEND = "direct";
   }
   // lib.optionalAttrs cfg.usingAMD {
@@ -114,13 +113,14 @@ let
   };
 
   startup = [
+    "xrandr --output ${cfg.primaryMonitor} --primary"
     ''hyprctl setcursor "Catppuccin-Mocha-Dark" 24''
     "pw-metadata -n settings 0 clock.force-quantum 512"
-    "xrandr --output ${cfg.primaryMonitor} --primary"
     "thunderbird"
     "cider-2"
+    "streamdeck -n"
     "element-desktop"
-    "sleep 2 && noctalia"
+    "sleep 3 && noctalia"
   ]
   ++ lib.optionals cfg.isLaptop [
     "upower"
