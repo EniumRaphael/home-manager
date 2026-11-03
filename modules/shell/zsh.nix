@@ -89,15 +89,11 @@ in
         plugins = [
           {
             name = "fzf-tab";
-            src = pkgs.zsh-fzf-tab;
+            src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
           }
           {
             name = "nix-zsh-completions";
-            src = pkgs.nix-zsh-completions;
-          }
-          {
-            name = "F-Sy-H";
-            src = pkgs.zsh-f-sy-h;
+            src = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix";
           }
         ];
         envExtra = ''
@@ -106,7 +102,6 @@ in
           [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ] && source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
           [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ] && source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
           [ -f /etc/zshenv ] && source /etc/zshenv
-          [ -d ${pkgs.fzf} ] && source ${pkgs.fzf}/share/fzf/completion.zsh && source ${pkgs.fzf}/share/fzf/key-bindings.zsh
           if ! pgrep -u "$USER" ssh-agent > /dev/null; then
             eval "$(ssh-agent -s)"
           fi
