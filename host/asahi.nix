@@ -1,6 +1,7 @@
 {
   system,
   inputs,
+  osConfig ? null,
   config,
   pkgs,
   lib,
@@ -24,6 +25,7 @@ let
     inherit
       system
       inputs
+      osConfig
       config
       pkgs
       lib
@@ -34,6 +36,7 @@ let
   window-manager = import ../modules/window-manager/default.nix {
     inherit
       inputs
+      osConfig
       config
       pkgs
       lib
