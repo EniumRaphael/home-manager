@@ -1,5 +1,6 @@
 {
   inputs,
+  osConfig ? null,
   config,
   pkgs,
   lib,
@@ -34,6 +35,7 @@ let
   noctalia = import ./noctalia.nix {
     inherit
       inputs
+      osConfig
       config
       pkgs
       lib

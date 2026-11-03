@@ -1,6 +1,7 @@
 {
   system,
   inputs,
+  osConfig ? null,
   config,
   pkgs,
   lib,
@@ -29,6 +30,7 @@ let
   thunderbird = import ./thunderbird.nix {
     inherit
       inputs
+      osConfig
       config
       pkgs
       lib
