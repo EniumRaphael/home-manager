@@ -30,6 +30,8 @@ in
         font-feature = [
           "+calt"
         ];
+        background-blur = true;
+        background-opacity = 0.85;
         confirm-close-surface = false;
         window-decoration = false;
         term = "xterm-256color";
