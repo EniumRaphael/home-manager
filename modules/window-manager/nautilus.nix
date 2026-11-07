@@ -40,5 +40,6 @@ in
         size = 14;
       };
     };
+    services.udiskie.enable = true;
   };
 }
