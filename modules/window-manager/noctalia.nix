@@ -29,8 +29,8 @@ let
     };
   };
   pp = pkgs.fetchurl {
-    url = "https://avatars.githubusercontent.com/u/35407363?v=4";
-    sha256 = "sha256-F7Y7lmrQEQjspJ41p20ZjeQKnOLRGqjcxwKDVH3OMLc=";
+    url = "https://avatars.githubusercontent.com/u/35407363";
+    sha256 = "1zzwcl9239y090kwwd2nln08wrhnl4qrcdwrzjiprvhfqpbh1z12";
   };
 in
 {
