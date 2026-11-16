@@ -122,6 +122,7 @@
         fix = {
           system = "x86_64-linux";
           path = ./host/fix.nix;
+          gpg = "9C02772EE3CAB6F96C6FB1A2038B5AF60D32BEA1";
         };
         root = {
           system = "x86_64-linux";
