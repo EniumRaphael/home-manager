@@ -153,6 +153,11 @@ let
     (bind "${mod} + J" ''hl.dsp.focus({ direction = "up" })'' { })
     (bind "${mod} + K" ''hl.dsp.focus({ direction = "down" })'' { })
 
+    (bind "${mod} + SHIFT + H" ''hl.dsp.window.swap({ direction = "left" })'' { })
+    (bind "${mod} + SHIFT + J" ''hl.dsp.window.swap({ direction = "down" })'' { })
+    (bind "${mod} + SHIFT + K" ''hl.dsp.window.swap({ direction = "up" })'' { })
+    (bind "${mod} + SHIFT + L" ''hl.dsp.window.swap({ direction = "right" })'' { })
+
     (bind "${mod} + Right" ''hl.dsp.focus({ workspace = "e+1" })'' { })
     (bind "${mod} + Left" ''hl.dsp.focus({ workspace = "e-1" })'' { })
     (bind "${mod} + mouse_down" ''hl.dsp.focus({ workspace = "e+1" })'' { })
@@ -370,6 +375,12 @@ in
             };
             resize_on_border = false;
             allow_tearing = false;
+            layout = "dwindle";
+          };
+          dwindle = {
+            force_split = 2;
+            smart_split = false;
+            preserve_split = true;
           };
           decoration.rounding = 8;
         }
